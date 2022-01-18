@@ -1,0 +1,32 @@
+.c-header {
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; */
+  padding: 17.5px 0 15px 0;
+  background-color: #fff;
+  /* box-shadow: 0 1px 3px #ddd; */
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-header__logo-wrapper {
+  /* margin-left: 5vw; */
+}
+
+.c-header__logo {
+  width: 100px;
+}
+
+.c-header-menu {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  /* margin-right: 5vw; */
+}
+
+.c-header-menu__link {
+  font-size: 18px;
+  color: #711e9a;
+}

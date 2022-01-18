@@ -1,0 +1,115 @@
+.c-createsong__fixed {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 2;
+}
+
+.c-createsong__close {
+  margin-top: 5vh;
+  margin-left: 10vw;
+  font-size: 20px;
+  color: #380f4d;
+}
+
+.c-createsong__explanation {
+  margin-top: 10vh;
+  margin-left: 15%;
+  font-size: 40px;
+  font-weight: bolder;
+  line-height: 55px;
+  color: #380f4d;
+}
+
+.c-createsong__form {
+  text-align: center;
+  margin-top: 8vh;
+}
+
+.c-createsong__form-search {
+  margin-bottom: 10vh;
+}
+
+.c-createsong__form-search input {
+  /* max-width: 500px; */
+  width: 70vw;
+  padding: 10px 0;
+  font-size: 18px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.c-createsong__result {
+  width: 70vw;
+  margin: 0 auto;
+}
+
+.c-createsong__result-block {
+  /* max-width: 500px; */
+  background-color: #fdf5f7;
+  margin: 10px 0; /* auto로 div 전체 가운데 정렬 */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px #aaa;
+}
+
+.c-createsong__result-block:hover {
+  background-color: #fdeff3;
+  box-shadow: 0 1px 5px #808080;
+}
+
+.c-createsong__result-title {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.c-createsong__result-artist {
+  font-size: 13px;
+  color: gray;
+}
+
+.c-createsong__form-title,
+.c-createsong__form-artist {
+  /* max-width: 500px; */
+  width: 70vw;
+  display: inline-flex;
+  align-items: center;
+}
+
+.c-createsong__form-title p,
+.c-createsong__form-artist p {
+  width: 100px;
+  font-size: 18px;
+  text-align: left;
+}
+
+.c-createsong__form-title input,
+.c-createsong__form-artist input {
+  width: 100%;
+  margin: 2vh 0;
+  padding: 10px;
+  line-height: 30px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 25px;
+  border: 1px solid black;
+}
+
+.c-createsong__form-button {
+  width: 70%;
+  margin-top: 5vh;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  height: 50px;
+  background-color: #711e9a;
+  color: #fff;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}

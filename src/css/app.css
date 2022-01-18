@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "NotoSans";
+  src: url("fonts/NotoSans/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "NotoSans";
+  src: url("fonts/NotoSans/NotoSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "NotoSans";
+  src: url("fonts/NotoSans/NotoSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "NotoSansKR";
+  src: url("fonts/NotoSansKR/NotoSansKR-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "NotoSansKR";
+  src: url("fonts/NotoSansKR/NotoSansKR-Medium.otf") format("opentype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "NotoSansKR";
+  src: url("fonts/NotoSansKR/NotoSansKR-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+
+body {
+  background-color: #fff;
+  max-width: 500px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-y: scroll; /* 페이지가 짧더라도 스크롤바를 보이게 하여 전체가 틀어지는 것을 막음 */
+}
+
+.enReg {
+  font-family: "NotoSans";
+  font-weight: 400;
+}
+
+.enSemi {
+  font-family: "NotoSans";
+  font-weight: 600;
+}
+
+.enBold {
+  font-family: "NotoSans";
+  font-weight: 700;
+}
+
+.krReg {
+  font-family: "NotoSansKR";
+  font-weight: 400;
+}
+
+.krMed {
+  font-family: "NotoSansKR";
+  font-weight: 500;
+}
+
+.krBold {
+  font-family: "NotoSansKR";
+  font-weight: 700;
+}
