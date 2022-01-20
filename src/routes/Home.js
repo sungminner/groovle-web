@@ -4,8 +4,17 @@ import "css/home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "components/Header";
 import Navigation from "components/Navigation";
+import axios from "axios";
 
 const Home = () => {
+  const onClick = async () => {
+    await axios.post("http://localhost:4000/api/test", {
+      testtext: "hello",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+  };
   return (
     <>
       <Header />
@@ -33,6 +42,7 @@ const Home = () => {
           </p>
         </div>
       </Link>
+      <button onClick={onClick}>test</button>
       <Navigation />
     </>
   );

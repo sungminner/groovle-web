@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.caa9edbc.css",
+    "main.js": "/static/js/main.abba8305.js",
+    "static/media/NotoSansKR-Bold.otf": "/static/media/NotoSansKR-Bold.29abf35d525346faa333.otf",
+    "static/media/NotoSansKR-Medium.otf": "/static/media/NotoSansKR-Medium.72ba455576ce8174ffa8.otf",
+    "static/media/NotoSansKR-Regular.otf": "/static/media/NotoSansKR-Regular.457762eaaf7bb2aa2893.otf",
+    "static/media/NotoSans-SemiBold.ttf": "/static/media/NotoSans-SemiBold.54d203ce3bb70b87d8a6.ttf",
+    "static/media/NotoSans-Regular.ttf": "/static/media/NotoSans-Regular.a50ccd7ec8e550220297.ttf",
+    "static/media/NotoSans-Bold.ttf": "/static/media/NotoSans-Bold.11db879cda9e3e04c2c9.ttf",
+    "static/media/logo.png": "/static/media/logo.0631aa41ab11ff6b5764.png",
+    "static/media/logo-white.png": "/static/media/logo-white.9e2ca7fd2c64beb9836b.png",
+    "index.html": "/index.html",
+    "main.caa9edbc.css.map": "/static/css/main.caa9edbc.css.map",
+    "main.abba8305.js.map": "/static/js/main.abba8305.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.caa9edbc.css",
+    "static/js/main.abba8305.js"
+  ]
+}

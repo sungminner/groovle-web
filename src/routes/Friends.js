@@ -1,5 +1,5 @@
 import React from "react";
-import "css/notifications.css";
+import "css/friends.css";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { Link } from "react-router-dom";
 

@@ -9,9 +9,8 @@
   max-width: 500px;
   margin: 0 auto;
   padding: 10px 0;
-  background-color: #fff;
-  /* box-shadow: 0 -1px 3px #ddd; */
-  border-top: 1px solid #000000;
+  background-color: #ffffff;
+  border-top: 1px solid #d4d4d4;
   display: flex;
   justify-content: space-around;
 }
