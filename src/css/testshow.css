@@ -1,24 +1,21 @@
-.home-post__square {
+.testshow-post {
+  max-width: 480px;
+  max-height: 480px;
   position: relative;
-  width: 80%;
-  height: 0;
-  padding-bottom: 80%;
-  background-color: transparent;
+  padding: 10px;
   border-radius: 20px;
   overflow: hidden;
   margin: 5% auto 10%;
+  background-color: transparent;
+  box-sizing: border-box;
 }
 
-.home-post {
-  padding: 10px;
-}
-
-.home-post__bgimg {
+.testshow-post__bgimg {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   z-index: -1;
+  transform: translate(-50%, -50%);
 }
 
 .hpb-wide {
@@ -31,7 +28,7 @@
   /* 이미지가 세로로 길 때 */
 }
 
-.home-post__header {
+.testshow-post__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,39 +38,39 @@
   border-radius: 15px;
 }
 
-.home-post__header-albumimg {
+.testshow-post__header-albumimg {
   width: 40px;
   height: 40px;
   border-radius: 10px;
 }
 
-.home-post__header-title {
+.testshow-post__header-title {
   font-size: 14px;
   margin-bottom: 5px;
 }
 
-.home-post__header-artist {
+.testshow-post__header-artist {
   font-size: 12px;
 }
 
-.home-post__header-playbtn {
+.testshow-post__header-playbtn {
   width: 40px;
   height: 40px;
 }
 
-.home-post__body {
+.testshow-post__body {
   padding: 10px;
   border-radius: 15px;
   background-color: rgba(256, 256, 256, 0.95);
 }
 
-.home-post__body-profileimg {
+.testshow-post__body-profileimg {
   width: 40px;
   height: 40px;
   border-radius: 10px;
 }
 
-.home-post__footer {
+.testshow-post__footer {
   display: flex;
   justify-content: space-between;
   align-items: center;

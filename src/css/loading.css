@@ -1,4 +1,4 @@
-.c-loading {
+.loading {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -7,7 +7,7 @@
   background-color: #711e9a;
 }
 
-.c-loading__title {
+.loading__title {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50vh;

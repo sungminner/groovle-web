@@ -1,12 +1,16 @@
-.c-nav__wrapper {
+.nav__padding {
+  height: 52px;
+}
+
+.nav__wrapper {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
 }
 
-.c-nav {
-  max-width: 500px;
+.nav {
+  max-width: 600px;
   margin: 0 auto;
   padding: 10px 0;
   background-color: #ffffff;
@@ -15,19 +19,19 @@
   justify-content: space-around;
 }
 
-.c-nav__link {
+.nav__link {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.c-nav__link-icon {
+.nav__link-icon {
   font-size: 18px;
   color: #711e9a;
   margin-bottom: 3px;
 }
 
-.c-nav__link-detail {
+.nav__link-detail {
   font-size: 10px;
   color: #711e9a;
 }

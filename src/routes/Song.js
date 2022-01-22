@@ -12,8 +12,8 @@ const Song = () => {
       <p>듣기</p>
       <div>커버 이미지 영역</div>
       <div>
-        <p className="c-song__title">사랑한다는 말로도 위로가 되지 않는</p>
-        <p className="c-song__artist">브로콜리너마저</p>
+        <p className="song__title">사랑한다는 말로도 위로가 되지 않는</p>
+        <p className="song__artist">브로콜리너마저</p>
         <p>방장: 기타왕</p>
         <p>
           <FontAwesomeIcon icon="heart" />

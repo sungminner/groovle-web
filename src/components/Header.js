@@ -7,21 +7,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Header = () => {
   return (
     <>
-      <nav className="c-header">
-        <div className="c-header__logo-wrapper">
+      <nav className="header">
+        <div className="header__logo-wrapper">
           <Link to="/">
-            <img src={logo} alt="logo" className="c-header__logo" />
+            <img src={logo} alt="logo" className="header__logo" />
           </Link>
         </div>
-        <div className="c-header-menu">
+        <div className="header-menu">
           <Link to="/search">
-            <FontAwesomeIcon icon="search" className="c-header-menu__link" />
+            <FontAwesomeIcon icon="search" className="header-menu__link" />
           </Link>
           <Link to="/notifications">
-            <FontAwesomeIcon icon="bell" className="c-header-menu__link" />
+            <FontAwesomeIcon icon="bell" className="header-menu__link" />
           </Link>
           <Link to="/friends">
-            <FontAwesomeIcon icon="users" className="c-header-menu__link" />
+            <FontAwesomeIcon icon="users" className="header-menu__link" />
           </Link>
         </div>
       </nav>

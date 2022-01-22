@@ -1,10 +1,10 @@
-.c-song__title {
+.song__title {
   margin-top: 15px;
   font-size: 30px;
   font-weight: bolder;
 }
 
-.c-song__artist {
+.song__artist {
   margin-top: 10px;
   font-size: 16px;
   font-weight: bolder;
