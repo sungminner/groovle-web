@@ -1,6 +1,7 @@
 const express = require("express");
-const router = express();
 const db = require("./db_info");
+
+const router = express();
 
 router.post("/test", (req, res) => {
   console.log("test called");
@@ -13,15 +14,16 @@ router.post("/test", (req, res) => {
     function (error, results) {
       if (error) throw error;
       console.log("The solution is: ", results);
+      res.send(results);
     }
   );
 });
 
-router.get("/test", (req, res) => {
+router.get("/show", (req, res) => {
   db.query("select * from test", function (error, results) {
     if (error) throw error;
     console.log("The solution is: ", results);
-    res.send(results);
+    res.send(results[1].data);
   });
 });
 
