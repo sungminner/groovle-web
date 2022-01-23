@@ -1,11 +1,12 @@
 * {
   -webkit-appearance: none;
+  box-sizing: border-box;
 }
 html,
 body,
 div,
 span,
-applet,
+S applet,
 object,
 iframe,
 h1,

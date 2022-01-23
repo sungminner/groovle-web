@@ -31,8 +31,8 @@ const Home = () => {
       <div
         className="testshow-post krReg"
         style={{
-          width: width * 0.8,
-          height: width * 0.8,
+          width: "400px",
+          height: "400px",
         }}
       >
         <Link to="/song">
