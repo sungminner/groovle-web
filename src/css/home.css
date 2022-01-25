@@ -1,4 +1,4 @@
-.testshow-post {
+.home-post {
   max-width: 480px;
   max-height: 480px;
   position: relative;
@@ -6,7 +6,7 @@
   background-color: transparent;
 }
 
-.testshow-post__bgimg {
+.home-post__bgimg {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -14,7 +14,7 @@
   border-radius: 20px;
 }
 
-.testshow-post__body {
+.home-post__body {
   position: absolute;
   max-width: 460px;
   max-height: 460px;
@@ -22,7 +22,7 @@
   left: 10px;
 }
 
-.testshow-post__header {
+.home-post__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,7 +32,7 @@
   border-radius: 15px;
 }
 
-.testshow-post__header-albumimg {
+.home-post__header-albumimg {
   width: 40px;
   height: 40px;
   object-fit: cover;
@@ -40,26 +40,26 @@
   border-radius: 10px;
 }
 
-.testshow-post__header-text {
+.home-post__header-text {
   text-align: center;
 }
 
-.testshow-post__header-title {
+.home-post__header-title {
   font-size: 16px;
   margin-bottom: 5px;
 }
 
-.testshow-post__header-artist {
+.home-post__header-artist {
   font-size: 14px;
   color: gray;
 }
 
-.testshow-post__header-playbtn {
+.home-post__header-playbtn {
   width: 40px;
   height: 40px;
 }
 
-.testshow-post__main {
+.home-post__main {
   max-height: 344px;
   padding: 10px;
   border-radius: 15px;
@@ -70,13 +70,13 @@
   overflow: hidden;
 }
 
-.testshow-post__main-profile {
+.home-post__main-profile {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.testshow-post__main-profileimg {
+.home-post__main-profileimg {
   width: 40px;
   height: 40px;
   border-radius: 15px;
@@ -84,22 +84,22 @@
   object-position: center; /* Center the image within the element */
 }
 
-.testshow-post__main-text {
+.home-post__main-text {
   display: flex;
   flex-direction: column;
   gap: 3px;
 }
 
-.testshow-post__main-username {
+.home-post__main-username {
   font-size: 16px;
 }
 
-.testshow-post__main-session {
+.home-post__main-session {
   font-size: 14px;
   color: gray;
 }
 
-.testshow-post__footer {
+.home-post__footer {
   position: absolute;
   max-width: 460px;
   bottom: 0;
@@ -112,12 +112,12 @@
   border-radius: 15px;
 }
 
-.testshow-post__footer-like {
+.home-post__footer-like {
   display: flex;
   gap: 5px;
 }
 
-.testshow-post__footer-comment {
+.home-post__footer-comment {
   display: flex;
   gap: 5px;
 }
