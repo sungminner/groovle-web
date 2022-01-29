@@ -1,8 +1,14 @@
 import React from "react";
+import Header from "components/Header";
 import "css/settings.css";
 
 const Settings = () => {
-  return <h1>Settings</h1>;
+  return (
+    <>
+      <Header currentPage="Search" />
+      <p>Settings</p>;
+    </>
+  );
 };
 
 export default Settings;

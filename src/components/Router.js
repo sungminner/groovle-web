@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "routes/Home";
 import Recorder from "routes/Recorder";
-import Profile from "routes/Profile";
+import My from "routes/My";
 import Settings from "routes/Settings";
 import Search from "routes/Search";
 import Song from "routes/Song";
@@ -23,7 +23,7 @@ const AppRouter = () => {
         <Route path="/studio/recorder" element={Recorder} />
         {/* element={...}로 넣는 건 불러올 컴포넌트가 class 형태일 때 거기에 props를 넘겨주기 위해 사용.
         호출할 화면에서 Link를 통해 props 넘겨줄 수 있음 */}
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/my" element={<My />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/search" element={<Search />} />
         <Route path="/explore" element={<Explore />} />

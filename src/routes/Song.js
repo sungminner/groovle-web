@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Header from "components/Header";
 import "css/song.css";
 
 const Song = () => {
   return (
     <>
-      <Link to="/">
-        <FontAwesomeIcon icon="chevron-left" />
-      </Link>
+      <Header currentPage="Song" />
       <p>듣기</p>
       <div>커버 이미지 영역</div>
       <div>

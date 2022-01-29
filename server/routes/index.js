@@ -23,7 +23,7 @@ router.get("/show", (req, res) => {
   db.query("select * from test", function (error, results) {
     if (error) throw error;
     console.log("The solution is: ", results);
-    res.send(results[1].data);
+    res.send(results[results.length - 1].data);
   });
 });
 

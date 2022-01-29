@@ -6,7 +6,7 @@ import Navigation from "components/Navigation";
 const Profile = () => {
   return (
     <>
-      <Header />
+      <Header currentPage="My" />
       <p>profile</p>
       <p>프사</p>
       <p>정성민</p>

@@ -26,7 +26,7 @@ const Navigation = () => {
           </div>
           <div className="nav__link">
             {/* {userObj ? ( */}
-            <Link to="/profile">
+            <Link to="/my">
               <FontAwesomeIcon icon="user" className="nav__link-icon" />
               <p className="nav__link-detail enReg">My</p>
             </Link>

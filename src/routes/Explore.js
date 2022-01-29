@@ -8,7 +8,7 @@ import Navigation from "components/Navigation";
 const CreateSong = () => {
   return (
     <>
-      <Header />
+      <Header currentPage="Explore" />
       <p>Explore</p>
       <div>검색</div>
       <div>People to follow</div>
