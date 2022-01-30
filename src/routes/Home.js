@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "css/home.css";
+import axios from "axios";
 import Header from "components/Header";
+import Playbar from "components/Playbar";
 import Navigation from "components/Navigation";
 import HomePost from "components/HomePost";
-import axios from "axios";
+import "css/home.css";
 
 const Home = () => {
   const [res, setRes] = useState("");
@@ -44,6 +45,7 @@ const Home = () => {
       <input type="text" value={data} onChange={onChange} />
       <input type="submit" value="save" onClick={onClick} />
       <p>last data: {res}</p>
+      <Playbar />
       <Navigation />
     </>
   );

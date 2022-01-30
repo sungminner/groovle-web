@@ -1,5 +1,5 @@
 .nav__padding {
-  height: 52px;
+  height: 50px;
 }
 
 .nav__wrapper {
@@ -12,7 +12,7 @@
 .nav {
   max-width: 600px;
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 9px 0;
   background-color: #ffffff;
   border-top: 1px solid #d4d4d4;
   display: flex;
