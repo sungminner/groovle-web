@@ -2,13 +2,12 @@ import React from "react";
 import "css/explore.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import Header from "components/Header";
 
 const CreateSong = () => {
   return (
     <>
-      <Link to="/">
-        <FontAwesomeIcon icon="chevron-left" />
-      </Link>
+      <Header currentPage="Studio" />
       <p>스튜디오</p>
       <div>
         <p className="song__title">사랑한다는 말로도 위로가 되지 않는</p>

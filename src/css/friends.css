@@ -1,0 +1,57 @@
+.friends-search {
+  background-color: rgb(239, 239, 239);
+  border: 1px solid rgb(239, 239, 239);
+  border-radius: 18px;
+  height: 36px;
+  margin: 28px 30px 0;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.friends-search__input {
+  padding: 0;
+  border: none;
+  background-color: rgb(239, 239, 239);
+  width: 100%;
+  font-size: 14px;
+}
+
+.friends-search:focus-within {
+  background-color: #fff;
+  border-color: rgb(63, 28, 177);
+}
+
+.friends-search:focus-within .friends-search__button {
+  color: rgb(63, 28, 177);
+}
+
+.friends-search__input:focus {
+  outline: none;
+  background-color: #fff;
+}
+
+.friends-search__input::placeholder {
+  color: #323232;
+}
+
+.friends-search__button {
+  color: #323232;
+}
+
+.friends-tab__wrapper {
+  margin: 0 30px;
+}
+
+.friends-tab__title {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 25.5px 0;
+  border-bottom: 1px solid #000;
+}
+
+.friends-tab__body {
+  margin: 20px 0;
+}

@@ -1,4 +1,4 @@
-.explore-search {
+.search-bar {
   background-color: rgb(239, 239, 239);
   border: 1px solid rgb(239, 239, 239);
   border-radius: 18px;
@@ -11,7 +11,7 @@
   gap: 10px;
 }
 
-.explore-search__input {
+.search-bar__input {
   padding: 0;
   border: none;
   background-color: rgb(239, 239, 239);
@@ -19,24 +19,24 @@
   font-size: 14px;
 }
 
-.explore-search:focus-within {
+.search-bar:focus-within {
   background-color: #fff;
   border-color: rgb(63, 28, 177);
 }
 
-.explore-search:focus-within .explore-search__button {
+.search-bar:focus-within .search-bar__button {
   color: rgb(63, 28, 177);
 }
 
-.explore-search__input:focus {
+.search-bar__input:focus {
   outline: none;
   background-color: #fff;
 }
 
-.explore-search__input::placeholder {
+.search-bar__input::placeholder {
   color: #323232;
 }
 
-.explore-search__button {
+.search-bar__button {
   color: #323232;
 }
