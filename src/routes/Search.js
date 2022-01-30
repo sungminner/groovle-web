@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "components/Header";
+import "css/search.css";
 
 const Search = () => {
   const onChange = () => {
