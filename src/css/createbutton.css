@@ -1,0 +1,28 @@
+.createbutton {
+  position: fixed;
+  bottom: 110px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 10px #969696;
+  transition: 0.2s ease-in-out;
+}
+
+.createbutton-plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #711e9a;
+}
+
+.createbutton:hover {
+  background-color: #711e9a;
+}
+
+.createbutton:hover .createbutton-plus {
+  color: white;
+}

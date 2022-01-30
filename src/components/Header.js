@@ -14,9 +14,9 @@ const Header = ({ currentPage }) => {
   };
   return (
     <>
-      {currentPage === "Home" ||
-      currentPage === "Explore" ||
-      currentPage === "My" ? (
+      {(currentPage === "Home" ||
+        currentPage === "Explore" ||
+        currentPage === "My") && (
         <nav className="header">
           <div className="header-item">
             <img
@@ -43,7 +43,8 @@ const Header = ({ currentPage }) => {
             </div>
           </div>
         </nav>
-      ) : (
+      )}
+      {(currentPage === "Song" || currentPage === "Studio") && (
         <nav className="header">
           <div className="header-item">
             <FontAwesomeIcon
@@ -55,7 +56,35 @@ const Header = ({ currentPage }) => {
           <div className="header-item">
             <p className="header-title">{currentPage}</p>
           </div>
-          <div className="header-item"></div>
+          <div className="header-item">
+            <div className="header-menu">
+              <FontAwesomeIcon
+                icon="external-link-alt"
+                className="header-menu__link"
+              />
+              <FontAwesomeIcon icon="bars" className="header-menu__link" />
+            </div>
+          </div>
+        </nav>
+      )}
+      {(currentPage === "Friends" ||
+        currentPage === "Notifications" ||
+        currentPage === "Search" ||
+        currentPage === "Settings") && (
+        <nav className="header">
+          <div className="header-item">
+            <FontAwesomeIcon
+              icon="chevron-left"
+              className="header-goback"
+              onClick={goBack}
+            />
+          </div>
+          <div className="header-item">
+            <p className="header-title">{currentPage}</p>
+          </div>
+          <div className="header-item">
+            <div className="header-menu"></div>
+          </div>
         </nav>
       )}
     </>

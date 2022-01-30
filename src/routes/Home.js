@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "components/Header";
 import Playbar from "components/Playbar";
 import Navigation from "components/Navigation";
+import CreateButton from "components/CreateButton";
 import HomePost from "components/HomePost";
 import "css/home.css";
 
@@ -45,6 +46,7 @@ const Home = () => {
       <input type="text" value={data} onChange={onChange} />
       <input type="submit" value="save" onClick={onClick} />
       <p>last data: {res}</p>
+      <CreateButton />
       <Playbar />
       <Navigation />
     </>
