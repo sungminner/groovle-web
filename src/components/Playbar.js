@@ -6,10 +6,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Playbar = ({ currentPage }) => {
   return (
     <>
-      <div className="playbar__padding" />
-      <div className="playbar__wrapper">
+      <div className="playbar-padding" />
+      <div className="playbar-wrapper">
         <div className="playbar">
-          <p>playbar</p>
+          <div className="playbar-playlist">
+            <FontAwesomeIcon icon="bars" />
+          </div>
+          <div className="playbar-text">
+            <p className="playbar-title">나의 어깨에 기대어요</p>
+            <p className="playbar-member">sung.minner, ajsdfl1232</p>
+          </div>
+          <div className="playbar-control">
+            <FontAwesomeIcon icon="step-backward" className="playbar-prev" />
+            <FontAwesomeIcon icon="play" className="playbar-play" />
+            <FontAwesomeIcon icon="step-forward" className="playbar-next" />
+          </div>
         </div>
       </div>
     </>

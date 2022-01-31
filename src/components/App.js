@@ -14,9 +14,12 @@ import {
   faGlobeAmericas,
   faHeart,
   faHome,
+  faPlay,
   faPlus,
   faSearch,
   faSpinner,
+  faStepBackward,
+  faStepForward,
   faUser,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
@@ -31,9 +34,12 @@ library.add(
   faGlobeAmericas,
   faHeart,
   faHome,
+  faPlay,
   faPlus,
   faSearch,
   faSpinner,
+  faStepBackward,
+  faStepForward,
   faUser,
   faUsers
 );

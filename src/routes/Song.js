@@ -8,11 +8,16 @@ const Song = () => {
   return (
     <>
       <Header currentPage="Song" />
-      <p>듣기</p>
-      <div>커버 이미지 영역</div>
+      <div className="song-cover">
+        <img
+          className="song-cover__img"
+          src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
+          alt="bgimg"
+        />
+      </div>
       <div>
-        <p className="song__title">사랑한다는 말로도 위로가 되지 않는</p>
-        <p className="song__artist">브로콜리너마저</p>
+        <p className="song__title">나의 어깨에 기대어요</p>
+        <p className="song__artist">10cm</p>
         <p>방장: 기타왕</p>
         <p>
           <FontAwesomeIcon icon="heart" />

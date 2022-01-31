@@ -1,8 +1,8 @@
-.playbar__padding {
+.playbar-padding {
   height: 50px;
 }
 
-.playbar__wrapper {
+.playbar-wrapper {
   position: fixed;
   bottom: 50px;
   left: 0;
@@ -13,8 +13,35 @@
   max-width: 600px;
   height: 50px;
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 10px 15px;
   background-color: rgba(0, 0, 0, 0.95);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.playbar-playlist {
+  padding-right: 20px;
+}
+
+.playbar-text {
+  flex: 1;
+  /* flex: 1을 적용하면 이 요소가 부모 요소에 빈 공간이 없도록 늘어남 */
+}
+
+.playbar-title {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.playbar-member {
+  font-size: 12px;
+}
+
+.playbar-control {
+  display: flex;
+  gap: 30px;
+  font-size: 20px;
 }
