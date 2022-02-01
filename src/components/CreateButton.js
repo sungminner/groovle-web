@@ -5,8 +5,12 @@ import "css/createbutton.css";
 const CreateButton = ({ currentPage }) => {
   return (
     <>
-      <div className="createbutton">
-        <FontAwesomeIcon icon="plus" className="createbutton-plus" />
+      <div className="createbutton-wrapper">
+        <div className="createbutton-flex">
+          <div className="createbutton">
+            <FontAwesomeIcon icon="plus" className="createbutton-plus" />
+          </div>
+        </div>
       </div>
     </>
   );

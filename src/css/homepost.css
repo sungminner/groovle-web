@@ -20,6 +20,9 @@
   max-height: 460px;
   top: 10px;
   left: 10px;
+  /* width가 과도하게 작아졌을 때 카드 밖으로 튀어나오는 것 방지 */
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .home-post__header {
