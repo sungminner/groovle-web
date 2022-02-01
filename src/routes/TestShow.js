@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "components/Header";
 import Navigation from "components/Navigation";
 import axios from "axios";
-import useWindowDimensions from "functions/getWindowDimensions";
+import useWindowDimensions from "functions/useWindowDimensions";
 
 const Home = () => {
   const [res, setRes] = useState("");

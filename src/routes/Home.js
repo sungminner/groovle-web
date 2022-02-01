@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import Header from "components/Header";
+import CreateButton from "components/CreateButton";
 import Playbar from "components/Playbar";
 import Navigation from "components/Navigation";
-import CreateButton from "components/CreateButton";
 import HomePost from "components/HomePost";
 import "css/home.css";
 
@@ -39,7 +39,7 @@ const Home = () => {
   };
   return (
     <>
-      <Header currentPage="Home" />
+      {/* <Header currentPage="Home" /> */}
       <HomePost />
       <HomePost />
       <HomePost />
@@ -47,8 +47,6 @@ const Home = () => {
       <input type="submit" value="save" onClick={onClick} />
       <p>last data: {res}</p>
       <CreateButton />
-      <Playbar />
-      <Navigation />
     </>
   );
 };

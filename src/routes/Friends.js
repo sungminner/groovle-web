@@ -1,7 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Header from "components/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "css/friends.css";
 
@@ -11,7 +10,6 @@ const Friends = () => {
   };
   return (
     <>
-      <Header currentPage="Friends" />
       <div className="friends-search">
         <input
           className="friends-search__input"

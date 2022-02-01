@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useWindowDimensions from "functions/useWindowDimensions";
 import "css/homepost.css";
-import useWindowDimensions from "functions/getWindowDimensions";
 
 const HomePost = () => {
   const { width, height } = useWindowDimensions();

@@ -1,11 +1,13 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "css/header.css";
-import logo from "img/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import usePathname from "functions/usePathname";
+import logo from "img/logo.png";
+import "css/header.css";
 
-const Header = ({ currentPage }) => {
+const Header = () => {
   const navigate = useNavigate();
+  const pathname = usePathname();
   const goHome = () => {
     navigate("/");
   };
@@ -14,9 +16,7 @@ const Header = ({ currentPage }) => {
   };
   return (
     <>
-      {(currentPage === "Home" ||
-        currentPage === "Explore" ||
-        currentPage === "My") && (
+      {(pathname === "Home" || pathname === "Explore" || pathname === "My") && (
         <nav className="header">
           <div className="header-item">
             <img
@@ -27,7 +27,7 @@ const Header = ({ currentPage }) => {
             />
           </div>
           <div className="header-item">
-            <p className="header-title">{currentPage}</p>
+            <p className="header-title">{pathname}</p>
           </div>
           <div className="header-item">
             <div className="header-menu">
@@ -44,7 +44,7 @@ const Header = ({ currentPage }) => {
           </div>
         </nav>
       )}
-      {(currentPage === "Song" || currentPage === "Studio") && (
+      {(pathname === "Song" || pathname === "Studio") && (
         <nav className="header">
           <div className="header-item">
             <FontAwesomeIcon
@@ -54,7 +54,7 @@ const Header = ({ currentPage }) => {
             />
           </div>
           <div className="header-item">
-            <p className="header-title">{currentPage}</p>
+            <p className="header-title">{pathname}</p>
           </div>
           <div className="header-item">
             <div className="header-menu">
@@ -67,10 +67,10 @@ const Header = ({ currentPage }) => {
           </div>
         </nav>
       )}
-      {(currentPage === "Friends" ||
-        currentPage === "Notifications" ||
-        currentPage === "Search" ||
-        currentPage === "Settings") && (
+      {(pathname === "Friends" ||
+        pathname === "Notifications" ||
+        pathname === "Search" ||
+        pathname === "Settings") && (
         <nav className="header">
           <div className="header-item">
             <FontAwesomeIcon
@@ -80,7 +80,7 @@ const Header = ({ currentPage }) => {
             />
           </div>
           <div className="header-item">
-            <p className="header-title">{currentPage}</p>
+            <p className="header-title">{pathname}</p>
           </div>
           <div className="header-item">
             <div className="header-menu"></div>

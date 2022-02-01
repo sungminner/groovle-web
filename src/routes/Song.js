@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Header from "components/Header";
 import "css/song.css";
 
 const Song = () => {
   return (
     <>
-      <Header currentPage="Song" />
       <div className="song-cover">
         <img
           className="song-cover__img"

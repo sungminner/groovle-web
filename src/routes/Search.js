@@ -1,6 +1,5 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Header from "components/Header";
 import "css/search.css";
 
 const Search = () => {
@@ -9,7 +8,6 @@ const Search = () => {
   };
   return (
     <>
-      <Header currentPage="Search" />
       <div className="search-bar">
         <input
           className="search-bar__input"

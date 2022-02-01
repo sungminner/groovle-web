@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Header from "components/Header";
+import Playbar from "components/Playbar";
+import Navigation from "components/Navigation";
 import Home from "routes/Home";
 import Recorder from "routes/Recorder";
 import My from "routes/My";
@@ -16,13 +19,13 @@ import TestShow from "routes/TestShow";
 const AppRouter = () => {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Header />
       <Routes>
+        {/* element={<... />}이면 함수, {...}이면 클래스 */}
         <Route path="/" element={<Home />} />
         <Route path="/song" element={<Song />} />
         <Route path="/studio" element={<Studio />} />
         <Route path="/studio/recorder" element={Recorder} />
-        {/* element={...}로 넣는 건 불러올 컴포넌트가 class 형태일 때 거기에 props를 넘겨주기 위해 사용.
-        호출할 화면에서 Link를 통해 props 넘겨줄 수 있음 */}
         <Route path="/my" element={<My />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/search" element={<Search />} />
@@ -32,6 +35,8 @@ const AppRouter = () => {
         <Route path="/friends" element={<Friends />} />
         <Route path="/testshow" element={<TestShow />} />
       </Routes>
+      <Playbar />
+      <Navigation />
     </BrowserRouter>
   );
 };
