@@ -26,7 +26,7 @@
   padding-right: 20px;
 }
 
-.playbar-text {
+.playbar-songinfo {
   flex: 1;
   /* flex: 1을 적용하면 이 요소가 부모 요소에 빈 공간이 없도록 늘어남 */
 }

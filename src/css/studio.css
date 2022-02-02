@@ -1,0 +1,92 @@
+.studio-playbar {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  padding: 20px;
+}
+
+.studio-playbar-bgimg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.studio-playbar-bgimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.studio-playbar-songinfo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.studio-playbar-title {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.studio-playbar-artist {
+  font-size: 12px;
+  color: #cccccc;
+}
+
+.studio-playbar-control {
+  color: white;
+}
+
+.studio-team {
+  padding: 20px;
+}
+
+.studio-team-menu {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.studio-member {
+  border-bottom: 1px solid #d4d4d4;
+  margin: 20px 0;
+  padding-bottom: 10px;
+}
+
+.studio-member-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.studio-member-profile {
+  display: flex;
+  align-items: center;
+}
+
+.studio-member-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.studio-member-username {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.studio-member-menu {
+  display: flex;
+  gap: 10px;
+}
+
+.studio-member-slidebar input {
+  background-color: gray;
+}
