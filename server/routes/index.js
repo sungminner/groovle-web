@@ -4,13 +4,11 @@ const db = require("./db_info");
 const router = express();
 
 router.post("/test", (req, res) => {
-  console.log("test called");
-
-  testtext = req.body.testtext;
-  console.log(testtext);
+  title = req.body.title;
+  artist = req.body.artist;
 
   db.query(
-    `INSERT INTO groovle.test (data) VALUES ("${testtext}")`,
+    `INSERT INTO groovle.song_test (title, artist) VALUES ("${title}", "${artist}");`,
     function (error, results) {
       if (error) throw error;
       console.log("The solution is: ", results);
@@ -20,10 +18,18 @@ router.post("/test", (req, res) => {
 });
 
 router.get("/show", (req, res) => {
-  db.query("select * from test", function (error, results) {
+  db.query("select * from song_test", function (error, results) {
     if (error) throw error;
-    console.log("The solution is: ", results);
-    res.send(results[results.length - 1].data);
+    let data = [];
+    for (let i = 0; i < results.length; i++) {
+      data.push({
+        id: results[i].id,
+        title: results[i].title,
+        artist: results[i].artist,
+      });
+    }
+    console.log(data);
+    res.send(data);
   });
 });
 

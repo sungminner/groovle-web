@@ -3,7 +3,7 @@ import "css/explore.css";
 // import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const CreateSong = () => {
+const Explore = () => {
   const onChange = () => {
     console.log("hi");
   };
@@ -26,4 +26,4 @@ const CreateSong = () => {
   );
 };
 
-export default CreateSong;
+export default Explore;

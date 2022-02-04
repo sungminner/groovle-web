@@ -2,20 +2,17 @@ import React, { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import Header from "components/Header";
 import CreateButton from "components/CreateButton";
-import Playbar from "components/Playbar";
-import Navigation from "components/Navigation";
 import HomePost from "components/HomePost";
 import "css/home.css";
 
 const Home = () => {
-  const [res, setRes] = useState("");
-  const [data, setData] = useState("");
+  const [songs, setSongs] = useState([]);
+  const [title, setTitle] = useState("");
+  const [artist, setArtist] = useState("");
   const getData = async () => {
     await axios.get("http://localhost:4000/api/show").then((response) => {
-      setRes(response.data);
-      console.log(response.data);
+      setSongs(response.data);
     });
   };
   useEffect(() => {
@@ -23,29 +20,36 @@ const Home = () => {
   }, []);
   const onChange = (event) => {
     const {
-      target: { value },
+      target: { name, value },
     } = event;
-    setData(value); // 입력받을 때 동시에 int로 바꾸면 null일 때 오류
+    if (name === "title") {
+      setTitle(value);
+    } else if (name === "artist") {
+      setArtist(value);
+    }
   };
   const onClick = async () => {
     await axios.post("http://localhost:4000/api/test", {
-      testtext: data,
+      title,
+      artist,
       headers: {
         "content-type": "application/json",
       },
     });
-    setData("");
+    setTitle("");
+    setArtist("");
     getData();
   };
   return (
     <>
-      {/* <Header currentPage="Home" /> */}
-      <HomePost />
-      <HomePost />
-      <HomePost />
-      <input type="text" value={data} onChange={onChange} />
+      {songs.map((song) => (
+        <HomePost songObj={song} key={song.id} />
+      ))}
+      <p>제목</p>
+      <input type="text" name="title" value={title} onChange={onChange} />
+      <p>아티스트</p>
+      <input type="text" name="artist" value={artist} onChange={onChange} />
       <input type="submit" value="save" onClick={onClick} />
-      <p>last data: {res}</p>
       <CreateButton />
     </>
   );

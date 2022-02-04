@@ -5,6 +5,7 @@ import "css/createbutton.css";
 const CreateButton = ({ currentPage }) => {
   return (
     <>
+      <div className="playbar-padding" />
       <div className="createbutton-wrapper">
         <div className="createbutton-flex">
           <div className="createbutton">

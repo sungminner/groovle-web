@@ -3,7 +3,7 @@ import "css/studio.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-const CreateSong = () => {
+const Studio = () => {
   return (
     <>
       <div className="studio-playbar">
@@ -96,4 +96,4 @@ const CreateSong = () => {
   );
 };
 
-export default CreateSong;
+export default Studio;

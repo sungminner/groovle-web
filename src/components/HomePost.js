@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useWindowDimensions from "functions/useWindowDimensions";
 import "css/homepost.css";
 
-const HomePost = () => {
+const HomePost = ({ songObj }) => {
   const { width, height } = useWindowDimensions();
   return (
     <div
@@ -34,8 +34,8 @@ const HomePost = () => {
               alt="albumimg"
             />
             <div className="home-post__header-text">
-              <p className="home-post__header-title krReg">시퍼런 봄</p>
-              <p className="home-post__header-artist krReg">쏜애플</p>
+              <p className="home-post__header-title krReg">{songObj.title}</p>
+              <p className="home-post__header-artist krReg">{songObj.artist}</p>
             </div>
             <img
               className="home-post__header-playbtn"

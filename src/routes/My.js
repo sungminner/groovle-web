@@ -1,7 +1,7 @@
 import React from "react";
 // import { Link, useHistory } from "react-router-dom";
 
-const Profile = () => {
+const My = () => {
   return (
     <>
       <p>profile</p>
@@ -14,4 +14,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default My;
