@@ -11,9 +11,12 @@ const Home = () => {
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
   const getData = async () => {
-    await axios.get("http://localhost:4000/api/show").then((response) => {
-      setSongs(response.data);
-    });
+    await axios
+      .get("http://wauriyouthchurch.com:443/api/show")
+      .then((response) => {
+        // await axios.get("http://localhost:4000/api/show").then((response) => {
+        setSongs(response.data);
+      });
   };
   useEffect(() => {
     getData();
@@ -29,7 +32,8 @@ const Home = () => {
     }
   };
   const onClick = async () => {
-    await axios.post("http://localhost:4000/api/test", {
+    await axios.post("http://wauriyouthchurch.com:443/api/test", {
+      // await axios.post("http://localhost:4000/api/test", {
       title,
       artist,
       headers: {

@@ -14,7 +14,6 @@ import Explore from "routes/Explore";
 import Notifications from "routes/Notifications";
 import Friends from "routes/Friends";
 import Studio from "routes/Studio";
-import TestShow from "routes/TestShow";
 
 const AppRouter = () => {
   return (
@@ -33,7 +32,6 @@ const AppRouter = () => {
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/create" element={<Create />} />
         <Route path="/friends" element={<Friends />} />
-        <Route path="/testshow" element={<TestShow />} />
       </Routes>
       <Playbar />
       <Navigation />

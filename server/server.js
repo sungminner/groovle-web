@@ -1,13 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const AWS = require("aws-sdk");
 const api = require("./routes/index");
 
 const app = express();
-const port = 4000;
-
-AWS.config.region = "ap-northeast-2";
+const port = 443;
+// const port = 4000;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
