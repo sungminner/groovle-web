@@ -45,7 +45,7 @@ const Studio = () => {
               <div className="studio-member-menu-item">(setting)</div>
             </div>
           </div>
-          <div className="studio-member-slidebar">
+          <div className="studio-member-progressbar">
             <input type="range" />
           </div>
         </div>
@@ -66,7 +66,7 @@ const Studio = () => {
               <div className="studio-member-menu-item">(setting)</div>
             </div>
           </div>
-          <div className="studio-member-slidebar">
+          <div className="studio-member-progressbar">
             <input type="range" />
           </div>
         </div>
@@ -87,7 +87,7 @@ const Studio = () => {
               <div className="studio-member-menu-item">(setting)</div>
             </div>
           </div>
-          <div className="studio-member-slidebar">
+          <div className="studio-member-progressbar">
             <input type="range" />
           </div>
         </div>
