@@ -9,6 +9,7 @@ const Search = () => {
   return (
     <>
       <div className="search-bar">
+        <FontAwesomeIcon icon="search" className="search-bar__button" />
         <input
           className="search-bar__input"
           type="text"
@@ -17,7 +18,6 @@ const Search = () => {
           placeholder="Find songs, artists, crews or friends"
           autoComplete="off"
         />
-        <FontAwesomeIcon icon="search" className="search-bar__button" />
       </div>
     </>
   );

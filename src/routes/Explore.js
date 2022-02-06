@@ -10,6 +10,7 @@ const Explore = () => {
   return (
     <>
       <div className="explore-search">
+        <FontAwesomeIcon icon="search" className="explore-search__button" />
         <input
           className="explore-search__input"
           type="text"
@@ -18,7 +19,6 @@ const Explore = () => {
           placeholder="Find songs or artists"
           autoComplete="off"
         />
-        <FontAwesomeIcon icon="search" className="explore-search__button" />
       </div>
       <div>People to follow</div>
       <div>World's Hot</div>

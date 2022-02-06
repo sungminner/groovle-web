@@ -59,8 +59,8 @@
 
 .song-description {
   background-color: #dddddd;
-  margin: 15px;
-  padding: 15px;
+  margin: 30px 20px;
+  padding: 10px;
   border-radius: 10px;
   display: flex;
 }
@@ -76,4 +76,111 @@
   font-size: 12px;
   color: gray;
   line-height: 20px;
+}
+
+.song-reply-wrapper {
+  margin: 30px 20px;
+}
+
+.song-reply-count {
+  display: flex;
+  gap: 5px;
+  margin-left: 10px;
+  color: gray;
+}
+
+.song-reply-bar {
+  background-color: rgb(239, 239, 239);
+  border: 1px solid rgb(239, 239, 239);
+  border-radius: 25px;
+  height: 50px;
+  margin: 15px 0 0;
+  padding: 0 10px;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  gap: 10px;
+}
+
+.song-reply-bar-img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 15px;
+}
+
+.song-reply-bar-input {
+  padding: 0;
+  border: none;
+  background-color: rgb(239, 239, 239);
+  width: 100%;
+  font-size: 14px;
+}
+
+.song-reply-bar:focus-within {
+  background-color: #fff;
+  border-color: rgb(63, 28, 177);
+}
+
+.song-reply-bar-input:focus {
+  outline: none;
+  background-color: #fff;
+}
+
+.song-reply-bar-input::placeholder {
+  color: #323232;
+}
+
+.song-reply-log {
+  margin: 20px 10px;
+}
+
+.song-reply {
+  display: flex;
+  gap: 10px;
+}
+
+.song-reply-img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 15px;
+}
+
+.song-reply-body {
+  flex: 1;
+}
+
+.song-reply-body-flex {
+  display: flex;
+  gap: 5px;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.song-reply-body-username {
+  font-weight: bold;
+}
+
+.song-reply-body-time {
+  font-size: 12px;
+  color: gray;
+}
+
+.song-reply-rereply-button {
+  font-size: 14px;
+  color: gray;
+}
+
+.song-join-button {
+  width: 100%;
+  height: 80px;
+  background-color: #711e9a;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 80px;
 }

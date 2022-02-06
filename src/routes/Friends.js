@@ -10,6 +10,7 @@ const Friends = () => {
   return (
     <>
       <div className="friends-search">
+        <FontAwesomeIcon icon="search" className="friends-search__button" />
         <input
           className="friends-search__input"
           type="text"
@@ -18,7 +19,6 @@ const Friends = () => {
           placeholder="Find friends or crews"
           autoComplete="off"
         />
-        <FontAwesomeIcon icon="search" className="friends-search__button" />
       </div>
       <div className="friends-tab__wrapper">
         <div className="friends-tab">
