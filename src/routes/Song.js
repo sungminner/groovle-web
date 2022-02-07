@@ -89,7 +89,7 @@ const Song = () => {
                   델루나 역시 띵곡이지 ㅠㅠ
                 </p>
               </div>
-              <p className="song-reply-body-time">21시간</p>
+              <p className="song-reply-body-datetime">21시간</p>
             </div>
             <div className="song-reply-rereply-button">
               <p>답글 달기</p>
