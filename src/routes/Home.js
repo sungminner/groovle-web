@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import CreateButton from "components/CreateButton";
 import HomePost from "components/HomePost";
+import CreateButton from "components/CreateButton";
+import CreateOptionModal from "components/CreateOptionModal";
 import "css/home.css";
 
 const Home = () => {
   const [songs, setSongs] = useState([]);
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
   const getData = async () => {
     await axios
       .get("http://wauriyouthchurch.com:443/api/show")
@@ -21,6 +23,9 @@ const Home = () => {
   useEffect(() => {
     getData();
   }, []);
+  const onCreateClick = () => {
+    setModalOpen((prev) => !prev);
+  };
   const onChange = (event) => {
     const {
       target: { name, value },
@@ -54,7 +59,8 @@ const Home = () => {
       <p>아티스트</p>
       <input type="text" name="artist" value={artist} onChange={onChange} />
       <input type="submit" value="save" onClick={onClick} />
-      <CreateButton />
+      <CreateButton onCreateClick={onCreateClick} />
+      {modalOpen && <CreateOptionModal onCreateClick={onCreateClick} />}
     </>
   );
 };
