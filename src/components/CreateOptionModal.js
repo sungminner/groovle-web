@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "css/createoptionmodal.css";
 
@@ -7,8 +8,12 @@ const CreateOptionModal = ({ onCreateClick }) => {
     <>
       <div className="com-wrapper" onClick={onCreateClick}>
         <div className="com-window">
-          <p className="com-window-record">녹음하기</p>
-          <p className="com-window-openfile">파일 불러오기</p>
+          <Link to="/explore" className="com-window-record">
+            <p>녹음하기</p>
+          </Link>
+          <Link to="/my" className="com-window-openfile">
+            <p>파일 불러오기</p>
+          </Link>
         </div>
       </div>
     </>

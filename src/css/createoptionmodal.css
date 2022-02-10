@@ -13,15 +13,34 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
   background-color: #ffffff;
   text-align: center;
+  border-radius: 15px;
 }
 
-.com-window-record {
-  background-color: green;
+.com-window a {
+  padding: 10px;
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #dddddd;
+  transition: 0.2s;
 }
 
-.com-window-openfile {
-  background-color: blue;
+.com-window a p {
+  line-height: 20px;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+.com-window a:hover {
+  background-color: #711e9a;
+}
+
+.com-window a:hover p {
+  color: white;
 }
