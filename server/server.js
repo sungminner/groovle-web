@@ -4,7 +4,7 @@ const path = require("path");
 const api = require("./routes/index");
 
 const app = express();
-const port = 443;
+const port = 80;
 // const port = 4000;
 
 app.use(express.urlencoded({ extended: false }));

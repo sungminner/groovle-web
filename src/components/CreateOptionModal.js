@@ -8,10 +8,10 @@ const CreateOptionModal = ({ onCreateClick }) => {
     <>
       <div className="com-wrapper" onClick={onCreateClick}>
         <div className="com-window">
-          <Link to="/explore" className="com-window-record">
+          <Link to="/recorder" className="com-window-record">
             <p>녹음하기</p>
           </Link>
-          <Link to="/my" className="com-window-openfile">
+          <Link to="/storage" className="com-window-openfile">
             <p>파일 불러오기</p>
           </Link>
         </div>

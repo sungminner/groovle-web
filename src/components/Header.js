@@ -62,7 +62,9 @@ const Header = () => {
       {(pathname === "Friends" ||
         pathname === "Notifications" ||
         pathname === "Search" ||
-        pathname === "Settings") && (
+        pathname === "Settings" ||
+        pathname === "Recorder" ||
+        pathname === "Storage") && (
         <nav className="header">
           <div className="header-pagename">
             <FontAwesomeIcon

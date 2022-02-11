@@ -13,12 +13,10 @@ const Home = () => {
   const [artist, setArtist] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const getData = async () => {
-    await axios
-      .get("http://wauriyouthchurch.com:443/api/show")
-      .then((response) => {
-        // await axios.get("http://localhost:4000/api/show").then((response) => {
-        setSongs(response.data);
-      });
+    await axios.get("http://wauriyouthchurch.com/api/show").then((response) => {
+      // await axios.get("http://localhost:4000/api/show").then((response) => {
+      setSongs(response.data);
+    });
   };
   useEffect(() => {
     getData();
@@ -37,7 +35,7 @@ const Home = () => {
     }
   };
   const onClick = async () => {
-    await axios.post("http://wauriyouthchurch.com:443/api/test", {
+    await axios.post("http://wauriyouthchurch.com/api/test", {
       // await axios.post("http://localhost:4000/api/test", {
       title,
       artist,
@@ -54,6 +52,7 @@ const Home = () => {
       {songs.map((song) => (
         <HomePost songObj={song} key={song.id} />
       ))}
+      <HomePost songObj={{ title: "title", artist: "artist" }} />
       <p>제목</p>
       <input type="text" name="title" value={title} onChange={onChange} />
       <p>아티스트</p>

@@ -14,6 +14,7 @@ import Explore from "routes/Explore";
 import Notifications from "routes/Notifications";
 import Friends from "routes/Friends";
 import Studio from "routes/Studio";
+import Storage from "routes/Storage";
 
 const AppRouter = () => {
   return (
@@ -24,10 +25,11 @@ const AppRouter = () => {
         <Route path="/" element={<Home />} />
         <Route path="/song" element={<Song />} />
         <Route path="/studio" element={<Studio />} />
-        <Route path="/studio/recorder" element={Recorder} />
+        <Route path="/recorder" element={<Recorder />} />
         <Route path="/my" element={<My />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/storage" element={<Storage />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/create" element={<Create />} />

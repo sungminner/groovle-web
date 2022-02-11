@@ -13,7 +13,7 @@ class Recorder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...this.props.location.state,
+      // ...this.props.location.state,
       session: null,
       isRecording: false,
       blob: null,
@@ -74,7 +74,7 @@ class Recorder extends React.Component {
     return (
       <>
         <div>
-          <Link to={"/song/" + this.state.songShortcut}>방으로</Link>
+          <Link to="/song">방으로</Link>
           <h3>{this.state.title}</h3>
           <p>{this.state.artist}</p>
           <p>녹음</p>
