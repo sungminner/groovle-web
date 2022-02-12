@@ -17,47 +17,60 @@ const Header = () => {
   return (
     <>
       {(pathname === "Home" || pathname === "Explore" || pathname === "My") && (
-        <nav className="header">
-          <div className="header-pagename">
-            <img
-              src={logo}
-              alt="logo"
-              className="header-logo"
-              onClick={goHome}
-            />
-            <p className="header-title">{pathname}</p>
+        <>
+          <div className="header-padding" />
+          <div className="header-wrapper">
+            <nav className="header">
+              <div className="header-pagename">
+                <img
+                  src={logo}
+                  alt="logo"
+                  className="header-logo"
+                  onClick={goHome}
+                />
+                <p className="header-title">{pathname}</p>
+              </div>
+              <div className="header-menu">
+                <Link to="/search">
+                  <FontAwesomeIcon
+                    icon="search"
+                    className="header-menu__link"
+                  />
+                </Link>
+                <Link to="/notifications">
+                  <FontAwesomeIcon icon="bell" className="header-menu__link" />
+                </Link>
+                <Link to="/friends">
+                  <FontAwesomeIcon icon="users" className="header-menu__link" />
+                </Link>
+              </div>
+            </nav>
           </div>
-          <div className="header-menu">
-            <Link to="/search">
-              <FontAwesomeIcon icon="search" className="header-menu__link" />
-            </Link>
-            <Link to="/notifications">
-              <FontAwesomeIcon icon="bell" className="header-menu__link" />
-            </Link>
-            <Link to="/friends">
-              <FontAwesomeIcon icon="users" className="header-menu__link" />
-            </Link>
-          </div>
-        </nav>
+        </>
       )}
       {(pathname === "Song" || pathname === "Studio") && (
-        <nav className="header">
-          <div className="header-pagename">
-            <FontAwesomeIcon
-              icon="chevron-left"
-              className="header-goback"
-              onClick={goBack}
-            />
-            <p className="header-title">{pathname}</p>
+        <>
+          <div className="header-padding" />
+          <div className="header-wrapper">
+            <nav className="header">
+              <div className="header-pagename">
+                <FontAwesomeIcon
+                  icon="chevron-left"
+                  className="header-goback"
+                  onClick={goBack}
+                />
+                <p className="header-title">{pathname}</p>
+              </div>
+              <div className="header-menu">
+                <FontAwesomeIcon
+                  icon="external-link-alt"
+                  className="header-menu__link"
+                />
+                <FontAwesomeIcon icon="bars" className="header-menu__link" />
+              </div>
+            </nav>
           </div>
-          <div className="header-menu">
-            <FontAwesomeIcon
-              icon="external-link-alt"
-              className="header-menu__link"
-            />
-            <FontAwesomeIcon icon="bars" className="header-menu__link" />
-          </div>
-        </nav>
+        </>
       )}
       {(pathname === "Friends" ||
         pathname === "Notifications" ||
@@ -65,17 +78,22 @@ const Header = () => {
         pathname === "Settings" ||
         pathname === "Recorder" ||
         pathname === "Storage") && (
-        <nav className="header">
-          <div className="header-pagename">
-            <FontAwesomeIcon
-              icon="chevron-left"
-              className="header-goback"
-              onClick={goBack}
-            />
-            <p className="header-title">{pathname}</p>
+        <>
+          <div className="header-padding" />
+          <div className="header-wrapper">
+            <nav className="header">
+              <div className="header-pagename">
+                <FontAwesomeIcon
+                  icon="chevron-left"
+                  className="header-goback"
+                  onClick={goBack}
+                />
+                <p className="header-title">{pathname}</p>
+              </div>
+              <div className="header-menu"></div>
+            </nav>
           </div>
-          <div className="header-menu"></div>
-        </nav>
+        </>
       )}
     </>
   );
