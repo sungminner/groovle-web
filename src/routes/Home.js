@@ -9,8 +9,6 @@ import "css/home.css";
 
 const Home = () => {
   const [songs, setSongs] = useState([]);
-  const [title, setTitle] = useState("");
-  const [artist, setArtist] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const getData = async () => {
     await axios.get("http://wauriyouthchurch.com/api/show").then((response) => {
@@ -21,31 +19,8 @@ const Home = () => {
   useEffect(() => {
     getData();
   }, []);
-  const onCreateClick = () => {
+  const toggleModal = () => {
     setModalOpen((prev) => !prev);
-  };
-  const onChange = (event) => {
-    const {
-      target: { name, value },
-    } = event;
-    if (name === "title") {
-      setTitle(value);
-    } else if (name === "artist") {
-      setArtist(value);
-    }
-  };
-  const onClick = async () => {
-    await axios.post("http://wauriyouthchurch.com/api/test", {
-      // await axios.post("http://localhost:4000/api/test", {
-      title,
-      artist,
-      headers: {
-        "content-type": "application/json",
-      },
-    });
-    setTitle("");
-    setArtist("");
-    getData();
   };
   return (
     <>
@@ -53,13 +28,10 @@ const Home = () => {
         <HomePost songObj={song} key={song.id} />
       ))}
       <HomePost songObj={{ title: "title", artist: "artist" }} />
-      <p>제목</p>
-      <input type="text" name="title" value={title} onChange={onChange} />
-      <p>아티스트</p>
-      <input type="text" name="artist" value={artist} onChange={onChange} />
-      <input type="submit" value="save" onClick={onClick} />
-      <CreateButton onCreateClick={onCreateClick} />
-      {modalOpen && <CreateOptionModal onCreateClick={onCreateClick} />}
+      <CreateButton toggleModal={toggleModal} />
+      {modalOpen && (
+        <CreateOptionModal toggleModal={toggleModal} getData={getData} />
+      )}
     </>
   );
 };

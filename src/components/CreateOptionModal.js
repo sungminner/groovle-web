@@ -1,13 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import "css/createoptionmodal.css";
 
-const CreateOptionModal = ({ onCreateClick }) => {
+const CreateOptionModal = ({ toggleModal, getData }) => {
+  const [title, setTitle] = useState("");
+  const [artist, setArtist] = useState("");
+  const onChange = (event) => {
+    const {
+      target: { name, value },
+    } = event;
+    if (name === "title") {
+      setTitle(value);
+    } else if (name === "artist") {
+      setArtist(value);
+    }
+  };
+  const onClick = async () => {
+    await axios.post("http://wauriyouthchurch.com/api/test", {
+      // await axios.post("http://localhost:4000/api/test", {
+      title,
+      artist,
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    setTitle("");
+    setArtist("");
+    getData();
+    toggleModal();
+  };
   return (
     <>
-      <div className="com-wrapper" onClick={onCreateClick}>
+      <div className="com-wrapper">
+        <div className="com-background" onClick={toggleModal} />
         <div className="com-window">
+          <p>제목</p>
+          <input type="text" name="title" value={title} onChange={onChange} />
+          <p>아티스트</p>
+          <input type="text" name="artist" value={artist} onChange={onChange} />
+          <input type="submit" value="save" onClick={onClick} />
           <Link to="/recorder" className="com-window-record">
             <p>녹음하기</p>
           </Link>
