@@ -1,9 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import "css/song.css";
 
 const Song = () => {
+  const { randomKey } = useParams();
+  const [songObj, setSongObj] = useState();
+  const getSong = async () => {
+    await axios
+      .get(`http://wauriyouthchurch.com/api/song/${randomKey}`)
+      .then((response) => {
+        // await axios
+        //   .get(`http://localhost:4000/api/song/${randomKey}`)
+        //   .then((response) => {
+        setSongObj(response.data);
+      });
+  };
+  useEffect(() => {
+    getSong();
+  }, []);
   const onChange = () => {
     console.log("hi");
   };
@@ -19,8 +35,8 @@ const Song = () => {
       <div className="song-control">
         <div className="song-songinfo">
           <div>
-            <p className="song-title">나의 어깨에 기대어요</p>
-            <p className="song-artist">10cm</p>
+            <p className="song-title">{songObj && songObj.title}</p>
+            <p className="song-artist">{songObj && songObj.artist}</p>
           </div>
           <div className="song-like">
             <FontAwesomeIcon icon="heart" className="song-like-icon" />

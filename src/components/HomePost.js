@@ -14,7 +14,7 @@ const HomePost = ({ songObj }) => {
         height: width * 0.8,
       }}
     >
-      <Link to="/song">
+      <Link to={`/song/${songObj.randomKey}`}>
         <img
           className="home-post__bgimg"
           src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"

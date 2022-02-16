@@ -26,11 +26,28 @@ router.get("/show", (req, res) => {
         songID: results[i].songID,
         title: results[i].title,
         artist: results[i].artist,
+        randomKey: results[i].randomKey,
       });
     }
     console.log(data);
     res.send(data);
   });
+});
+
+router.get("/song/:randomKey", (req, res) => {
+  const randomKey = req.params.randomKey;
+  db.query(
+    `select * from song where randomKey='${randomKey}'`,
+    function (error, result) {
+      if (error) throw error;
+      const data = {
+        title: result[0].title,
+        artist: result[0].artist,
+      };
+      console.log(data);
+      res.send(data);
+    }
+  );
 });
 
 module.exports = router;
