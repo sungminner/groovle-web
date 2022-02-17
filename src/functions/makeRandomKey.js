@@ -23,7 +23,7 @@ const makeRandomKey = () => {
   for (var i = 0; i < 6; i++) {
     key += possible.charAt(Math.floor(Math.random() * possible.length));
   }
-  if (verifyKey()) {
+  if (verifyKey(key)) {
     return key;
   } else {
     makeRandomKey();
