@@ -53,10 +53,10 @@ router.get("/song/:randomKey", (req, res) => {
 router.post("/verifykey", (req, res) => {
   const randomKey = req.params.randomKey;
   db.query(
-    `select * from song where randomKey='${randomKey}'`,
+    `select count(*) as cnt from song where randomKey='${randomKey}'`,
     function (error, result) {
       if (error) throw error;
-      if (result.length === 0) {
+      if (result[0].cnt === 0) {
         console.log("key verified!");
         res.send(true);
       } else {
