@@ -21,7 +21,6 @@ const AppRouter = () => {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Header />
       <Routes>
-        {/* element={<... />}이면 함수, {...}이면 클래스 */}
         <Route path="/" element={<Home />} />
         <Route path="/song/:randomKey" element={<Song />} />
         <Route path="/studio" element={<Studio />} />

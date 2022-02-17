@@ -25,7 +25,7 @@ yarn-error.log*
 .env
 
 serviceAccountKey/
-audio/
+NAS/
 
 __pycache__/
 
