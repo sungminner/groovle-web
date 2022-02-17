@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import makeRandomKey from "functions/makeRandomKey";
 import "css/createoptionmodal.css";
 
 const CreateOptionModal = ({ toggleModal, getData }) => {
@@ -18,10 +19,11 @@ const CreateOptionModal = ({ toggleModal, getData }) => {
     }
   };
   const onClick = async () => {
-    await axios.post("http://wauriyouthchurch.com/api/test", {
-      // await axios.post("http://localhost:4000/api/test", {
+    await axios.post("http://wauriyouthchurch.com/api/createsong", {
+      // await axios.post("http://localhost:4000/api/createsong", {
       title,
       artist,
+      randomKey: makeRandomKey(),
       headers: {
         "content-type": "application/json",
       },

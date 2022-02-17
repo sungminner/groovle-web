@@ -3,16 +3,16 @@ const db = require("./db_info");
 
 const router = express();
 
-router.post("/test", (req, res) => {
+router.post("/createsong", (req, res) => {
   title = req.body.title;
   artist = req.body.artist;
-
+  randomKey = req.body.randomKey;
   db.query(
-    `INSERT INTO groovle.song (title, artist, createdBy, randomKey, createdAt, songLocation) VALUES ("${title}", "${artist}", 1, "aajsde", now(), "here");`,
+    `INSERT INTO groovle.song (title, artist, createdBy, randomKey, createdAt, songLocation) VALUES ("${title}", "${artist}", 1, "${randomKey}", now(), "here");`,
     function (error, results) {
       if (error) throw error;
       console.log("The solution is: ", results);
-      res.send(results);
+      res.send("success!");
     }
   );
 });
@@ -46,6 +46,23 @@ router.get("/song/:randomKey", (req, res) => {
       };
       console.log(data);
       res.send(data);
+    }
+  );
+});
+
+router.post("/verifykey", (req, res) => {
+  const randomKey = req.params.randomKey;
+  db.query(
+    `select * from song where randomKey='${randomKey}'`,
+    function (error, result) {
+      if (error) throw error;
+      if (result.length === 0) {
+        console.log("key verified!");
+        res.send(true);
+      } else {
+        console.log("key exists!");
+        res.send(false);
+      }
     }
   );
 });
