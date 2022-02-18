@@ -14,7 +14,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -32,7 +32,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -43,7 +43,7 @@ const Notifications = () => {
             <div className="noti-item-target">
               <img
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
           </div>
@@ -52,7 +52,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -63,7 +63,7 @@ const Notifications = () => {
             <div className="noti-item-target">
               <img
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
           </div>
@@ -75,7 +75,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -93,7 +93,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -104,7 +104,7 @@ const Notifications = () => {
             <div className="noti-item-target">
               <img
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
           </div>
@@ -113,7 +113,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -124,7 +124,7 @@ const Notifications = () => {
             <div className="noti-item-target">
               <img
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
           </div>
@@ -136,7 +136,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -154,7 +154,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -165,7 +165,7 @@ const Notifications = () => {
             <div className="noti-item-target">
               <img
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
           </div>
@@ -174,7 +174,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -185,7 +185,7 @@ const Notifications = () => {
             <div className="noti-item-target">
               <img
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
           </div>
@@ -197,7 +197,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -215,7 +215,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -226,7 +226,7 @@ const Notifications = () => {
             <div className="noti-item-target">
               <img
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
           </div>
@@ -235,7 +235,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -246,7 +246,7 @@ const Notifications = () => {
             <div className="noti-item-target">
               <img
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
           </div>
@@ -258,7 +258,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -276,7 +276,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -287,7 +287,7 @@ const Notifications = () => {
             <div className="noti-item-target">
               <img
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
           </div>
@@ -296,7 +296,7 @@ const Notifications = () => {
               <img
                 className="noti-item-img"
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
             <p className="noti-item-text">
@@ -307,7 +307,7 @@ const Notifications = () => {
             <div className="noti-item-target">
               <img
                 src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
-                alt="notification image"
+                alt="notification"
               />
             </div>
           </div>

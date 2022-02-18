@@ -61,10 +61,8 @@ const Song = () => {
       <div className="song-description">
         <p>소개</p>
         <p>
-          나의 어깨에 기대어요 나의 어깨에 기대어요 나의 어깨에 기대어요 나의
-          어깨에 기대어요 나의 어깨에 기대어요 나의 어깨에 기대어요 나의 어깨에
-          기대어요 나의 어깨에 기대어요 나의 어깨에 기대어요 나의 어깨에
-          기대어요 나의 어깨에 기대어요 나의 어깨에 기대어요
+          {songObj &&
+            (songObj.description ? songObj.description : "소개가 없습니다.")}
         </p>
       </div>
       <div className="song-reply-wrapper">

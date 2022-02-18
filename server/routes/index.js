@@ -27,6 +27,7 @@ router.get("/show", (req, res) => {
         title: results[i].title,
         artist: results[i].artist,
         randomKey: results[i].randomKey,
+        description: results[i].description,
       });
     }
     console.log(data);
@@ -43,6 +44,7 @@ router.get("/song/:randomKey", (req, res) => {
       const data = {
         title: result[0].title,
         artist: result[0].artist,
+        description: result[0].description,
       };
       console.log(data);
       res.send(data);
