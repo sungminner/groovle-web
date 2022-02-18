@@ -11,7 +11,7 @@
   gap: 10px;
 }
 
-.friends-search__input {
+.friends-search-input {
   padding: 0;
   border: none;
   background-color: rgb(239, 239, 239);
@@ -24,39 +24,39 @@
   border-color: rgb(63, 28, 177);
 }
 
-.friends-search:focus-within .friends-search__button {
+.friends-search:focus-within .friends-search-button {
   color: rgb(63, 28, 177);
 }
 
-.friends-search__input:focus {
+.friends-search-input:focus {
   outline: none;
   background-color: #fff;
 }
 
-.friends-search__input::placeholder {
+.friends-search-input::placeholder {
   color: #323232;
 }
 
-.friends-search__button {
+.friends-search-button {
   color: #323232;
 }
 
-.friends-tab__wrapper {
+.friends-tab-wrapper {
   margin: 0 30px;
 }
 
-.friends-tab__title {
+.friends-tab-title {
   font-size: 20px;
   font-weight: bold;
   padding: 25.5px 0;
   border-bottom: 1px solid #969696;
 }
 
-.friends-tab__body {
+.friends-tab-body {
   margin: 20px 0 0;
 }
 
-.friends-crew__wrapper {
+.friends-crew-wrapper {
   display: flex;
   gap: 20px;
 }
@@ -67,7 +67,7 @@
   text-align: center;
 }
 
-.friends-crew__img {
+.friends-crew-img {
   width: 80px;
   height: 80px;
   border-radius: 50px;
@@ -75,11 +75,11 @@
   object-position: center;
 }
 
-.friends-crew__name {
+.friends-crew-name {
   margin-top: 10px;
 }
 
-.friends-followings__wrapper {
+.friends-followings-wrapper {
   display: flex;
   gap: 20px;
 }
@@ -90,7 +90,7 @@
   text-align: center;
 }
 
-.friends-followings__img {
+.friends-followings-img {
   width: 80px;
   height: 80px;
   border-radius: 50px;
@@ -98,6 +98,6 @@
   object-position: center;
 }
 
-.friends-followings__name {
+.friends-followings-name {
   margin-top: 10px;
 }
