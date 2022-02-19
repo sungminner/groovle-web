@@ -22,33 +22,6 @@ const Friends = () => {
       </div>
       <div className="friends-tab-wrapper">
         <div className="friends-tab">
-          <p className="friends-tab-title">Crews</p>
-          <div className="friends-tab-body">
-            <div className="friends-crew-wrapper">
-              <div className="friends-crew">
-                <div>
-                  <img
-                    className="friends-crew-img"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Logo_of_the_University_of_Vienna.svg/2560px-Logo_of_the_University_of_Vienna.svg.png"
-                    alt="crew"
-                  />
-                </div>
-                <p className="friends-crew-name">울림터</p>
-              </div>
-              <div className="friends-crew">
-                <div>
-                  <img
-                    className="friends-crew-img"
-                    src="https://i.pinimg.com/originals/7c/67/00/7c67000ce2be2e535960037a3080f849.png"
-                    alt="crew"
-                  />
-                </div>
-                <p className="friends-crew-name">엘리제</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="friends-tab">
           <p className="friends-tab-title">Followings</p>
           <div className="friends-tab-body">
             <div className="friends-followings-wrapper">
