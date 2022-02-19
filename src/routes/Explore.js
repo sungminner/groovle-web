@@ -2,7 +2,6 @@ import React from "react";
 import "css/explore.css";
 // import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import beautiful from "NAS/test/beautiful.mp3";
 
 const Explore = () => {
   const onChange = () => {
@@ -77,7 +76,6 @@ const Explore = () => {
           </div>
         </div>
       </div>
-      <audio src={beautiful} controls />
     </>
   );
 };

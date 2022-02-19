@@ -9,7 +9,6 @@ import "css/home.css";
 
 const Home = () => {
   const [songs, setSongs] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
   const getData = async () => {
     await axios.get("http://wauriyouthchurch.com/api/show").then((response) => {
       // await axios.get("http://localhost:4000/api/show").then((response) => {
@@ -19,19 +18,15 @@ const Home = () => {
   useEffect(() => {
     getData();
   }, []);
-  const toggleModal = () => {
-    setModalOpen((prev) => !prev);
-  };
   return (
     <>
       {songs.map((song) => (
         <HomePost songObj={song} key={song.id} />
       ))}
-      <HomePost songObj={{ title: "title", artist: "artist" }} />
-      <CreateButton toggleModal={toggleModal} />
-      {modalOpen && (
-        <CreateOptionModal toggleModal={toggleModal} getData={getData} />
-      )}
+      <HomePost
+        songObj={{ title: "title", artist: "artist", randomKey: "aaaaaa" }}
+      />
+      <CreateButton />
     </>
   );
 };
