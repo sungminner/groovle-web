@@ -10,11 +10,9 @@ const CreateButton = () => {
       {/* 위 패딩은 임시 */}
       <div className="createbutton-wrapper">
         <div className="createbutton-flex">
-          <div className="createbutton">
-            <Link to="/create">
-              <FontAwesomeIcon icon="plus" className="createbutton-plus" />
-            </Link>
-          </div>
+          <Link to="/create" className="createbutton">
+            <FontAwesomeIcon icon="plus" className="createbutton-plus" />
+          </Link>
         </div>
       </div>
     </>
