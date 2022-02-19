@@ -76,6 +76,7 @@ const Header = () => {
         pathname === "Notifications" ||
         pathname === "Search" ||
         pathname === "Settings" ||
+        pathname === "Create" ||
         pathname === "Recorder" ||
         pathname === "Storage") && (
         <>

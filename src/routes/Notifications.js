@@ -1,7 +1,7 @@
 import React from "react";
-import "css/notifications.css";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { Link } from "react-router-dom";
+import "css/notifications.css";
 
 const Notifications = () => {
   return (

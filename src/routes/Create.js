@@ -1,19 +1,51 @@
-import React from "react";
-import "css/create.css";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import makeRandomKey from "functions/makeRandomKey";
+import "css/create.css";
 
 const Create = () => {
+  const [title, setTitle] = useState("");
+  const [artist, setArtist] = useState("");
+  const navigate = useNavigate();
+  const onChange = (event) => {
+    const {
+      target: { name, value },
+    } = event;
+    if (name === "title") {
+      setTitle(value);
+    } else if (name === "artist") {
+      setArtist(value);
+    }
+  };
+  const onClick = async () => {
+    const randomKey = makeRandomKey();
+    await axios.post("http://wauriyouthchurch.create/api/createsong", {
+      // await axios.post("http://localhost:4000/api/createsong", {
+      title,
+      artist,
+      randomKey,
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    setTitle("");
+    setArtist("");
+    navigate(`/song/${randomKey}`);
+  };
   return (
-    <div className="createsong__fixed">
-      <Link to="/">
-        <FontAwesomeIcon icon="chevron-left" className="createsong__close" />
-      </Link>
-      <div className="createsong__explanation">
-        <p>나만의 연주를</p>
-        <p>시작해 볼까요?</p>
+    <>
+      <div className="create">
+        <p>제목</p>
+        <input type="text" name="title" value={title} onChange={onChange} />
+        <p>아티스트</p>
+        <input type="text" name="artist" value={artist} onChange={onChange} />
+        <input type="submit" value="save" onClick={onClick} />
+        <p>녹음하기</p>
+        <p>파일 불러오기</p>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
-import "css/explore.css";
 // import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "css/explore.css";
 
 const Explore = () => {
   const onChange = () => {
