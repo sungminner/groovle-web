@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import usePathname from "functions/usePathname";
-import logo from "img/logo.png";
+import logo from "img/logo192.png";
 import "css/header.css";
 
 const Header = () => {
