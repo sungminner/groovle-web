@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import HomePost from "components/HomePost";
 import CreateButton from "components/CreateButton";
-import CreateOptionModal from "components/CreateOptionModal";
 import "css/home.css";
 
 const Home = () => {
@@ -23,9 +22,9 @@ const Home = () => {
       {songs.map((song) => (
         <HomePost songObj={song} key={song.id} />
       ))}
-      <HomePost
+      {/* <HomePost
         songObj={{ title: "title", artist: "artist", randomKey: "aaaaaa" }}
-      />
+      /> */}
       <CreateButton />
     </>
   );

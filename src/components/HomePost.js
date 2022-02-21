@@ -16,84 +16,84 @@ const HomePost = ({ songObj }) => {
     >
       <Link to={`/song/${songObj.randomKey}`}>
         <img
-          className="home-post__bgimg"
+          className="home-post-bgimg"
           src="https://img.gadgethacks.com/img/10/71/63632332115374/0/take-long-exposure-photos-your-iphone.1280x600.jpg"
           alt="bgimg"
         />
         <div
-          className="home-post__body"
+          className="home-post-body"
           style={{
             width: width * 0.8 - 20,
             height: width * 0.8 - 20,
           }}
         >
-          <div className="home-post__header">
+          <div className="home-post-header">
             <img
-              className="home-post__header-albumimg"
+              className="home-post-header-albumimg"
               src="https://image.bugsm.co.kr/album/images/500/4343/434300.jpg"
               alt="albumimg"
             />
-            <div className="home-post__header-text">
-              <p className="home-post__header-title krReg">{songObj.title}</p>
-              <p className="home-post__header-artist krReg">{songObj.artist}</p>
+            <div className="home-post-header-text">
+              <p className="home-post-header-title krReg">{songObj.title}</p>
+              <p className="home-post-header-artist krReg">{songObj.artist}</p>
             </div>
             <img
-              className="home-post__header-playbtn"
+              className="home-post-header-playbtn"
               src="https://cdn0.iconfinder.com/data/icons/controls-essential/48/v-02-512.png"
               alt="playbtn"
             />
           </div>
           <div
-            className="home-post__main"
+            className="home-post-main"
             style={{
               height: width * 0.8 - 136,
             }}
           >
-            <div className="home-post__main-profile">
+            <div className="home-post-main-profile">
               <img
-                className="home-post__main-profileimg"
+                className="home-post-main-profileimg"
                 src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Pierre-Person.jpg"
                 alt="profileimg"
               />
-              <div className="home-post__main-text">
-                <p className="home-post__main-username">sung.minner</p>
-                <p className="home-post__main-session">기타</p>
+              <div className="home-post-main-text">
+                <p className="home-post-main-username">sung.minner</p>
+                <p className="home-post-main-session">기타</p>
               </div>
             </div>
-            <div className="home-post__main-profile">
+            <div className="home-post-main-profile">
               <img
-                className="home-post__main-profileimg"
+                className="home-post-main-profileimg"
                 src="https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg"
                 alt="profileimg"
               />
-              <div className="home-post__main-text">
-                <p className="home-post__main-username">sfdsadfsadf</p>
-                <p className="home-post__main-session">키보드</p>
+              <div className="home-post-main-text">
+                <p className="home-post-main-username">sfdsadfsadf</p>
+                <p className="home-post-main-session">키보드</p>
               </div>
             </div>
-            <div className="home-post__main-profile">
+            <div className="home-post-main-profile">
               <img
-                className="home-post__main-profileimg"
+                className="home-post-main-profileimg"
                 src="https://media.architecturaldigest.com/photos/5890e88033bd1de9129eab0a/1:1/w_870,h_870,c_limit/Artist-Designed%20Album%20Covers%202.jpg"
                 alt="profileimg"
               />
-              <div className="home-post__main-text">
-                <p className="home-post__main-username">rewerw</p>
-                <p className="home-post__main-session">보컬</p>
+              <div className="home-post-main-text">
+                <p className="home-post-main-username">rewerw</p>
+                <p className="home-post-main-session">보컬</p>
               </div>
             </div>
           </div>
           <div
-            className="home-post__footer"
+            className="home-post-footer"
             style={{
               width: width * 0.8 - 20,
             }}
           >
-            <div className="home-post__footer-like">
+            <div className="home-post-footer-likes">
               <FontAwesomeIcon icon="heart" />
               <p>55</p>
             </div>
-            <div className="home-post__footer-comment">
+            <div className="home-post-footer-comment">
               <FontAwesomeIcon icon="comment-dots" />
               <p>14</p>
             </div>

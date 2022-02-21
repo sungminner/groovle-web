@@ -7,7 +7,7 @@
   background-color: #711e9a;
 }
 
-.loading__title {
+.loading-title {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50vh;

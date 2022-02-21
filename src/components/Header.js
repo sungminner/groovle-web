@@ -16,7 +16,9 @@ const Header = () => {
   };
   return (
     <>
-      {(pathname === "Home" || pathname === "Explore" || pathname === "My") && (
+      {(pathname === "Home" ||
+        pathname === "Explore" ||
+        pathname === "Profile") && (
         <>
           <div className="header-padding" />
           <div className="header-wrapper">
@@ -32,16 +34,13 @@ const Header = () => {
               </div>
               <div className="header-menu">
                 <Link to="/search">
-                  <FontAwesomeIcon
-                    icon="search"
-                    className="header-menu__link"
-                  />
+                  <FontAwesomeIcon icon="search" className="header-menu-link" />
                 </Link>
                 <Link to="/notifications">
-                  <FontAwesomeIcon icon="bell" className="header-menu__link" />
+                  <FontAwesomeIcon icon="bell" className="header-menu-link" />
                 </Link>
                 <Link to="/friends">
-                  <FontAwesomeIcon icon="users" className="header-menu__link" />
+                  <FontAwesomeIcon icon="users" className="header-menu-link" />
                 </Link>
               </div>
             </nav>
@@ -64,9 +63,9 @@ const Header = () => {
               <div className="header-menu">
                 <FontAwesomeIcon
                   icon="external-link-alt"
-                  className="header-menu__link"
+                  className="header-menu-link"
                 />
-                <FontAwesomeIcon icon="bars" className="header-menu__link" />
+                <FontAwesomeIcon icon="bars" className="header-menu-link" />
               </div>
             </nav>
           </div>

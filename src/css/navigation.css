@@ -1,8 +1,8 @@
-.nav__padding {
+.nav-padding {
   height: 50px;
 }
 
-.nav__wrapper {
+.nav-wrapper {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -19,19 +19,19 @@
   justify-content: space-around;
 }
 
-.nav__link {
+.nav-link {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.nav__link-icon {
+.nav-link-icon {
   font-size: 18px;
   color: #711e9a;
   margin-bottom: 3px;
 }
 
-.nav__link-detail {
+.nav-link-detail {
   font-size: 10px;
   color: #711e9a;
 }

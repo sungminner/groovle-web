@@ -9,9 +9,9 @@ const Search = () => {
   return (
     <>
       <div className="search-bar">
-        <FontAwesomeIcon icon="search" className="search-bar__button" />
+        <FontAwesomeIcon icon="search" className="search-bar-button" />
         <input
-          className="search-bar__input"
+          className="search-bar-input"
           type="text"
           name="search"
           onChange={onChange}

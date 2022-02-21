@@ -12,34 +12,34 @@ const Navigation = () => {
         <></>
       ) : (
         <>
-          <div className="nav__padding" />
-          <div className="nav__wrapper">
+          <div className="nav-padding" />
+          <div className="nav-wrapper">
             <nav className="nav">
-              <div className="nav__link">
+              <div className="nav-link">
                 <Link to="/explore">
                   <FontAwesomeIcon
                     icon="globe-americas"
-                    className="nav__link-icon"
+                    className="nav-link-icon"
                   />
-                  <p className="nav__link-detail enReg">Explore</p>
+                  <p className="nav-link-detail enReg">Explore</p>
                 </Link>
               </div>
-              <div className="nav__link">
+              <div className="nav-link">
                 <Link to="/">
-                  <FontAwesomeIcon icon="home" className="nav__link-icon" />
-                  <p className="nav__link-detail enReg">Home</p>
+                  <FontAwesomeIcon icon="home" className="nav-link-icon" />
+                  <p className="nav-link-detail enReg">Home</p>
                 </Link>
               </div>
-              <div className="nav__link">
+              <div className="nav-link">
                 {/* {userObj ? ( */}
-                <Link to="/my">
-                  <FontAwesomeIcon icon="user" className="nav__link-icon" />
-                  <p className="nav__link-detail enReg">My</p>
+                <Link to="/profile">
+                  <FontAwesomeIcon icon="user" className="nav-link-icon" />
+                  <p className="nav-link-detail enReg">My</p>
                 </Link>
                 {/* ) : (
             <Link to="/auth">
-              <FontAwesomeIcon icon="user" className="nav__link-icon" />
-              <p className="nav__link-detail">My</p>
+              <FontAwesomeIcon icon="user" className="nav-link-icon" />
+              <p className="nav-link-detail">My</p>
             </Link>
           )} */}
               </div>

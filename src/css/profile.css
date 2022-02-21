@@ -1,0 +1,123 @@
+.profile-userinfo {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.profile-userinfo-text {
+  margin-left: 20px;
+}
+
+.profile-userinfo-top {
+  display: flex;
+  margin-bottom: 5px;
+  gap: 20px;
+}
+
+.profile-name {
+  font-weight: bold;
+}
+
+.profile-session-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-userinfo-bottom {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.profile-bio {
+  margin: 20px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.profile-button-wrapper {
+  margin: 20px;
+}
+
+.profile-button {
+  width: 100%;
+  background-color: #ffffff;
+  border: 2px solid #dddddd;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.profile-function-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 0 20px;
+}
+
+.profile-function {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.profile-function-icon {
+  font-size: 20px;
+  color: #711e9a;
+}
+
+.profile-mymusic {
+  margin: 40px 20px;
+}
+
+.profile-mymusic-title {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.profile-mymusic-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.profile-mymusic-item-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.profile-mymusic-item-text {
+  flex: 1;
+}
+
+.profile-mymusic-item-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.profile-mymusic-item-date {
+  font-size: 14px;
+  color: gray;
+}
+
+.profile-mymusic-item-info {
+  display: flex;
+}
+
+.profile-mymusic-item-info > div {
+  display: flex;
+  gap: 5px;
+  width: 65px;
+}

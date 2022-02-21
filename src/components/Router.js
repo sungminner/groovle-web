@@ -5,7 +5,7 @@ import Playbar from "components/Playbar";
 import Navigation from "components/Navigation";
 import Home from "routes/Home";
 import Recorder from "routes/Recorder";
-import My from "routes/My";
+import Profile from "routes/Profile";
 import Settings from "routes/Settings";
 import Search from "routes/Search";
 import Song from "routes/Song";
@@ -25,7 +25,7 @@ const AppRouter = () => {
         <Route path="/song/:randomKey" element={<Song />} />
         <Route path="/studio" element={<Studio />} />
         <Route path="/recorder" element={<Recorder />} />
-        <Route path="/my" element={<My />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/search" element={<Search />} />
         <Route path="/storage" element={<Storage />} />

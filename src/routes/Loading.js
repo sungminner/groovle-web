@@ -5,7 +5,7 @@ import "css/loading.css";
 const Loading = () => {
   return (
     <div className="loading">
-      <img src={logo} alt="logo" className="loading__title" />
+      <img src={logo} alt="logo" className="loading-title" />
     </div>
   );
   // Setting up your bass drum...
