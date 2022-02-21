@@ -9,7 +9,7 @@ import "css/home.css";
 const Home = () => {
   const [songs, setSongs] = useState([]);
   const getData = async () => {
-    await axios.get("http://wauriyouthchurch.com/api/show").then((response) => {
+    await axios.get("http://groovle.site/api/show").then((response) => {
       // await axios.get("http://localhost:4000/api/show").then((response) => {
       setSongs(response.data);
     });

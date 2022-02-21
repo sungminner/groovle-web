@@ -21,7 +21,7 @@ const Create = () => {
   };
   const onClick = async () => {
     const randomKey = makeRandomKey();
-    await axios.post("http://wauriyouthchurch.create/api/createsong", {
+    await axios.post("http://groovle.site/api/createsong", {
       // await axios.post("http://localhost:4000/api/createsong", {
       title,
       artist,

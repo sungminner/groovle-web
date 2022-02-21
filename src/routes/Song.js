@@ -9,7 +9,7 @@ const Song = () => {
   const [songObj, setSongObj] = useState();
   const getSong = async () => {
     await axios
-      .get(`http://wauriyouthchurch.com/api/song/${randomKey}`)
+      .get(`http://groovle.site/api/song/${randomKey}`)
       .then((response) => {
         // await axios
         //   .get(`http://localhost:4000/api/song/${randomKey}`)

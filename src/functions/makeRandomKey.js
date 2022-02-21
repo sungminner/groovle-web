@@ -2,7 +2,7 @@ import axios from "axios";
 
 const verifyKey = async (key) => {
   await axios
-    .post("http://wauriyouthchurch.com/api/verifykey", {
+    .post("http://groovle.site/api/verifykey", {
       // await axios
       //   .post("http://localhost:4000/api/verifykey", {
       key,
