@@ -61,6 +61,7 @@ router.get("/songbyid/:songID", (req, res) => {
       const data = {
         title: result[0].title,
         artist: result[0].artist,
+        randomKey: result[0].randomKey,
       };
       console.log(data);
       res.send(data);

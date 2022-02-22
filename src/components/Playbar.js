@@ -46,7 +46,10 @@ const Playbar = ({ playlist }) => {
               <Link to="/playlist" className="playbar-playlist">
                 <FontAwesomeIcon icon="bars" />
               </Link>
-              <Link to="/song" className="playbar-songinfo">
+              <Link
+                to={songObj ? `/song/${songObj.randomKey}` : "/"}
+                className="playbar-songinfo"
+              >
                 <p className="playbar-title">
                   {songObj ? songObj.title : "곡을 선택하세요."} {cnt}
                 </p>
