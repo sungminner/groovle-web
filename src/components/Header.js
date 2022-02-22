@@ -78,6 +78,7 @@ const Header = () => {
         pathname === "Create" ||
         pathname === "Recorder" ||
         pathname === "Storage" ||
+        pathname === "Login" ||
         pathname === "Playlist") && (
         <>
           <div className="header-padding" />
