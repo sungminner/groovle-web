@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useWindowDimensions from "functions/useWindowDimensions";
 import "css/homepost.css";
 
-const HomePost = ({ songObj }) => {
+const HomePost = ({ songObj, onPlayClick }) => {
   const { width, height } = useWindowDimensions();
   return (
     <div
@@ -14,6 +14,12 @@ const HomePost = ({ songObj }) => {
         height: width * 0.8,
       }}
     >
+      <img
+        className="home-post-header-playbtn"
+        onClick={() => onPlayClick(songObj.songID)}
+        src="https://cdn0.iconfinder.com/data/icons/controls-essential/48/v-02-512.png"
+        alt="playbtn"
+      />
       <Link to={`/song/${songObj.randomKey}`}>
         <img
           className="home-post-bgimg"
@@ -28,20 +34,8 @@ const HomePost = ({ songObj }) => {
           }}
         >
           <div className="home-post-header">
-            <img
-              className="home-post-header-albumimg"
-              src="https://image.bugsm.co.kr/album/images/500/4343/434300.jpg"
-              alt="albumimg"
-            />
-            <div className="home-post-header-text">
-              <p className="home-post-header-title krReg">{songObj.title}</p>
-              <p className="home-post-header-artist krReg">{songObj.artist}</p>
-            </div>
-            <img
-              className="home-post-header-playbtn"
-              src="https://cdn0.iconfinder.com/data/icons/controls-essential/48/v-02-512.png"
-              alt="playbtn"
-            />
+            <p className="home-post-header-title krReg">{songObj.title}</p>
+            <p className="home-post-header-artist krReg">{songObj.artist}</p>
           </div>
           <div
             className="home-post-main"

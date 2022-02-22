@@ -8,6 +8,9 @@ import "css/home.css";
 
 const Home = () => {
   const [songs, setSongs] = useState([]);
+  const onPlayClick = (id) => {
+    console.log(`${id} clicked!`);
+  };
   const getData = async () => {
     await axios.get("http://groovle.site/api/show").then((response) => {
       // await axios.get("http://localhost:4000/api/show").then((response) => {
@@ -20,10 +23,16 @@ const Home = () => {
   return (
     <>
       {songs.map((song) => (
-        <HomePost songObj={song} key={song.id} />
+        <HomePost songObj={song} onPlayClick={onPlayClick} key={song.songID} />
       ))}
       {/* <HomePost
-        songObj={{ title: "title", artist: "artist", randomKey: "aaaaaa" }}
+        songObj={{
+          songID: 111,
+          title: "title",
+          artist: "artist",
+          randomKey: "aaaaaa",
+        }}
+        onPlayClick={onPlayClick}
       /> */}
       <CreateButton />
     </>
