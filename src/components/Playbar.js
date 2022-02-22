@@ -1,12 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import usePathname from "functions/usePathname";
 import useInterval from "functions/useInterval";
 import "css/playbar.css";
 
-const Playbar = () => {
+const Playbar = ({ playlist }) => {
   const pathname = usePathname();
+
+  const [songObj, setSongObj] = useState();
+  const getSong = async (songID) => {
+    await axios
+      .get(`http://groovle.site/api/songbyid/${songID}`)
+      .then((response) => {
+        // await axios
+        //   .get(`http://localhost:4000/api/songbyid/${songID}`)
+        //   .then((response) => {
+        setSongObj(response.data);
+      });
+  };
+  useEffect(() => {
+    if (playlist.length !== 0) {
+      getSong(playlist[0]);
+    }
+  }, [playlist]);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [cnt, setCnt] = useState(0);
   const toggleStatus = () => {
@@ -18,6 +37,7 @@ const Playbar = () => {
     },
     isPlaying ? 1000 : null
   );
+
   return (
     <>
       {pathname === "Song" || pathname === "Studio" ? (
@@ -31,8 +51,12 @@ const Playbar = () => {
                 <FontAwesomeIcon icon="bars" />
               </div>
               <Link to="/song" className="playbar-songinfo">
-                <p className="playbar-title">나의 어깨에 기대어요 {cnt}</p>
-                <p className="playbar-member">sung.minner, ajsdfl1232</p>
+                <p className="playbar-title">
+                  {songObj ? songObj.title : "곡을 선택하세요."} {cnt}
+                </p>
+                <p className="playbar-member">
+                  {songObj ? songObj.artist : "참가자"}
+                </p>
               </Link>
               <div className="playbar-control">
                 <FontAwesomeIcon

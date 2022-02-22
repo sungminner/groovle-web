@@ -56,10 +56,19 @@ library.add(
 
 function App() {
   const [init, setInit] = useState(false);
+  const [playlist, setPlaylist] = useState([]);
   useEffect(() => {
     setInit(true);
   }, []);
-  return <>{init ? <AppRouter /> : <Loading />}</>;
+  return (
+    <>
+      {init ? (
+        <AppRouter playlist={playlist} setPlaylist={setPlaylist} />
+      ) : (
+        <Loading />
+      )}
+    </>
+  );
 }
 
 export default App;

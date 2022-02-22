@@ -16,12 +16,12 @@ import Friends from "routes/Friends";
 import Studio from "routes/Studio";
 import Storage from "routes/Storage";
 
-const AppRouter = () => {
+const AppRouter = ({ playlist, setPlaylist }) => {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home setPlaylist={setPlaylist} />} />
         <Route path="/song/:randomKey" element={<Song />} />
         <Route path="/studio" element={<Studio />} />
         <Route path="/recorder" element={<Recorder />} />
@@ -34,7 +34,7 @@ const AppRouter = () => {
         <Route path="/create" element={<Create />} />
         <Route path="/friends" element={<Friends />} />
       </Routes>
-      <Playbar />
+      <Playbar playlist={playlist} />
       <Navigation />
     </BrowserRouter>
   );

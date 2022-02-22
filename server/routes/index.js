@@ -52,6 +52,22 @@ router.get("/song/:randomKey", (req, res) => {
   );
 });
 
+router.get("/songbyid/:songID", (req, res) => {
+  const songID = req.params.songID;
+  db.query(
+    `select * from song where songID='${songID}'`,
+    function (error, result) {
+      if (error) throw error;
+      const data = {
+        title: result[0].title,
+        artist: result[0].artist,
+      };
+      console.log(data);
+      res.send(data);
+    }
+  );
+});
+
 router.post("/verifykey", (req, res) => {
   const randomKey = req.params.randomKey;
   db.query(

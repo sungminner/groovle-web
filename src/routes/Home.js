@@ -6,10 +6,13 @@ import HomePost from "components/HomePost";
 import CreateButton from "components/CreateButton";
 import "css/home.css";
 
-const Home = () => {
+const Home = ({ setPlaylist }) => {
   const [songs, setSongs] = useState([]);
   const onPlayClick = (id) => {
-    console.log(`${id} clicked!`);
+    const songIDs = songs.map((song) => song.songID);
+    const index = songIDs.indexOf(id);
+    const playlist = songIDs.slice(index);
+    setPlaylist(playlist);
   };
   const getData = async () => {
     await axios.get("http://groovle.site/api/show").then((response) => {
