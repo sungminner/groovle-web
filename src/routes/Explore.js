@@ -43,7 +43,7 @@ const Explore = () => {
                     alt="ptf"
                   />
                 </div>
-                <p className="explore-ptf-name">엘리제</p>
+                <p className="explore-ptf-name">청년</p>
               </div>
             </div>
           </div>
