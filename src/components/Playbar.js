@@ -43,9 +43,9 @@ const Playbar = ({ playlist }) => {
           <div className="playbar-padding" />
           <div className="playbar-wrapper">
             <div className="playbar">
-              <div className="playbar-playlist">
+              <Link to="/playlist" className="playbar-playlist">
                 <FontAwesomeIcon icon="bars" />
-              </div>
+              </Link>
               <Link to="/song" className="playbar-songinfo">
                 <p className="playbar-title">
                   {songObj ? songObj.title : "곡을 선택하세요."} {cnt}

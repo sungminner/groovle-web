@@ -15,6 +15,7 @@ import Notifications from "routes/Notifications";
 import Friends from "routes/Friends";
 import Studio from "routes/Studio";
 import Storage from "routes/Storage";
+import Playlist from "routes/Playlist";
 
 const AppRouter = ({ playlist, setPlaylist }) => {
   return (
@@ -33,6 +34,7 @@ const AppRouter = ({ playlist, setPlaylist }) => {
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/create" element={<Create />} />
         <Route path="/friends" element={<Friends />} />
+        <Route path="/playlist" element={<Playlist playlist={playlist} />} />
       </Routes>
       <Playbar playlist={playlist} />
       <Navigation />
