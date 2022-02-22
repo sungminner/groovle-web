@@ -1,10 +1,9 @@
 import axios from "axios";
+import base_URL from "base_URL";
 
 const verifyKey = async (key) => {
   await axios
-    .post("http://groovle.site/api/verifykey", {
-      // await axios
-      //   .post("http://localhost:4000/api/verifykey", {
+    .post(`${base_URL}/api/verifykey`, {
       key,
       headers: {
         "content-type": "application/json",

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import usePathname from "functions/usePathname";
 import useInterval from "functions/useInterval";
+import base_URL from "base_URL";
 import "css/playbar.css";
 
 const Playbar = ({ playlist }) => {
@@ -11,14 +12,9 @@ const Playbar = ({ playlist }) => {
 
   const [songObj, setSongObj] = useState();
   const getSong = async (songID) => {
-    await axios
-      .get(`http://groovle.site/api/songbyid/${songID}`)
-      .then((response) => {
-        // await axios
-        //   .get(`http://localhost:4000/api/songbyid/${songID}`)
-        //   .then((response) => {
-        setSongObj(response.data);
-      });
+    await axios.get(`${base_URL}/api/songbyid/${songID}`).then((response) => {
+      setSongObj(response.data);
+    });
   };
   useEffect(() => {
     if (playlist.length !== 0) {

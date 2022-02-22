@@ -2,20 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import base_URL from "base_URL";
 import "css/song.css";
 
 const Song = () => {
   const { randomKey } = useParams();
   const [songObj, setSongObj] = useState();
   const getSong = async () => {
-    await axios
-      .get(`http://groovle.site/api/song/${randomKey}`)
-      .then((response) => {
-        // await axios
-        //   .get(`http://localhost:4000/api/song/${randomKey}`)
-        //   .then((response) => {
-        setSongObj(response.data);
-      });
+    await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
+      setSongObj(response.data);
+    });
   };
   useEffect(() => {
     getSong();

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import HomePost from "components/HomePost";
 import CreateButton from "components/CreateButton";
+import base_URL from "base_URL";
 import "css/home.css";
 
 const Home = ({ setPlaylist }) => {
@@ -15,8 +16,7 @@ const Home = ({ setPlaylist }) => {
     setPlaylist(playlist);
   };
   const getData = async () => {
-    await axios.get("http://groovle.site/api/show").then((response) => {
-      // await axios.get("http://localhost:4000/api/show").then((response) => {
+    await axios.get(`${base_URL}/api/show`).then((response) => {
       setSongs(response.data);
     });
   };

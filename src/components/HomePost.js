@@ -5,7 +5,7 @@ import useWindowDimensions from "functions/useWindowDimensions";
 import "css/homepost.css";
 
 const HomePost = ({ songObj, onPlayClick }) => {
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   return (
     <div
       className="home-post krReg"

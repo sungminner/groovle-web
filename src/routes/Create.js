@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import makeRandomKey from "functions/makeRandomKey";
+import base_URL from "base_URL";
 import "css/create.css";
 
 const Create = () => {
@@ -21,8 +22,7 @@ const Create = () => {
   };
   const onClick = async () => {
     const randomKey = makeRandomKey();
-    await axios.post("http://groovle.site/api/createsong", {
-      // await axios.post("http://localhost:4000/api/createsong", {
+    await axios.post(`${base_URL}/api/createsong`, {
       title,
       artist,
       randomKey,
