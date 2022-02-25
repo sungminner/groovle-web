@@ -7,13 +7,18 @@ import "css/playlist.css";
 const Playlist = ({ playlist }) => {
   const [list, setList] = useState([]);
   const getSong = async (songID) => {
+    let data;
     await axios.get(`${base_URL}/api/songbyid/${songID}`).then((response) => {
-      setList((prev) => [...prev, response.data]);
+      data = response.data;
     });
+    return data;
   };
   useEffect(() => {
     if (playlist.length !== 0) {
-      playlist.forEach((id) => getSong(id));
+      const promises = playlist.map((id) => getSong(id));
+      Promise.all(promises).then((result) => {
+        setList(result);
+      });
     }
   }, [playlist]);
   return (
