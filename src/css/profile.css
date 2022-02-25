@@ -59,12 +59,11 @@
 
 .profile-function-wrapper {
   display: flex;
-  justify-content: space-between;
   margin: 20px;
-  padding: 0 20px;
 }
 
 .profile-function {
+  flex: 1;
   display: flex;
   flex-direction: column;
   text-align: center;

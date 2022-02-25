@@ -50,7 +50,7 @@ const Profile = () => {
         </Link>
       </div>
       <div className="profile-mymusic">
-        <p className="profile-mymusic-title">참여한 음악</p>
+        <p className="profile-mymusic-title">참여한 곡</p>
         <div className="profile-mymusic-item">
           <p className="profile-mymusic-item-index">1</p>
           <img
