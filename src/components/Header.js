@@ -78,7 +78,6 @@ const Header = () => {
         pathname === "Create" ||
         pathname === "Recorder" ||
         pathname === "Storage" ||
-        pathname === "Login" ||
         pathname === "Playlist") && (
         <>
           <div className="header-padding" />
@@ -89,6 +88,24 @@ const Header = () => {
                   icon="chevron-left"
                   className="header-goback"
                   onClick={goBack}
+                />
+                <p className="header-title">{pathname}</p>
+              </div>
+              <div className="header-menu"></div>
+            </nav>
+          </div>
+        </>
+      )}
+      {(pathname === "Login" || pathname === "Signup") && (
+        <>
+          <div className="header-padding" />
+          <div className="header-wrapper">
+            <nav className="header">
+              <div className="header-pagename">
+                <FontAwesomeIcon
+                  icon="xmark"
+                  className="header-goback"
+                  onClick={goHome}
                 />
                 <p className="header-title">{pathname}</p>
               </div>

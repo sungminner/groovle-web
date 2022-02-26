@@ -8,7 +8,10 @@ const Navigation = () => {
   const pathname = usePathname();
   return (
     <>
-      {pathname === "Song" || pathname === "Studio" ? (
+      {pathname === "Song" ||
+      pathname === "Studio" ||
+      pathname === "Login" ||
+      pathname === "Signup" ? (
         <></>
       ) : (
         <>

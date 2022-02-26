@@ -3,6 +3,20 @@ const db = require("./db_info");
 
 const router = express();
 
+router.post("/createuser", (req, res) => {
+  googleID = req.body.googleID;
+  username = req.body.username;
+  name = req.body.name;
+  db.query(
+    `INSERT INTO groovle.user (googleID, username, name) VALUES ("${googleID}", "${username}", "${name}");`,
+    function (error, results) {
+      if (error) throw error;
+      console.log("The solution is: ", results);
+      res.send("success!");
+    }
+  );
+});
+
 router.post("/createsong", (req, res) => {
   title = req.body.title;
   artist = req.body.artist;

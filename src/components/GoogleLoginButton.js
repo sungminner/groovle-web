@@ -7,12 +7,12 @@ const GoogleLoginButton = ({ onGoogleLogin }) => {
     await onGoogleLogin(response.googleId);
   };
   const onFailure = (error) => {
-    console.log(error);
+    // console.log(error);
   };
   return (
     <GoogleLogin
       clientId={clientId}
-      buttonText="Login with Google"
+      buttonText="Google 계정 연결"
       onSuccess={onSuccess}
       onFailure={onFailure}
       cookiePolicy={"single_host_origin"}

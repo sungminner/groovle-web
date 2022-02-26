@@ -27,6 +27,7 @@ import {
   faStepForward,
   faUser,
   faUsers,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -51,7 +52,8 @@ library.add(
   faStepBackward,
   faStepForward,
   faUser,
-  faUsers
+  faUsers,
+  faXmark
 );
 
 function App() {
