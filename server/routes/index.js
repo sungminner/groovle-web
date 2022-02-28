@@ -14,7 +14,9 @@ router.post("/createuser", async (req, res) => {
         function (error, results) {
           if (error) throw error;
           console.log("user created!");
-          res.send(true);
+          res.send({
+            id: response.data.sub.split("").reverse().join(""),
+          });
         }
       );
     });

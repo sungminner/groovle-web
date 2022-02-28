@@ -18,6 +18,7 @@ const Signup = () => {
         })
         .then((res) => {
           if (res.data) {
+            window.localStorage.setItem("id", res.data.id);
             navigate("/");
           }
         });
