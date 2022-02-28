@@ -1,20 +1,23 @@
 const express = require("express");
+const { default: axios } = require("axios");
 const db = require("./db_info");
 
 const router = express();
 
-router.post("/createuser", (req, res) => {
-  googleID = req.body.googleID;
-  username = req.body.username;
-  name = req.body.name;
-  db.query(
-    `INSERT INTO groovle.user (googleID, username, name) VALUES ("${googleID}", "${username}", "${name}");`,
-    function (error, results) {
-      if (error) throw error;
-      console.log("The solution is: ", results);
-      res.send("success!");
-    }
-  );
+router.post("/createuser", async (req, res) => {
+  tokenId = req.body.tokenId;
+  await axios
+    .get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${tokenId}`)
+    .then((response) => {
+      db.query(
+        `INSERT INTO groovle.user (googleID, registeredAt) VALUES ("${response.data.sub}", now());`,
+        function (error, results) {
+          if (error) throw error;
+          console.log("user created!");
+          res.send(true);
+        }
+      );
+    });
 });
 
 router.post("/createsong", (req, res) => {
@@ -25,7 +28,7 @@ router.post("/createsong", (req, res) => {
     `INSERT INTO groovle.song (title, artist, createdBy, randomKey, createdAt, songLocation) VALUES ("${title}", "${artist}", 1, "${randomKey}", now(), "here");`,
     function (error, results) {
       if (error) throw error;
-      console.log("The solution is: ", results);
+      console.log("song created!");
       res.send("success!");
     }
   );
