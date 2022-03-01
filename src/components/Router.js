@@ -20,13 +20,7 @@ import Login from "routes/Login";
 import Signup from "routes/Signup";
 import Welcome from "routes/Welcome";
 
-const AppRouter = ({
-  userObj,
-  userReady,
-  refreshUser,
-  playlist,
-  setPlaylist,
-}) => {
+const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Header />
@@ -35,7 +29,7 @@ const AppRouter = ({
         <Route path="/song/:randomKey" element={<Song />} />
         <Route path="/studio" element={<Studio />} />
         <Route path="/recorder" element={<Recorder />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile userObj={userObj} />} />
         <Route
           path="/settings"
           element={<Settings refreshUser={refreshUser} />}
@@ -49,7 +43,7 @@ const AppRouter = ({
         <Route path="/playlist" element={<Playlist playlist={playlist} />} />
         <Route
           path="/login"
-          element={<Login userReady={userReady} refreshUser={refreshUser} />}
+          element={<Login userObj={userObj} refreshUser={refreshUser} />}
         />
         <Route path="/signup" element={<Signup />} />
         <Route path="/welcome" element={<Welcome userObj={userObj} />} />

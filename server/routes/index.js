@@ -67,10 +67,13 @@ router.get("/userbyid/:id", (req, res) => {
       if (error) throw error;
       if (result.length === 1) {
         //id값에 해당하는 user가 있으면 userObj 반환, 없으면 false 반환
+        const userReady = result[0].username && result[0].name ? true : false;
+        //userReady: 사용자의 username과 name이 존재하면 사용자가 서비스를 이용할 준비가 되었다고 판단
         const data = {
-          name: result[0].name,
           username: result[0].username,
+          name: result[0].name,
           picture: result[0].picture,
+          userReady,
         };
         console.log(data);
         res.send(data);
