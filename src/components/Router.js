@@ -47,7 +47,10 @@ const AppRouter = ({
         <Route path="/create" element={<Create />} />
         <Route path="/friends" element={<Friends />} />
         <Route path="/playlist" element={<Playlist playlist={playlist} />} />
-        <Route path="/login" element={<Login refreshUser={refreshUser} />} />
+        <Route
+          path="/login"
+          element={<Login userReady={userReady} refreshUser={refreshUser} />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/welcome" element={<Welcome userObj={userObj} />} />
       </Routes>

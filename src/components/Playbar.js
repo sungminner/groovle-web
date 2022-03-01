@@ -39,7 +39,8 @@ const Playbar = ({ playlist }) => {
       {pathname === "Song" ||
       pathname === "Studio" ||
       pathname === "Login" ||
-      pathname === "Signup" ? (
+      pathname === "Signup" ||
+      pathname === "Welcome" ? (
         <></>
       ) : (
         <>

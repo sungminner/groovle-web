@@ -22,6 +22,20 @@ router.post("/createuser", async (req, res) => {
     });
 });
 
+router.post("/updateuser", async (req, res) => {
+  googleID = req.body.id.split("").reverse().join("");
+  key = req.body.key;
+  value = req.body.value;
+  db.query(
+    `UPDATE user SET ${key} = '${value}' WHERE (googleID = '${googleID}');`,
+    function (error, results) {
+      if (error) throw error;
+      console.log("user updated!");
+      res.send(true);
+    }
+  );
+});
+
 router.post("/login", async (req, res) => {
   tokenId = req.body.tokenId;
   await axios
