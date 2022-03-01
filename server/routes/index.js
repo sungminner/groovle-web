@@ -22,6 +22,28 @@ router.post("/createuser", async (req, res) => {
     });
 });
 
+router.get("/userbyid/:id", (req, res) => {
+  const googleID = req.params.id;
+  db.query(
+    `select * from user where googleID='${googleID}'`,
+    function (error, result) {
+      if (error) throw error;
+      if (result.length === 1) {
+        //id값에 해당하는 user가 있으면 userObj 반환, 없으면 false 반환
+        const data = {
+          name: result[0].name,
+          username: result[0].username,
+          picture: result[0].picture,
+        };
+        console.log(data);
+        res.send(data);
+      } else {
+        res.send(false);
+      }
+    }
+  );
+});
+
 router.post("/createsong", (req, res) => {
   title = req.body.title;
   artist = req.body.artist;
@@ -60,13 +82,17 @@ router.get("/song/:randomKey", (req, res) => {
     `select * from song where randomKey='${randomKey}'`,
     function (error, result) {
       if (error) throw error;
-      const data = {
-        title: result[0].title,
-        artist: result[0].artist,
-        description: result[0].description,
-      };
-      console.log(data);
-      res.send(data);
+      if (result.length === 1) {
+        const data = {
+          title: result[0].title,
+          artist: result[0].artist,
+          description: result[0].description,
+        };
+        console.log(data);
+        res.send(data);
+      } else {
+        res.send(false);
+      }
     }
   );
 });
@@ -77,13 +103,17 @@ router.get("/songbyid/:songID", (req, res) => {
     `select * from song where songID='${songID}'`,
     function (error, result) {
       if (error) throw error;
-      const data = {
-        title: result[0].title,
-        artist: result[0].artist,
-        randomKey: result[0].randomKey,
-      };
-      console.log(data);
-      res.send(data);
+      if (result.length === 1) {
+        const data = {
+          title: result[0].title,
+          artist: result[0].artist,
+          randomKey: result[0].randomKey,
+        };
+        console.log(data);
+        res.send(data);
+      } else {
+        res.send(false);
+      }
     }
   );
 });

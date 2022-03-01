@@ -10,7 +10,7 @@ const Login = () => {
   return (
     <>
       <div>
-        <GoogleLoginButton onGoogleLogin={onGoogleLogin} />
+        <GoogleLoginButton onSuccess={onGoogleLogin} />
       </div>
       <div>
         <Link to="/signup">sign up</Link>

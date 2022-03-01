@@ -18,8 +18,9 @@ import Storage from "routes/Storage";
 import Playlist from "routes/Playlist";
 import Login from "routes/Login";
 import Signup from "routes/Signup";
+import Welcome from "routes/Welcome";
 
-const AppRouter = ({ playlist, setPlaylist }) => {
+const AppRouter = ({ userObj, userReady, playlist, setPlaylist }) => {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Header />
@@ -36,9 +37,10 @@ const AppRouter = ({ playlist, setPlaylist }) => {
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/create" element={<Create />} />
         <Route path="/friends" element={<Friends />} />
+        <Route path="/playlist" element={<Playlist playlist={playlist} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/playlist" element={<Playlist playlist={playlist} />} />
+        <Route path="/welcome" element={<Welcome userObj={userObj} />} />
       </Routes>
       <Playbar playlist={playlist} />
       <Navigation />
