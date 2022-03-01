@@ -1,11 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import GoogleLoginButton from "components/GoogleLoginButton";
+import base_URL from "base_URL";
 import "css/login.css";
 
 const Login = () => {
-  const onGoogleLogin = (googleId) => {
-    // console.log(googleId);
+  const navigate = useNavigate();
+  const onGoogleLogin = async (response) => {
+    try {
+      await axios
+        .post(`${base_URL}/api/login`, {
+          tokenId: response.tokenId,
+          headers: {
+            Authorization: `Bearer ${response.accessToken}`,
+          },
+        })
+        .then((res) => {
+          if (res.data) {
+            window.localStorage.setItem("id", res.data.id);
+            refreshUser();
+            navigate("/");
+          }
+        });
+    } catch (e) {
+      throw e;
+    }
   };
   return (
     <>

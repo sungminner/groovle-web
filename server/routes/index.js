@@ -22,8 +22,31 @@ router.post("/createuser", async (req, res) => {
     });
 });
 
+router.post("/login", async (req, res) => {
+  tokenId = req.body.tokenId;
+  await axios
+    .get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${tokenId}`)
+    .then((response) => {
+      db.query(
+        `select count(*) as cnt from user where googleID="${response.data.sub}"`,
+        function (error, result) {
+          if (error) throw error;
+          if (result[0].cnt === 1) {
+            console.log("user logged in!");
+            res.send({
+              id: response.data.sub.split("").reverse().join(""),
+            });
+          } else {
+            console.log("no user!");
+            res.send(false);
+          }
+        }
+      );
+    });
+});
+
 router.get("/userbyid/:id", (req, res) => {
-  const googleID = req.params.id;
+  const googleID = req.params.id.split("").reverse().join("");
   db.query(
     `select * from user where googleID='${googleID}'`,
     function (error, result) {

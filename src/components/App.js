@@ -81,7 +81,7 @@ function App() {
   useEffect(() => {
     if (window.localStorage.getItem("id") !== null) {
       // localStorage에 id값이 저장되어 있을 때
-      const id = window.localStorage.getItem("id").split("").reverse().join("");
+      const id = window.localStorage.getItem("id");
       getUserObj(id);
     }
     setInit(true);
