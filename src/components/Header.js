@@ -16,13 +16,11 @@ const Header = () => {
   };
   return (
     <>
-      {(pathname === "Home" ||
-        pathname === "Explore" ||
-        pathname === "Profile") && (
-        <>
-          <div className="header-padding" />
-          <div className="header-wrapper">
-            <nav className="header">
+      <div className="header-padding" />
+      <div className="header-wrapper">
+        <nav className="header">
+          {(pathname === "Home" || pathname === "Explore") && (
+            <>
               <div className="header-pagename">
                 <img
                   src={logo}
@@ -43,15 +41,31 @@ const Header = () => {
                   <FontAwesomeIcon icon="users" className="header-menu-link" />
                 </Link>
               </div>
-            </nav>
-          </div>
-        </>
-      )}
-      {(pathname === "Song" || pathname === "Studio") && (
-        <>
-          <div className="header-padding" />
-          <div className="header-wrapper">
-            <nav className="header">
+            </>
+          )}
+          {pathname === "Profile" && (
+            <>
+              <div className="header-pagename">
+                <img
+                  src={logo}
+                  alt="logo"
+                  className="header-logo"
+                  onClick={goHome}
+                />
+                <p className="header-title">{pathname}</p>
+              </div>
+              <div className="header-menu">
+                <Link to="/notifications">
+                  <FontAwesomeIcon icon="bell" className="header-menu-link" />
+                </Link>
+                <Link to="/settings">
+                  <FontAwesomeIcon icon="gear" className="header-menu-link" />
+                </Link>
+              </div>
+            </>
+          )}
+          {(pathname === "Song" || pathname === "Studio") && (
+            <>
               <div className="header-pagename">
                 <FontAwesomeIcon
                   icon="chevron-left"
@@ -67,22 +81,17 @@ const Header = () => {
                 />
                 <FontAwesomeIcon icon="bars" className="header-menu-link" />
               </div>
-            </nav>
-          </div>
-        </>
-      )}
-      {(pathname === "Friends" ||
-        pathname === "Notifications" ||
-        pathname === "Search" ||
-        pathname === "Settings" ||
-        pathname === "Create" ||
-        pathname === "Recorder" ||
-        pathname === "Storage" ||
-        pathname === "Playlist") && (
-        <>
-          <div className="header-padding" />
-          <div className="header-wrapper">
-            <nav className="header">
+            </>
+          )}
+          {(pathname === "Friends" ||
+            pathname === "Notifications" ||
+            pathname === "Search" ||
+            pathname === "Settings" ||
+            pathname === "Create" ||
+            pathname === "Recorder" ||
+            pathname === "Storage" ||
+            pathname === "Playlist") && (
+            <>
               <div className="header-pagename">
                 <FontAwesomeIcon
                   icon="chevron-left"
@@ -92,15 +101,10 @@ const Header = () => {
                 <p className="header-title">{pathname}</p>
               </div>
               <div className="header-menu"></div>
-            </nav>
-          </div>
-        </>
-      )}
-      {(pathname === "Login" || pathname === "Signup") && (
-        <>
-          <div className="header-padding" />
-          <div className="header-wrapper">
-            <nav className="header">
+            </>
+          )}
+          {(pathname === "Login" || pathname === "Signup") && (
+            <>
               <div className="header-pagename">
                 <FontAwesomeIcon
                   icon="xmark"
@@ -110,10 +114,10 @@ const Header = () => {
                 <p className="header-title">{pathname}</p>
               </div>
               <div className="header-menu"></div>
-            </nav>
-          </div>
-        </>
-      )}
+            </>
+          )}
+        </nav>
+      </div>
     </>
   );
 };
