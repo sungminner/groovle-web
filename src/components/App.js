@@ -86,12 +86,36 @@ function App() {
     }
     setInit(true);
   }, []);
+  const refreshUser = async () => {
+    console.log("before refresh", userObj);
+    const id = window.localStorage.getItem("id");
+    if (id) {
+      await axios.get(`${base_URL}/api/userbyid/${id}`).then((response) => {
+        if (response.data) {
+          //id값에 해당하는 user가 있을 때
+          setUserObj(response.data);
+          if (response.data.name && response.data.username) {
+            setUserReady(true);
+          } else {
+            setUserReady(false);
+          }
+        }
+      });
+    } else {
+      setUserObj(null);
+      setUserReady(false);
+    }
+  };
+  useEffect(() => {
+    console.log("after refresh", userObj);
+  }, [userObj]);
   return (
     <>
       {init ? (
         <AppRouter
           userObj={userObj}
           userReady={userReady}
+          refreshUser={refreshUser}
           playlist={playlist}
           setPlaylist={setPlaylist}
         />

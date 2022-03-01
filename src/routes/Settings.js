@@ -1,10 +1,12 @@
 import React from "react";
+import GoogleLogoutButton from "components/GoogleLogoutButton";
 import "css/settings.css";
 
-const Settings = () => {
+const Settings = ({ refreshUser }) => {
   return (
     <>
-      <p>Settings</p>;
+      <p>Settings</p>
+      <GoogleLogoutButton refreshUser={refreshUser} />
     </>
   );
 };
