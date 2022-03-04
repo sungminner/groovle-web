@@ -5,7 +5,7 @@ import GoogleLoginButton from "components/GoogleLoginButton";
 import base_URL from "base_URL";
 import "css/login.css";
 
-const Login = ({ userObj, refreshUser }) => {
+const Login = ({ refreshUser }) => {
   const navigate = useNavigate();
   const onGoogleLogin = async (response) => {
     try {

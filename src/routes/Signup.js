@@ -57,7 +57,7 @@ const Signup = () => {
       .then((res) => {
         if (res.data) {
           window.localStorage.setItem("id", googleID);
-          navigate("/");
+          window.location.replace("/");
         }
       });
   };

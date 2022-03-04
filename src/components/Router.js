@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PublicRoute from "components/PublicRoute";
+import PrivateRoute from "components/PrivateRoute";
 import Header from "components/Header";
 import Playbar from "components/Playbar";
 import Navigation from "components/Navigation";
@@ -25,28 +27,122 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Header />
       <Routes>
-        <Route path="/" element={<Home setPlaylist={setPlaylist} />} />
-        <Route path="/song/:randomKey" element={<Song />} />
-        <Route path="/studio" element={<Studio />} />
-        <Route path="/recorder" element={<Recorder />} />
-        <Route path="/profile" element={<Profile userObj={userObj} />} />
+        {/* public routes */}
         <Route
-          path="/settings"
-          element={<Settings refreshUser={refreshUser} />}
+          path="/"
+          element={
+            <PublicRoute userObj={userObj} restricted={false}>
+              <Home setPlaylist={setPlaylist} />
+            </PublicRoute>
+          }
         />
-        <Route path="/search" element={<Search />} />
-        <Route path="/storage" element={<Storage />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="/create" element={<Create />} />
-        <Route path="/friends" element={<Friends />} />
-        <Route path="/playlist" element={<Playlist playlist={playlist} />} />
+        <Route
+          path="/song/:randomKey"
+          element={
+            <PublicRoute userObj={userObj} restricted={false}>
+              <Song />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/explore"
+          element={
+            <PublicRoute userObj={userObj} restricted={false}>
+              <Explore />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/playlist"
+          element={
+            <PublicRoute userObj={userObj} restricted={false}>
+              <Playlist playlist={playlist} />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <PublicRoute userObj={userObj} restricted={false}>
+              <Search />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <PublicRoute userObj={userObj} restricted={false}>
+              <Create />
+            </PublicRoute>
+          }
+        />
         <Route
           path="/login"
-          element={<Login userObj={userObj} refreshUser={refreshUser} />}
+          element={
+            <PublicRoute userObj={userObj} restricted={true}>
+              <Login userObj={userObj} refreshUser={refreshUser} />
+            </PublicRoute>
+          }
         />
-        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute userObj={userObj} restricted={true}>
+              <Signup />
+            </PublicRoute>
+          }
+        />
+        {/* private routes */}
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute userObj={userObj}>
+              <Profile userObj={userObj} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/studio"
+          element={
+            <PrivateRoute userObj={userObj}>
+              <Studio />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <PrivateRoute userObj={userObj}>
+              <Settings refreshUser={refreshUser} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/storage"
+          element={
+            <PrivateRoute userObj={userObj}>
+              <Storage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/notifications"
+          element={
+            <PrivateRoute userObj={userObj}>
+              <Notifications />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/friends"
+          element={
+            <PrivateRoute userObj={userObj}>
+              <Friends />
+            </PrivateRoute>
+          }
+        />
         <Route path="/welcome" element={<Welcome userObj={userObj} />} />
+        <Route path="/recorder" element={<Recorder />} />
       </Routes>
       <Playbar playlist={playlist} />
       <Navigation />
