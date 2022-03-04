@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import HomePost from "components/HomePost";
@@ -28,6 +28,8 @@ const Home = ({ setPlaylist }) => {
       {songs.map((song) => (
         <HomePost songObj={song} onPlayClick={onPlayClick} key={song.songID} />
       ))}
+      <Link to="/login">Login</Link>
+      <Link to="/signup">signup</Link>
       {/* <HomePost
         songObj={{
           songID: 111,

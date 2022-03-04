@@ -126,7 +126,12 @@ const Header = () => {
           <div className="header-wrapper">
             <nav className="header">
               <div className="header-pagename">
-                <img src={logo} alt="logo" className="header-logo" />
+                <img
+                  src={logo}
+                  alt="logo"
+                  className="header-logo"
+                  onClick={goHome}
+                />
                 <p className="header-title">{pathname}</p>
               </div>
               <div className="header-menu"></div>

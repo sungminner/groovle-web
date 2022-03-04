@@ -7,6 +7,9 @@ const usePathname = () => {
   } else if (location.startsWith("song")) {
     // return location.slice(6);
     return "Song";
+  } else if (location.startsWith("profile")) {
+    // return location.slice(6);
+    return "Profile";
   } else {
     return location.charAt(0).toUpperCase() + location.slice(1);
   }

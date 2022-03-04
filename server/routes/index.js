@@ -5,21 +5,17 @@ const db = require("./db_info");
 const router = express();
 
 router.post("/createuser", async (req, res) => {
-  tokenId = req.body.tokenId;
-  await axios
-    .get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${tokenId}`)
-    .then((response) => {
-      db.query(
-        `INSERT INTO groovle.user (googleID, registeredAt) VALUES ("${response.data.sub}", now());`,
-        function (error, results) {
-          if (error) throw error;
-          console.log("user created!");
-          res.send({
-            id: response.data.sub.split("").reverse().join(""),
-          });
-        }
-      );
-    });
+  googleID = req.body.googleID.split("").reverse().join("");
+  username = req.body.username;
+  uname = req.body.name;
+  db.query(
+    `INSERT INTO groovle.user (googleID, username, name, registeredAt) VALUES ("${googleID}", "${username}", "${uname}", now());`,
+    function (error, results) {
+      if (error) throw error;
+      console.log("user created!");
+      res.send(true);
+    }
+  );
 });
 
 router.post("/updateuser", async (req, res) => {
@@ -67,13 +63,10 @@ router.get("/userbyid/:id", (req, res) => {
       if (error) throw error;
       if (result.length === 1) {
         //id값에 해당하는 user가 있으면 userObj 반환, 없으면 false 반환
-        const userReady = result[0].username && result[0].name ? true : false;
-        //userReady: 사용자의 username과 name이 존재하면 사용자가 서비스를 이용할 준비가 되었다고 판단
         const data = {
           username: result[0].username,
           name: result[0].name,
           picture: result[0].picture,
-          userReady,
         };
         console.log(data);
         res.send(data);

@@ -31,8 +31,8 @@ const Song = () => {
       <div className="song-control">
         <div className="song-songinfo">
           <div>
-            <p className="song-title">{songObj && songObj.title}</p>
-            <p className="song-artist">{songObj && songObj.artist}</p>
+            <p className="song-title">{songObj?.title}</p>
+            <p className="song-artist">{songObj?.artist}</p>
           </div>
           <div className="song-like">
             <FontAwesomeIcon icon="heart" className="song-like-icon" />

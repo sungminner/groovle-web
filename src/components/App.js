@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AppRouter from "components/Router";
+import { useGoogleLogout } from "react-google-login";
 import Loading from "routes/Loading";
 import base_URL from "base_URL";
 import "css/reset.css";
@@ -64,6 +65,16 @@ function App() {
   const [init, setInit] = useState(false);
   const [userObj, setUserObj] = useState(null);
   const [playlist, setPlaylist] = useState([]);
+  const { signOut, loaded } = useGoogleLogout({
+    clientId: process.env.REACT_APP_GCP_CLIENT_ID,
+    onLogoutSuccess: () => {
+      refreshUser();
+      window.localStorage.clear();
+    },
+    onFailure: () => {
+      // console.log("hook logout fail");
+    },
+  });
   const getUserObj = async (id) => {
     await axios.get(`${base_URL}/api/userbyid/${id}`).then((response) => {
       if (response.data) {
@@ -78,9 +89,14 @@ function App() {
       // localStorage에 id값이 저장되어 있을 때
       const id = window.localStorage.getItem("id");
       getUserObj(id);
+    } else {
+      // localStorage에 id값이 저장되어 있지 않을 때 googleLoginButton에서 로그아웃
+      if (loaded) {
+        signOut();
+      }
     }
     setInit(true);
-  }, []);
+  }, [loaded]);
   const refreshUser = async () => {
     console.log("before refresh", userObj);
     const id = window.localStorage.getItem("id");
