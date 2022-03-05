@@ -5,7 +5,7 @@ const GoogleLogoutButton = ({ refreshUser }) => {
   const onLogoutSuccess = () => {
     refreshUser();
     window.localStorage.clear();
-    window.location.replace("/");
+    window.location.href = "/";
   };
   return (
     <>

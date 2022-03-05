@@ -1,11 +1,12 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import GoogleLoginButton from "components/GoogleLoginButton";
 import base_URL from "base_URL";
 import "css/login.css";
 
 const Login = ({ refreshUser }) => {
+  const location = useLocation();
   const navigate = useNavigate();
   const onGoogleLogin = async (response) => {
     try {
@@ -20,7 +21,7 @@ const Login = ({ refreshUser }) => {
           if (res.data) {
             window.localStorage.setItem("id", res.data.id);
             refreshUser();
-            navigate("/");
+            navigate(location.state.from);
           }
         });
     } catch (e) {
