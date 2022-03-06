@@ -10,6 +10,7 @@ const Navigation = () => {
     <>
       {pathname === "Song" ||
       pathname === "Studio" ||
+      pathname === "Editor" ||
       pathname === "Login" ||
       pathname === "Signup" ||
       pathname === "Welcome" ? (

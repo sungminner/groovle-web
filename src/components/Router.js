@@ -16,6 +16,7 @@ import Explore from "routes/Explore";
 import Notifications from "routes/Notifications";
 import Friends from "routes/Friends";
 import Studio from "routes/Studio";
+import Editor from "routes/Editor";
 import Storage from "routes/Storage";
 import Playlist from "routes/Playlist";
 import Login from "routes/Login";
@@ -106,6 +107,14 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
           element={
             <PrivateRoute userObj={userObj}>
               <Studio />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/editor"
+          element={
+            <PrivateRoute userObj={userObj}>
+              <Editor />
             </PrivateRoute>
           }
         />

@@ -10,6 +10,9 @@ const usePathname = () => {
   } else if (location.startsWith("studio")) {
     // return location.slice(6);
     return "Studio";
+  } else if (location.startsWith("editor")) {
+    // return location.slice(6);
+    return "Editor";
   } else if (location.startsWith("profile")) {
     // return location.slice(6);
     return "Profile";

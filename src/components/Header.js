@@ -102,7 +102,8 @@ const Header = () => {
         pathname === "Create" ||
         pathname === "Recorder" ||
         pathname === "Storage" ||
-        pathname === "Playlist") && (
+        pathname === "Playlist" ||
+        pathname === "Editor") && (
         <>
           <div className="header-padding" />
           <div className="header-wrapper">
