@@ -28,8 +28,6 @@ const Home = ({ setPlaylist }) => {
       {songs.map((song) => (
         <HomePost songObj={song} onPlayClick={onPlayClick} key={song.songID} />
       ))}
-      <Link to="/login">Login</Link>
-      <Link to="/signup">signup</Link>
       {/* <HomePost
         songObj={{
           songID: 111,

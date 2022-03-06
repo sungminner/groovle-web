@@ -108,7 +108,7 @@ const Song = () => {
         </div>
       </div>
       <div className="song-join-button-padding" />
-      <Link to="/studio">
+      <Link to={`/studio/${randomKey}`}>
         <div className="song-join-button-wrapper">
           <div className="song-join-button">
             <p>합주 참여</p>

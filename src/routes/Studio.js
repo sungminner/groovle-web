@@ -1,9 +1,21 @@
-import React from "react";
-import "css/studio.css";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import base_URL from "base_URL";
+import "css/studio.css";
 
 const Studio = () => {
+  const { randomKey } = useParams();
+  const [songObj, setSongObj] = useState();
+  const getSong = async () => {
+    await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
+      setSongObj(response.data);
+    });
+  };
+  useEffect(() => {
+    getSong();
+  }, []);
   return (
     <>
       <div className="studio-playbar">
@@ -15,8 +27,8 @@ const Studio = () => {
           />
         </div>
         <div className="studio-playbar-songinfo">
-          <p className="studio-playbar-title">나의 어깨에 기대어요</p>
-          <p className="studio-playbar-artist">10cm</p>
+          <p className="studio-playbar-title">{songObj?.title}</p>
+          <p className="studio-playbar-artist">{songObj?.artist}</p>
         </div>
         <div className="studio-playbar-control">
           <FontAwesomeIcon icon="play" className="studio-play" />
@@ -26,7 +38,6 @@ const Studio = () => {
         <div className="studio-team-menu">
           <p>My Team</p>
           <FontAwesomeIcon icon="plus" className="" />
-          <FontAwesomeIcon icon="envelope" className="" />
         </div>
         <div className="studio-member">
           <div className="studio-member-top">
