@@ -32,7 +32,6 @@ const StudioMember = ({ sessionObj, getSession }) => {
           },
         })
         .then((response) => {
-          console.log(response.data);
           getSession();
         });
     };
@@ -54,9 +53,15 @@ const StudioMember = ({ sessionObj, getSession }) => {
         </div>
         <div className="studio-member-menu">
           {sessionObj.filename ? (
-            <Link to="/editor" className="studio-member-menu-item">
-              (editor)
-            </Link>
+            <>
+              <audio
+                src={`${base_URL}/api/playsession/${sessionObj.filename}`}
+                controls
+              />
+              <Link to="/editor" className="studio-member-menu-item">
+                (editor)
+              </Link>
+            </>
           ) : (
             <div className="studio-member-menu-item">
               <input
