@@ -5,9 +5,9 @@ const db = require("./db_info");
 const router = express();
 
 router.post("/createuser", async (req, res) => {
-  googleID = req.body.googleID.split("").reverse().join("");
-  username = req.body.username;
-  uname = req.body.name;
+  const googleID = req.body.googleID.split("").reverse().join("");
+  const username = req.body.username;
+  const uname = req.body.name;
   db.query(
     `INSERT INTO groovle.user (googleID, username, name, registeredAt) VALUES ("${googleID}", "${username}", "${uname}", now());`,
     function (error, results) {
@@ -19,9 +19,9 @@ router.post("/createuser", async (req, res) => {
 });
 
 router.post("/updateuser", async (req, res) => {
-  googleID = req.body.id.split("").reverse().join("");
-  key = req.body.key;
-  value = req.body.value;
+  const googleID = req.body.id.split("").reverse().join("");
+  const key = req.body.key;
+  const value = req.body.value;
   db.query(
     `UPDATE user SET ${key} = '${value}' WHERE (googleID = '${googleID}');`,
     function (error, results) {
@@ -33,7 +33,7 @@ router.post("/updateuser", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  tokenId = req.body.tokenId;
+  const tokenId = req.body.tokenId;
   await axios
     .get(`https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${tokenId}`)
     .then((response) => {
@@ -78,9 +78,9 @@ router.get("/userbyid/:id", (req, res) => {
 });
 
 router.post("/createsong", (req, res) => {
-  title = req.body.title;
-  artist = req.body.artist;
-  randomKey = req.body.randomKey;
+  const title = req.body.title;
+  const artist = req.body.artist;
+  const randomKey = req.body.randomKey;
   db.query(
     `INSERT INTO groovle.song (title, artist, createdBy, randomKey, createdAt, songLocation) VALUES ("${title}", "${artist}", 1, "${randomKey}", now(), "here");`,
     function (error, results) {
@@ -117,6 +117,7 @@ router.get("/song/:randomKey", (req, res) => {
       if (error) throw error;
       if (result.length === 1) {
         const data = {
+          songID: result[0].songID,
           title: result[0].title,
           artist: result[0].artist,
           description: result[0].description,
@@ -152,7 +153,7 @@ router.get("/songbyid/:songID", (req, res) => {
 });
 
 router.post("/verifykey", (req, res) => {
-  const randomKey = req.params.randomKey;
+  const randomKey = req.body.key;
   db.query(
     `select count(*) as cnt from song where randomKey='${randomKey}'`,
     function (error, result) {
@@ -164,6 +165,29 @@ router.post("/verifykey", (req, res) => {
         console.log("key exists!");
         res.send(false);
       }
+    }
+  );
+});
+
+router.get("/session/:songID", (req, res) => {
+  const songID = req.params.songID;
+  db.query(
+    `select * from session left join user on session.createdBy = user.userID where songID='${songID}'`,
+    function (error, results) {
+      if (error) throw error;
+      let data = [];
+      for (let i = 0; i < results.length; i++) {
+        data.push({
+          sessionID: results[i].sessionID,
+          createdBy: results[i].createdBy,
+          createdAt: results[i].createdAt,
+          instrument: results[i].instrument,
+          username: results[i].username,
+          picture: results[i].picture,
+        });
+      }
+      console.log(data);
+      res.send(data);
     }
   );
 });
