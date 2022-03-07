@@ -1,0 +1,39 @@
+.studio-member {
+  border-bottom: 1px solid #d4d4d4;
+  margin: 20px 0;
+  padding-bottom: 10px;
+}
+
+.studio-member-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.studio-member-profile {
+  display: flex;
+  align-items: center;
+}
+
+.studio-member-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.studio-member-username {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.studio-member-menu {
+  display: flex;
+  gap: 10px;
+}
+
+.studio-member-progressbar input {
+  background-color: gray;
+}
