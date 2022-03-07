@@ -7,8 +7,9 @@ const app = express();
 const port = 80;
 // const port = 4000;
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.json({ limit: "25mb" }));
+app.use(express.urlencoded({ limit: "25mb", extended: false }));
+
 app.use("/api", api);
 app.use(cors());
 

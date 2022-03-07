@@ -53,7 +53,11 @@ const Studio = () => {
         </div>
         {sessions &&
           sessions.map((session) => (
-            <StudioMember sessionObj={session} key={session.sessionID} />
+            <StudioMember
+              sessionObj={session}
+              getSession={getSession}
+              key={session.sessionID}
+            />
           ))}
       </div>
     </>

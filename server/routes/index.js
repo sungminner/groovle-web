@@ -1,6 +1,8 @@
 const express = require("express");
+const fs = require("fs");
 const { default: axios } = require("axios");
 const db = require("./db_info");
+const { v4 } = require("uuid");
 
 const router = express();
 
@@ -181,6 +183,7 @@ router.get("/session/:songID", (req, res) => {
           sessionID: results[i].sessionID,
           createdBy: results[i].createdBy,
           createdAt: results[i].createdAt,
+          filename: results[i].filename,
           instrument: results[i].instrument,
           username: results[i].username,
           picture: results[i].picture,
@@ -190,6 +193,25 @@ router.get("/session/:songID", (req, res) => {
       res.send(data);
     }
   );
+});
+
+router.post("/uploadsessionfile", (req, res) => {
+  const sessionID = req.body.sessionID;
+  const data = req.body.data;
+  const extension = req.body.extension;
+  const filename = v4();
+  const file = Buffer.from(data, "base64");
+  fs.writeFile(`NAS/session/${filename}.${extension}`, file, (err) => {
+    if (err) throw err;
+    db.query(
+      `UPDATE session SET filename = '${filename}.${extension}' WHERE (sessionID = '${sessionID}');`,
+      function (error, results) {
+        if (error) throw error;
+        console.log("audio file saved!");
+        res.send(true);
+      }
+    );
+  });
 });
 
 module.exports = router;

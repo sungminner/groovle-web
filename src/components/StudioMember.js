@@ -1,9 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import base_URL from "base_URL";
 import "css/studiomember.css";
 
-const StudioMember = ({ sessionObj }) => {
+const StudioMember = ({ sessionObj, getSession }) => {
+  const onFileChange = async (event) => {
+    const {
+      target: { files },
+    } = event;
+    const file = files[0];
+    if (parseFloat(file.size) > 20 * 1024 * 1024) {
+      alert("20MB 이상의 파일은 업로드할 수 없습니다.");
+      // setTrack(null);
+      return;
+    }
+    const extension = file.name.split(".").pop().toLowerCase();
+    const reader = new FileReader();
+    reader.onloadend = async (finishedEvent) => {
+      const {
+        target: { result },
+      } = finishedEvent;
+      await axios
+        .post(`${base_URL}/api/uploadsessionfile`, {
+          sessionID: sessionObj.sessionID,
+          data: result,
+          extension,
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          getSession();
+        });
+    };
+    reader.readAsDataURL(file);
+  };
   return (
     <div className="studio-member">
       <div className="studio-member-top">
@@ -25,7 +59,12 @@ const StudioMember = ({ sessionObj }) => {
             </Link>
           ) : (
             <div className="studio-member-menu-item">
-              <input type="file" accept="audio/*" required />
+              <input
+                type="file"
+                accept="audio/*"
+                onChange={onFileChange}
+                required
+              />
             </div>
           )}
           <div className="studio-member-menu-item">
