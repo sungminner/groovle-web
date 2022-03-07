@@ -6,7 +6,7 @@ import base_URL from "base_URL";
 import "css/studio.css";
 import StudioMember from "components/StudioMember";
 
-const Studio = () => {
+const Studio = ({ userObj }) => {
   const { randomKey } = useParams();
   const [songID, setSongID] = useState(null);
   const [songObj, setSongObj] = useState();
@@ -28,6 +28,19 @@ const Studio = () => {
       getSession();
     }
   }, [songID]);
+  const addSession = async () => {
+    await axios
+      .post(`${base_URL}/api/createsession`, {
+        userID: userObj.userID,
+        songID,
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+      .then(() => {
+        getSession();
+      });
+  };
   return (
     <>
       <div className="studio-playbar">
@@ -49,7 +62,7 @@ const Studio = () => {
       <div className="studio-team">
         <div className="studio-team-menu">
           <p>My Team</p>
-          <FontAwesomeIcon icon="plus" className="" />
+          <FontAwesomeIcon icon="plus" onClick={addSession} />
         </div>
         {sessions &&
           sessions.map((session) => (

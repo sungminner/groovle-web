@@ -66,6 +66,7 @@ router.get("/userbyid/:id", (req, res) => {
       if (result.length === 1) {
         //id값에 해당하는 user가 있으면 userObj 반환, 없으면 false 반환
         const data = {
+          userID: result[0].userID,
           username: result[0].username,
           name: result[0].name,
           picture: result[0].picture,
@@ -191,6 +192,19 @@ router.get("/session/:songID", (req, res) => {
       }
       console.log(data);
       res.send(data);
+    }
+  );
+});
+
+router.post("/createsession", (req, res) => {
+  const userID = req.body.userID;
+  const songID = req.body.songID;
+  db.query(
+    `INSERT INTO groovle.session (createdBy, songID, createdAt) VALUES ("${userID}", "${songID}", now());`,
+    function (error, results) {
+      if (error) throw error;
+      console.log("session created!");
+      res.send(true);
     }
   );
 });

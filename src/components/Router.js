@@ -106,7 +106,7 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
           path="/studio/:randomKey"
           element={
             <PrivateRoute userObj={userObj}>
-              <Studio />
+              <Studio userObj={userObj} />
             </PrivateRoute>
           }
         />
