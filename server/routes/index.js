@@ -77,6 +77,8 @@ router.get("/userbyid/:id", (req, res) => {
           username: result[0].username,
           name: result[0].name,
           picture: result[0].picture,
+          mainSession: result[0].mainSession,
+          bio: result[0].bio,
         };
         console.log(data);
         res.send(data);

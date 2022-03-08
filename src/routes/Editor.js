@@ -3,7 +3,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import "css/editor.css";
 
-const Editor = () => {
+const Editor = ({ userObj }) => {
   return (
     <>
       <div className="editor">
