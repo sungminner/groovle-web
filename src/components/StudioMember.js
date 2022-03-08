@@ -5,7 +5,7 @@ import axios from "axios";
 import base_URL from "base_URL";
 import "css/studiomember.css";
 
-const StudioMember = ({ sessionObj, getSession }) => {
+const StudioMember = ({ userObj, sessionObj, getSession }) => {
   const onFileChange = async (event) => {
     const {
       target: { files },
@@ -53,15 +53,14 @@ const StudioMember = ({ sessionObj, getSession }) => {
         </div>
         <div className="studio-member-menu">
           {sessionObj.filename ? (
-            <>
-              <audio
-                src={`${base_URL}/api/playsession/${sessionObj.filename}`}
-                controls
-              />
-              <Link to="/editor" className="studio-member-menu-item">
+            userObj.userID === sessionObj.userID && (
+              <Link
+                to={`/editor/${sessionObj.sessionID}`}
+                className="studio-member-menu-item"
+              >
                 (editor)
               </Link>
-            </>
+            )
           ) : (
             <div className="studio-member-menu-item">
               <input
@@ -81,7 +80,12 @@ const StudioMember = ({ sessionObj, getSession }) => {
         </div>
       </div>
       <div className="studio-member-progressbar">
-        <input type="range" />
+        {sessionObj.filename && (
+          <audio
+            src={`${base_URL}/api/playsession/${sessionObj.filename}`}
+            controls
+          />
+        )}
       </div>
     </div>
   );

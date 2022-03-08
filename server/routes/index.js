@@ -1,10 +1,17 @@
 const express = require("express");
+const cors = require("cors");
 const fs = require("fs");
 const { default: axios } = require("axios");
 const db = require("./db_info");
 const { v4 } = require("uuid");
 
 const router = express();
+
+corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true,
+};
+router.use(cors(corsOptions));
 
 router.post("/createuser", async (req, res) => {
   const googleID = req.body.googleID.split("").reverse().join("");
@@ -186,6 +193,7 @@ router.get("/session/:songID", (req, res) => {
           createdAt: results[i].createdAt,
           filename: results[i].filename,
           instrument: results[i].instrument,
+          userID: results[i].userID,
           username: results[i].username,
           picture: results[i].picture,
         });

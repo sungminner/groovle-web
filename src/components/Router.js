@@ -111,7 +111,7 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
           }
         />
         <Route
-          path="/editor"
+          path="/editor/:sessionid"
           element={
             <PrivateRoute userObj={userObj}>
               <Editor />

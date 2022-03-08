@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import StudioMember from "components/StudioMember";
 import base_URL from "base_URL";
 import "css/studio.css";
-import StudioMember from "components/StudioMember";
 
 const Studio = ({ userObj }) => {
   const { randomKey } = useParams();
@@ -67,6 +67,7 @@ const Studio = ({ userObj }) => {
         {sessions &&
           sessions.map((session) => (
             <StudioMember
+              userObj={userObj}
               sessionObj={session}
               getSession={getSession}
               key={session.sessionID}
