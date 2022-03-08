@@ -52,25 +52,24 @@ const StudioMember = ({ userObj, sessionObj, getSession }) => {
           )}
         </div>
         <div className="studio-member-menu">
-          {sessionObj.filename ? (
-            userObj.userID === sessionObj.userID && (
+          {userObj.userID === sessionObj.userID &&
+            (sessionObj.filename ? (
               <Link
                 to={`/editor/${sessionObj.sessionID}`}
                 className="studio-member-menu-item"
               >
                 (editor)
               </Link>
-            )
-          ) : (
-            <div className="studio-member-menu-item">
-              <input
-                type="file"
-                accept="audio/*"
-                onChange={onFileChange}
-                required
-              />
-            </div>
-          )}
+            ) : (
+              <div className="studio-member-menu-item">
+                <input
+                  type="file"
+                  accept="audio/*"
+                  onChange={onFileChange}
+                  required
+                />
+              </div>
+            ))}
           <div className="studio-member-menu-item">
             <FontAwesomeIcon icon="play" />
           </div>

@@ -25,7 +25,7 @@ const Studio = ({ userObj }) => {
   const synthesize = async () => {
     if (!songObj.synthReady && sessions.length > 1) {
       console.log("synthesize called");
-      await axios.post(`${base_URL}/api/synthesize`, {
+      await axios.post(`${base_URL}/synthesize`, {
         songID,
         headers: {
           "content-type": "application/json",
@@ -76,7 +76,9 @@ const Studio = ({ userObj }) => {
         <div className="studio-team-menu">
           <p>My Team</p>
           <FontAwesomeIcon icon="plus" onClick={addSession} />
-          <p onClick={synthesize}>합성</p>
+          {songObj && songObj.createdBy === userObj.userID && (
+            <p onClick={synthesize}>합성</p>
+          )}
         </div>
         {sessions &&
           sessions.map((session) => (
