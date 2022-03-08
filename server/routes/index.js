@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const { default: axios } = require("axios");
+const { PythonShell } = require("python-shell");
 const db = require("./db_info");
 const { v4 } = require("uuid");
 
@@ -133,6 +134,7 @@ router.get("/song/:randomKey", (req, res) => {
           title: result[0].title,
           artist: result[0].artist,
           description: result[0].description,
+          synthReady: result[0].synthReady,
         };
         console.log(data);
         res.send(data);
@@ -275,6 +277,28 @@ router.get("/playsession/:filename", (req, res) => {
       .on("error", (err) => {
         res.end(err);
       });
+  });
+});
+
+router.post("/synthesize", (req, res) => {
+  console.log("synthesize called");
+  songID = req.body.songID;
+
+  const options = {
+    mode: "text",
+    pythonPath: "/usr/bin/python3",
+    scriptPath: "/home/groovle/groovle-web/server/python",
+    // pythonPath: "C:/Users/sm185/anaconda3/python.exe",
+    // scriptPath: "C:/Users/sm185/Desktop/code/react/groovle-web/server/python",
+    pythonOptions: ["-u"], // get print results in real-time
+    args: ["synthesize", songID],
+  };
+
+  PythonShell.run("main.py", options, function (err, results) {
+    if (err) throw err;
+    // results is an array consisting of messages collected during execution
+    console.log("results: %j", results);
+    // 결과 받으면 합성 끝났다고 클라이언트에 표시
   });
 });
 

@@ -22,8 +22,21 @@ const Studio = ({ userObj }) => {
       setSessions(response.data);
     });
   };
+  const synthesize = async () => {
+    if (!songObj.synthReady && sessions.length > 1) {
+      console.log("synthesize called");
+      await axios.post(`${base_URL}/api/synthesize`, {
+        songID,
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+    }
+  };
   useEffect(() => {
     getSong();
+  }, []);
+  useEffect(() => {
     if (songID) {
       getSession();
     }
@@ -63,6 +76,7 @@ const Studio = ({ userObj }) => {
         <div className="studio-team-menu">
           <p>My Team</p>
           <FontAwesomeIcon icon="plus" onClick={addSession} />
+          <p onClick={synthesize}>합성</p>
         </div>
         {sessions &&
           sessions.map((session) => (
