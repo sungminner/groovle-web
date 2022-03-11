@@ -17,6 +17,10 @@ const StudioMember = ({ userObj, sessionObj, getSession }) => {
       return;
     }
     const extension = file.name.split(".").pop().toLowerCase();
+    if (!["wav", "mp3"].includes(extension)) {
+      alert("wav 또는 mp3 확장자를 가진 파일만 업로드할 수 있습니다.");
+      return;
+    }
     const reader = new FileReader();
     reader.onloadend = async (finishedEvent) => {
       const {

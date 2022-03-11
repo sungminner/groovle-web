@@ -24,8 +24,10 @@ const Studio = ({ userObj }) => {
   };
   const synthesize = async () => {
     if (!songObj.synthReady && sessions.length > 1) {
+      const files = sessions.map((session) => session.filename);
       console.log("synthesize called");
       await axios.post(`${base_URL}/synthesize`, {
+        files,
         songID,
         headers: {
           "content-type": "application/json",
