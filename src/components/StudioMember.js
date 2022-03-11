@@ -41,6 +41,22 @@ const StudioMember = ({ userObj, sessionObj, getSession }) => {
     };
     reader.readAsDataURL(file);
   };
+  const deleteSession = async () => {
+    const ok = window.confirm("정말 삭제하시겠습니까?");
+    if (ok) {
+      await axios
+        .post(`${base_URL}/api/deletesession`, {
+          sessionID: sessionObj.sessionID,
+          filename: sessionObj.filename,
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+        .then((response) => {
+          getSession();
+        });
+    }
+  };
   return (
     <div className="studio-member">
       <div className="studio-member-top">
@@ -84,10 +100,15 @@ const StudioMember = ({ userObj, sessionObj, getSession }) => {
       </div>
       <div className="studio-member-progressbar">
         {sessionObj.filename && (
-          <audio
-            src={`${base_URL}/api/playsession/${sessionObj.filename}`}
-            controls
-          />
+          <>
+            <audio
+              src={`${base_URL}/api/playsession/${sessionObj.filename}`}
+              controls
+            />
+            <div>
+              <button onClick={deleteSession}>삭제</button>
+            </div>
+          </>
         )}
       </div>
     </div>

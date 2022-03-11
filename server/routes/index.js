@@ -240,6 +240,22 @@ router.post("/uploadsessionfile", (req, res) => {
   });
 });
 
+router.post("/deletesession", (req, res) => {
+  const sessionID = req.body.sessionID;
+  const filename = req.body.filename;
+  fs.unlink(`NAS/session/${filename}`, (err) => {
+    if (err) throw err;
+    db.query(
+      `DELETE FROM session WHERE (sessionID = '${sessionID}');`,
+      function (error, results) {
+        if (error) throw error;
+        console.log("session deleted!");
+        res.send(true);
+      }
+    );
+  });
+});
+
 router.get("/playsession/:filename", (req, res) => {
   const filename = req.params.filename;
   const file = `NAS/session/${filename}`;
