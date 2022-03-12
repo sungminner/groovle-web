@@ -119,6 +119,14 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
           }
         />
         <Route
+          path="/recorder/:sessionid"
+          element={
+            <PrivateRoute userObj={userObj}>
+              <Recorder />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/settings"
           element={
             <PrivateRoute userObj={userObj}>
@@ -151,7 +159,6 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
           }
         />
         <Route path="/welcome" element={<Welcome userObj={userObj} />} />
-        <Route path="/recorder" element={<Recorder />} />
       </Routes>
       <Playbar playlist={playlist} />
       <Navigation />

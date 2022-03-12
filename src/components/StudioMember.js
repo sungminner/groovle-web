@@ -88,6 +88,7 @@ const StudioMember = ({ userObj, sessionObj, getSession }) => {
                   onChange={onFileChange}
                   required
                 />
+                <Link to={`/recorder/${sessionObj.sessionID}`}>녹음하기</Link>
               </div>
             ))}
           <div className="studio-member-menu-item">
