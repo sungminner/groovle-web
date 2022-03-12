@@ -21,6 +21,19 @@ app.use("/api", api);
 
 app.use(express.static(path.join(__dirname, "../build")));
 
+app.get(
+  "/.well-known/pki-validation/1A0F678C7018399D9138998C36DA54A1.txt",
+  (req, res) => {
+    res.sendFile(
+      path.join(
+        __dirname,
+        "../.well-known/pki-validation",
+        "1A0F678C7018399D9138998C36DA54A1.txt"
+      )
+    );
+  }
+);
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../build", "index.html"));
 });

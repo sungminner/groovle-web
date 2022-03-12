@@ -25,6 +25,8 @@ yarn-error.log*
 .env
 
 serviceAccountKey/
+.well-known
+
 NAS/
 
 __pycache__/
