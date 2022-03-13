@@ -38,6 +38,7 @@ class GroovleSynthesizer:
             y = np.int16(x)
         song = pydub.AudioSegment(y.tobytes(), frame_rate=SAMPLE_RATE, sample_width=2, channels=channels)
         song.export("NAS/song/"+songID+".mp3", format="mp3")
+        print(True)
 
 
 if __name__ == "__main__":

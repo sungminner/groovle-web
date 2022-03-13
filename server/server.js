@@ -3,6 +3,7 @@ const cors = require("cors");
 const path = require("path");
 const { PythonShell } = require("python-shell");
 const api = require("./routes/index");
+const db = require("./routes/db_info");
 
 const app = express();
 const port = 80;
@@ -57,6 +58,16 @@ app.post("/synthesize", (req, res) => {
     if (err) throw err;
     // results is an array consisting of messages collected during execution
     console.log("results: %j", results);
+    if (results[1] === "True") {
+      db.query(
+        `UPDATE song SET synthReady = 1 WHERE (songID = '${songID}');`,
+        function (error, results) {
+          if (error) throw error;
+          console.log("synthesized!");
+          res.send(true);
+        }
+      );
+    }
     // 결과 받으면 합성 끝났다고 클라이언트에 표시
   });
 });

@@ -11,6 +11,7 @@ const Studio = ({ userObj }) => {
   const [songID, setSongID] = useState(null);
   const [songObj, setSongObj] = useState();
   const [sessions, setSessions] = useState();
+  const [isPending, setIsPending] = useState(false);
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
       setSongID(response.data.songID);
@@ -24,15 +25,23 @@ const Studio = ({ userObj }) => {
   };
   const synthesize = async () => {
     if (!songObj.synthReady && sessions.length > 1) {
+      setIsPending(true);
       const files = sessions.map((session) => session.filename);
       console.log("synthesize called");
-      await axios.post(`${base_URL}/synthesize`, {
-        files,
-        songID,
-        headers: {
-          "content-type": "application/json",
-        },
-      });
+      await axios
+        .post(`${base_URL}/synthesize`, {
+          files,
+          songID,
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+        .then((response) => {
+          if (response.data) {
+            setIsPending(false);
+            getSong(); // 합성 버튼을 안 보이게 하기 위해
+          }
+        });
     }
   };
   useEffect(() => {
@@ -78,8 +87,14 @@ const Studio = ({ userObj }) => {
         <div className="studio-team-menu">
           <p>My Team</p>
           <FontAwesomeIcon icon="plus" onClick={addSession} />
-          {songObj && songObj.createdBy === userObj.userID && (
-            <p onClick={synthesize}>합성</p>
+          {isPending ? (
+            <p>합성중...</p>
+          ) : (
+            songObj &&
+            sessions &&
+            songObj.createdBy === userObj.userID &&
+            !songObj.synthReady &&
+            sessions.length > 1 && <p onClick={synthesize}>합성</p>
           )}
         </div>
         {sessions &&
