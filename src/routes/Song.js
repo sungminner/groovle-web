@@ -54,6 +54,12 @@ const Song = () => {
           <FontAwesomeIcon icon="redo-alt" />
         </div>
       </div>
+      {songObj &&
+        (songObj.synthReady ? (
+          <audio src={`${base_URL}/api/playsong/${songObj.songID}`} controls />
+        ) : (
+          <></>
+        ))}
       <div className="song-description">
         <p>소개</p>
         <p>
