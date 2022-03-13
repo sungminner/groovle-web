@@ -73,7 +73,7 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
           path="/create"
           element={
             <PublicRoute userObj={userObj} restricted={false}>
-              <Create />
+              <Create userObj={userObj} />
             </PublicRoute>
           }
         />

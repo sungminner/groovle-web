@@ -15,9 +15,10 @@ song.use(cors(corsOptions));
 song.post("/createsong", (req, res) => {
   const title = req.body.title;
   const artist = req.body.artist;
+  const createdBy = req.body.createdBy;
   const randomKey = req.body.randomKey;
   db.query(
-    `INSERT INTO groovle.song (title, artist, createdBy, randomKey, createdAt, songLocation) VALUES ("${title}", "${artist}", 1, "${randomKey}", now(), "here");`,
+    `INSERT INTO groovle.song (title, artist, createdBy, randomKey, createdAt, songLocation) VALUES ("${title}", "${artist}", "${createdBy}", "${randomKey}", now(), "here");`,
     function (error, results) {
       if (error) throw error;
       console.log("song created!");
