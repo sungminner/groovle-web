@@ -16,7 +16,7 @@ const Home = ({ setPlaylist }) => {
     setPlaylist(playlist);
   };
   const getData = async () => {
-    await axios.get(`${base_URL}/api/show`).then((response) => {
+    await axios.get(`${base_URL}/api/home`).then((response) => {
       setSongs(response.data);
     });
   };

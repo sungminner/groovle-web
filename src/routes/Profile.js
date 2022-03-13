@@ -14,7 +14,7 @@ const Profile = ({ userObj }) => {
               ? userObj.picture
               : "https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg"
           }
-          alt="followings"
+          alt="profile"
         />
         <div className="profile-userinfo-text">
           <div className="profile-userinfo-top">
