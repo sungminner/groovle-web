@@ -32,7 +32,7 @@ const Create = () => {
     });
     setTitle("");
     setArtist("");
-    navigate(`/song/${randomKey}`);
+    navigate(`/song/${randomKey}`, { replace: true });
   };
   return (
     <>
