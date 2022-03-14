@@ -1,4 +1,7 @@
 const express = require("express");
+const https = require("https");
+const http = require("http");
+const fs = require("fs");
 const cors = require("cors");
 const path = require("path");
 const { PythonShell } = require("python-shell");
@@ -6,11 +9,9 @@ const api = require("./routes/index");
 const db = require("./routes/db_info");
 
 const app = express();
-const port = 80;
-// const port = 4000;
 
 corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://localhost:3000",
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -72,6 +73,24 @@ app.post("/synthesize", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log("Groovle listening");
+const options = {
+  cert: fs.readFileSync(path.join(__dirname, "ssl/certificate.crt")),
+  ca: fs.readFileSync(path.join(__dirname, "ssl/ca_bundle.crt")),
+  key: fs.readFileSync(path.join(__dirname, "ssl/private.key")),
+};
+
+const httpServer = http.createServer((req, res) => {
+  res.statusCode = 301;
+  res.setHeader("Location", `https://groovle.site${req.url}`);
+  res.end();
+});
+
+httpServer.listen(80, () => {
+  console.log("Groovle listening 80");
+});
+
+const httpsServer = https.createServer(options, app);
+
+httpsServer.listen(443, () => {
+  console.log("Groovle listening 443");
 });

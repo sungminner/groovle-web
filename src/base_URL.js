@@ -1,4 +1,4 @@
-const base_URL = "http://groovle.site";
-// const base_URL = "http://localhost:4000";
+const base_URL = "https://groovle.site";
+// const base_URL = "https://localhost";
 
 export default base_URL;

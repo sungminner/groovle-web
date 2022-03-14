@@ -31,4 +31,6 @@ NAS/
 
 __pycache__/
 
+ssl/
+
 /build
