@@ -12,7 +12,7 @@ const Profile = ({ userObj }) => {
           src={
             userObj.picture
               ? userObj.picture
-              : "https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg"
+              : "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
           }
           alt="profile"
         />

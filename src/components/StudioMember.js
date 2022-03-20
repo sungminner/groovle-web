@@ -106,11 +106,11 @@ const StudioMember = ({ userObj, sessionObj, getSession }) => {
               src={`${base_URL}/api/playsession/${sessionObj.filename}`}
               controls
             />
-            <div>
-              <button onClick={deleteSession}>삭제</button>
-            </div>
           </>
         )}
+        <div>
+          <button onClick={deleteSession}>삭제</button>
+        </div>
       </div>
     </div>
   );

@@ -73,17 +73,20 @@ session.post("/uploadsessionfile", (req, res) => {
 session.post("/deletesession", (req, res) => {
   const sessionID = req.body.sessionID;
   const filename = req.body.filename;
-  fs.unlink(`NAS/session/${filename}`, (err) => {
-    if (err) throw err;
-    db.query(
-      `DELETE FROM session WHERE (sessionID = '${sessionID}');`,
-      function (error, results) {
-        if (error) throw error;
-        console.log("session deleted!");
-        res.send(true);
+  db.query(
+    `DELETE FROM session WHERE (sessionID = '${sessionID}');`,
+    function (error, results) {
+      if (error) throw error;
+      if (fs.existsSync(`NAS/session/${filename}`)) {
+        fs.unlink(`NAS/session/${filename}`, (err) => {
+          if (err) throw err;
+          console.log("file deleted!");
+        });
       }
-    );
-  });
+      console.log("session deleted!");
+      res.send(true);
+    }
+  );
 });
 
 session.get("/playsession/:filename", (req, res) => {
