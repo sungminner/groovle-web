@@ -55,7 +55,9 @@ const Song = () => {
         </div>
       </div>
       {songObj &&
-        (songObj.synthReady ? (
+        (songObj.status === 2 ||
+        songObj.status === 3 ||
+        songObj.status === 4 ? (
           <audio src={`${base_URL}/api/playsong/${songObj.songID}`} controls />
         ) : (
           <></>

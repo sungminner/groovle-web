@@ -5,7 +5,7 @@ import axios from "axios";
 import base_URL from "base_URL";
 import "css/studiomember.css";
 
-const StudioMember = ({ userObj, sessionObj, getSession }) => {
+const StudioMember = ({ userObj, songObj, sessionObj, getSession }) => {
   const onFileChange = async (event) => {
     const {
       target: { files },
@@ -28,7 +28,9 @@ const StudioMember = ({ userObj, sessionObj, getSession }) => {
       } = finishedEvent;
       await axios
         .post(`${base_URL}/api/uploadsessionfile`, {
+          songID: songObj.songID,
           sessionID: sessionObj.sessionID,
+          curStatus: songObj.status,
           data: result,
           extension,
           headers: {
@@ -46,7 +48,9 @@ const StudioMember = ({ userObj, sessionObj, getSession }) => {
     if (ok) {
       await axios
         .post(`${base_URL}/api/deletesession`, {
+          songID: songObj.songID,
           sessionID: sessionObj.sessionID,
+          curStatus: songObj.status,
           filename: sessionObj.filename,
           headers: {
             "content-type": "application/json",
@@ -75,10 +79,10 @@ const StudioMember = ({ userObj, sessionObj, getSession }) => {
           {userObj.userID === sessionObj.userID &&
             (sessionObj.filename ? (
               <Link
-                to={`/editor/${sessionObj.sessionID}`}
+                to={`/studio/${songObj.randomKey}/editor/${sessionObj.sessionID}`}
                 className="studio-member-menu-item"
               >
-                (editor)
+                편집실
               </Link>
             ) : (
               <div className="studio-member-menu-item">
@@ -88,12 +92,13 @@ const StudioMember = ({ userObj, sessionObj, getSession }) => {
                   onChange={onFileChange}
                   required
                 />
-                <Link to={`/recorder/${sessionObj.sessionID}`}>녹음하기</Link>
+                <Link
+                  to={`/studio/${songObj.randomKey}/recorder/${sessionObj.sessionID}`}
+                >
+                  녹음하기
+                </Link>
               </div>
             ))}
-          <div className="studio-member-menu-item">
-            <FontAwesomeIcon icon="play" />
-          </div>
           <div className="studio-member-menu-item">
             <FontAwesomeIcon icon="gear" />
           </div>

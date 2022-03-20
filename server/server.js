@@ -48,7 +48,7 @@ app.post("/synthesize", (req, res) => {
     console.log("results: %j", results);
     if (results[1] === "True") {
       db.query(
-        `UPDATE song SET synthReady = 1 WHERE (songID = '${songID}');`,
+        `UPDATE song SET status = 2 WHERE (songID = '${songID}');`,
         function (error, results) {
           if (error) throw error;
           console.log("synthesized!");

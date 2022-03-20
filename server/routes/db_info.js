@@ -6,6 +6,7 @@ var db = mysql.createConnection({
   port: 3300,
   password: "Groovle2022!!",
   database: "groovle",
+  multipleStatements: true,
 });
 
 // var db = mysql.createConnection({
@@ -14,6 +15,7 @@ var db = mysql.createConnection({
 //   port: 3307,
 //   password: "tjdals123",
 //   database: "groovle",
+//   multipleStatements: true,
 // });
 
 db.connect();

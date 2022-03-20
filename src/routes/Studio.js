@@ -24,24 +24,32 @@ const Studio = ({ userObj }) => {
     });
   };
   const synthesize = async () => {
-    if (!songObj.synthReady && sessions.length > 1) {
-      setIsPending(true);
-      const files = sessions.map((session) => session.filename);
-      console.log("synthesize called");
-      await axios
-        .post(`${base_URL}/synthesize`, {
-          files,
-          songID,
-          headers: {
-            "content-type": "application/json",
-          },
-        })
-        .then((response) => {
-          if (response.data) {
-            setIsPending(false);
-            getSong(); // 합성 버튼을 안 보이게 하기 위해
-          }
-        });
+    if (sessions.length > 1) {
+      if (songObj.status === 1 || songObj.status === 3) {
+        setIsPending(true);
+        const files = sessions.map((session) => session.filename);
+        console.log("synthesize called");
+        await axios
+          .post(`${base_URL}/synthesize`, {
+            files,
+            songID,
+            headers: {
+              "content-type": "application/json",
+            },
+          })
+          .then((response) => {
+            if (response.data) {
+              setIsPending(false);
+              getSong(); // 합성 버튼을 안 보이게 하기 위해
+            }
+          });
+      } else if (songObj.status === 2) {
+        alert("이미 최신 버전입니다.");
+      } else {
+        alert("합성이 불가능합니다.");
+      }
+    } else {
+      alert("세션이 2개 이상이어야 합성을 진행할 수 있습니다.");
     }
   };
   useEffect(() => {
@@ -91,16 +99,16 @@ const Studio = ({ userObj }) => {
             <p>합성중...</p>
           ) : (
             songObj &&
-            sessions &&
-            songObj.createdBy === userObj.userID &&
-            !songObj.synthReady &&
-            sessions.length > 1 && <p onClick={synthesize}>합성</p>
+            songObj.createdBy === userObj.userID && (
+              <p onClick={synthesize}>합성</p>
+            )
           )}
         </div>
         {sessions &&
           sessions.map((session) => (
             <StudioMember
               userObj={userObj}
+              songObj={songObj}
               sessionObj={session}
               getSession={getSession}
               key={session.sessionID}

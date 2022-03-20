@@ -52,15 +52,24 @@ session.get("/session/:songID", (req, res) => {
 });
 
 session.post("/uploadsessionfile", (req, res) => {
+  const songID = req.body.songID;
   const sessionID = req.body.sessionID;
+  const curStatus = req.body.curStatus;
   const data = req.body.data;
   const extension = req.body.extension;
   const filename = v4();
+  let newStatus;
+  if (curStatus === 0 || curStatus === 1) {
+    newStatus = 1;
+  } else if (curStatus === 2 || curStatus === 3) {
+    newStatus = 3;
+  }
   const file = Buffer.from(data, "base64");
   fs.writeFile(`NAS/session/${filename}.${extension}`, file, (err) => {
     if (err) throw err;
     db.query(
-      `UPDATE session SET filename = '${filename}.${extension}' WHERE (sessionID = '${sessionID}');`,
+      `UPDATE session SET filename = '${filename}.${extension}' WHERE (sessionID = '${sessionID}');
+      UPDATE song SET status = ${newStatus} WHERE (songID = '${songID}');`,
       function (error, results) {
         if (error) throw error;
         console.log("audio file saved!");
@@ -71,10 +80,19 @@ session.post("/uploadsessionfile", (req, res) => {
 });
 
 session.post("/deletesession", (req, res) => {
+  const songID = req.body.songID;
   const sessionID = req.body.sessionID;
+  const curStatus = req.body.curStatus;
   const filename = req.body.filename;
+  let newStatus;
+  if (curStatus === 0 || curStatus === 1) {
+    newStatus = 1;
+  } else if (curStatus === 2 || curStatus === 3) {
+    newStatus = 3;
+  }
   db.query(
-    `DELETE FROM session WHERE (sessionID = '${sessionID}');`,
+    `DELETE FROM session WHERE (sessionID = '${sessionID}');
+    UPDATE song SET status = ${newStatus} WHERE (songID = '${songID}');`,
     function (error, results) {
       if (error) throw error;
       if (fs.existsSync(`NAS/session/${filename}`)) {

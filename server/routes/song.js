@@ -38,9 +38,10 @@ song.get("/song/:randomKey", (req, res) => {
           songID: result[0].songID,
           title: result[0].title,
           artist: result[0].artist,
+          status: result[0].status,
           description: result[0].description,
           createdBy: result[0].createdBy,
-          synthReady: result[0].synthReady,
+          randomKey,
         };
         console.log(data);
         res.send(data);

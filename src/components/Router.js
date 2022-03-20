@@ -111,7 +111,7 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
           }
         />
         <Route
-          path="/editor/:sessionid"
+          path="/studio/:randomKey/editor/:sessionid"
           element={
             <PrivateRoute userObj={userObj}>
               <Editor userObj={userObj} />
@@ -119,7 +119,7 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
           }
         />
         <Route
-          path="/recorder/:sessionid"
+          path="/studio/:randomKey/recorder/:sessionid"
           element={
             <PrivateRoute userObj={userObj}>
               <Recorder />
