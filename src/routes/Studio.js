@@ -110,6 +110,7 @@ const Studio = ({ userObj }) => {
               userObj={userObj}
               songObj={songObj}
               sessionObj={session}
+              getSong={getSong}
               getSession={getSession}
               key={session.sessionID}
             />

@@ -5,7 +5,13 @@ import axios from "axios";
 import base_URL from "base_URL";
 import "css/studiomember.css";
 
-const StudioMember = ({ userObj, songObj, sessionObj, getSession }) => {
+const StudioMember = ({
+  userObj,
+  songObj,
+  sessionObj,
+  getSong,
+  getSession,
+}) => {
   const onFileChange = async (event) => {
     const {
       target: { files },
@@ -38,6 +44,7 @@ const StudioMember = ({ userObj, songObj, sessionObj, getSession }) => {
           },
         })
         .then((response) => {
+          getSong();
           getSession();
         });
     };
@@ -57,6 +64,7 @@ const StudioMember = ({ userObj, songObj, sessionObj, getSession }) => {
           },
         })
         .then((response) => {
+          getSong();
           getSession();
         });
     }
