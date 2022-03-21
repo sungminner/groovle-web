@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
@@ -8,6 +8,8 @@ import "css/song.css";
 const Song = () => {
   const { randomKey } = useParams();
   const [songObj, setSongObj] = useState();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audio = useRef(null);
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
       setSongObj(response.data);
@@ -18,6 +20,14 @@ const Song = () => {
   }, []);
   const onChange = () => {
     console.log("hi");
+  };
+  const onPlay = () => {
+    setIsPlaying(true);
+    audio.current.play();
+  };
+  const onPause = () => {
+    setIsPlaying(false);
+    audio.current.pause();
   };
   return (
     <>
@@ -39,6 +49,17 @@ const Song = () => {
             <p>13</p>
           </div>
         </div>
+        {songObj &&
+        (songObj.status === 2 ||
+          songObj.status === 3 ||
+          songObj.status === 4) ? (
+          <audio
+            ref={audio}
+            src={`${base_URL}/api/playsong/${songObj.songID}`}
+          />
+        ) : (
+          <></>
+        )}
         <div className="song-progressbar"></div>
         <div className="song-time">
           <p className="song-currenttime">00:00</p>
@@ -48,20 +69,24 @@ const Song = () => {
           <FontAwesomeIcon icon="bars" />
           <div className="song-button-center">
             <FontAwesomeIcon icon="step-backward" className="playbar-prev" />
-            <FontAwesomeIcon icon="play" className="playbar-play" />
+            {isPlaying ? (
+              <FontAwesomeIcon
+                icon="pause"
+                className="playbar-pause"
+                onClick={onPause}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon="play"
+                className="playbar-play"
+                onClick={onPlay}
+              />
+            )}{" "}
             <FontAwesomeIcon icon="step-forward" className="playbar-next" />
           </div>
           <FontAwesomeIcon icon="redo-alt" />
         </div>
       </div>
-      {songObj &&
-        (songObj.status === 2 ||
-        songObj.status === 3 ||
-        songObj.status === 4 ? (
-          <audio src={`${base_URL}/api/playsong/${songObj.songID}`} controls />
-        ) : (
-          <></>
-        ))}
       <div className="song-description">
         <p>소개</p>
         <p>
