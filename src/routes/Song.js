@@ -81,7 +81,7 @@ const Song = () => {
                 className="playbar-play"
                 onClick={onPlay}
               />
-            )}{" "}
+            )}
             <FontAwesomeIcon icon="step-forward" className="playbar-next" />
           </div>
           <FontAwesomeIcon icon="redo-alt" />

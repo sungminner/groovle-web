@@ -108,6 +108,9 @@ const StudioMember = ({
               </div>
             ))}
           <div className="studio-member-menu-item">
+            <button onClick={deleteSession}>삭제</button>
+          </div>
+          <div className="studio-member-menu-item">
             <FontAwesomeIcon icon="gear" />
           </div>
         </div>
@@ -121,9 +124,6 @@ const StudioMember = ({
             />
           </>
         )}
-        <div>
-          <button onClick={deleteSession}>삭제</button>
-        </div>
       </div>
     </div>
   );
