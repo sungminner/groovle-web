@@ -101,7 +101,7 @@ const StudioMember = ({
                   required
                 />
                 <Link
-                  to={`/studio/${songObj.randomKey}/recorder/${sessionObj.sessionID}`}
+                  to={`/studio/${songObj.randomKey}/editor/${sessionObj.sessionID}`}
                 >
                   녹음하기
                 </Link>

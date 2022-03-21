@@ -14,6 +14,7 @@ class Recorder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      ...props,
       isRecording: false,
       blob: null,
       blobUrl: null,
@@ -21,6 +22,7 @@ class Recorder extends React.Component {
   }
 
   onRecord = () => {
+    this.state.onRecordPlay();
     // Request permissions to record audio
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       this.setState({ isRecording: true });
@@ -39,6 +41,7 @@ class Recorder extends React.Component {
   };
 
   onStop = () => {
+    this.state.onRecordStop();
     // Stop recording
     recorder.stop();
     // Remove “recording” icon from browser tab
@@ -53,7 +56,9 @@ class Recorder extends React.Component {
       } = finishedEvent;
       await axios
         .post(`${base_URL}/api/uploadsessionfile`, {
+          songID: this.state.songObj.songID,
           sessionID: this.props.params.sessionid,
+          curStatus: this.state.songObj.status,
           data: result,
           extension: "mp3",
           headers: {
@@ -97,45 +102,5 @@ class Recorder extends React.Component {
     );
   }
 }
-
-// const Recorder = () => {
-//   AudioRecorder.encoder = mpegEncoder;
-//   AudioRecorder.prototype.mimeType = "audio/mpeg";
-//   window.MediaRecorder = AudioRecorder;
-//   if (MediaRecorder.notSupported) {
-//     console.log("MediaRecorder not supported");
-//   }
-
-//   let recorder;
-
-//   const onRecord = () => {
-//     // Request permissions to record audio
-//     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-//       recorder = new MediaRecorder(stream);
-
-//       // Set record to <audio> when recording will be finished
-//       recorder.addEventListener("dataavailable", (e) => {
-//         // audio.src = URL.createObjectURL(e.data);
-//         console.log(e.data);
-//       });
-
-//       // Start recording
-//       recorder.start();
-//     });
-//   };
-
-//   const onStop = () => {
-//     // Stop recording
-//     recorder.stop();
-//     // Remove “recording” icon from browser tab
-//     recorder.stream.getTracks().forEach((i) => i.stop());
-//   };
-//   return (
-//     <>
-//       <button onClick={onRecord}>record</button>
-//       <button onClick={onStop}>stop</button>
-//     </>
-//   );
-// };
 
 export default withRouter(Recorder);

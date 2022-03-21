@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import Recorder from "components/Recorder";
 import base_URL from "base_URL";
 import "css/editor.css";
 
@@ -52,9 +53,28 @@ const Editor = ({ userObj }) => {
     setIsPlaying(false);
     synthesized.current.pause();
   };
+  const onRecordPlay = () => {
+    setIsPlaying(true);
+    synthesized.current.currentTime = 0;
+    synthesized.current.play();
+  };
+  const onRecordStop = () => {
+    setIsPlaying(false);
+    synthesized.current.pause();
+    synthesized.current.currentTime = 0;
+  };
   return (
     <>
-      {songID && (
+      {songObj && (
+        <div>
+          <Recorder
+            songObj={songObj}
+            onRecordPlay={onRecordPlay}
+            onRecordStop={onRecordStop}
+          />
+        </div>
+      )}
+      {songObj && (
         <>
           <p>synthesized</p>
           <audio

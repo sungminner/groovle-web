@@ -6,7 +6,6 @@ import Header from "components/Header";
 import Playbar from "components/Playbar";
 import Navigation from "components/Navigation";
 import Home from "routes/Home";
-import Recorder from "routes/Recorder";
 import Profile from "routes/Profile";
 import Settings from "routes/Settings";
 import Search from "routes/Search";
@@ -115,14 +114,6 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
           element={
             <PrivateRoute userObj={userObj}>
               <Editor userObj={userObj} />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/studio/:randomKey/recorder/:sessionid"
-          element={
-            <PrivateRoute userObj={userObj}>
-              <Recorder />
             </PrivateRoute>
           }
         />
