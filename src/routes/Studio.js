@@ -95,14 +95,6 @@ const Studio = ({ userObj }) => {
         <div className="studio-team-menu">
           <p>My Team</p>
           <FontAwesomeIcon icon="plus" onClick={addSession} />
-          {isPending ? (
-            <p>합성중...</p>
-          ) : (
-            songObj &&
-            songObj.createdBy === userObj.userID && (
-              <p onClick={synthesize}>합성</p>
-            )
-          )}
         </div>
         {sessions &&
           sessions.map((session) => (
@@ -115,6 +107,21 @@ const Studio = ({ userObj }) => {
               key={session.sessionID}
             />
           ))}
+      </div>
+      <div className="studio-synth-button-padding" />
+      <div className="studio-synth-button-wrapper">
+        {isPending ? (
+          <div className="studio-synth-button ssb-disabled">
+            <p>합성중...</p>
+          </div>
+        ) : (
+          songObj &&
+          songObj.createdBy === userObj.userID && (
+            <div className="studio-synth-button" onClick={synthesize}>
+              <p>합성</p>
+            </div>
+          )
+        )}
       </div>
     </>
   );
