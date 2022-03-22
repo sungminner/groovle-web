@@ -1,0 +1,90 @@
+.create {
+  margin: 0 30px;
+}
+
+.create-search {
+  margin: 100px 0;
+}
+
+.create-search input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 18px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.create-search-result {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.create-search-result-block {
+  background-color: #fdf5f7;
+  margin: 10px 0; /* auto로 div 전체 가운데 정렬 */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px #aaa;
+}
+
+.create-search-result-block:hover {
+  background-color: #fdeff3;
+  box-shadow: 0 1px 5px #808080;
+}
+
+.create-search-result-title {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.create-search-result-artist {
+  font-size: 13px;
+  color: gray;
+}
+
+.create-form {
+  text-align: center;
+}
+
+.create-form-title,
+.create-form-artist {
+  width: 100%;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.create-form-title p,
+.create-form-artist p {
+  width: 100px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.create-form-title input,
+.create-form-artist input {
+  width: 100%;
+  padding: 10px;
+  line-height: 30px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 25px;
+  border: 1px solid black;
+}
+
+.create-form-button {
+  width: 100%;
+  margin-top: 50px;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  height: 50px;
+  background-color: #711e9a;
+  color: #fff;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}

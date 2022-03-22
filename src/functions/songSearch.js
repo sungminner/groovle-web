@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const trackSearch = async (value) => {
+const songSearch = async (value) => {
   const url = "https://ws.audioscrobbler.com/2.0";
   const response = await axios.get(url, {
     params: {
@@ -13,4 +13,4 @@ const trackSearch = async (value) => {
   return response["data"]["results"]["trackmatches"]["track"].slice(0, 10);
 };
 
-export default trackSearch;
+export default songSearch;
