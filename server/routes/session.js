@@ -107,6 +107,24 @@ session.post("/deletesession", (req, res) => {
   );
 });
 
+session.post("/synthesizeonefile", (req, res) => {
+  const filename = req.body.filename;
+  const songID = req.body.songID;
+  const file = `NAS/session/${filename}`;
+  const destination = `NAS/song/${songID}.mp3`;
+  fs.copyFile(file, destination, (err) => {
+    if (err) throw err;
+    db.query(
+      `UPDATE song SET status = 2 WHERE (songID = '${songID}');`,
+      function (error, results) {
+        if (error) throw error;
+        console.log("synthesized one file!");
+        res.send(true);
+      }
+    );
+  });
+});
+
 session.get("/playsession/:filename", (req, res) => {
   const filename = req.params.filename;
   const file = `NAS/session/${filename}`;
