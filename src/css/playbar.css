@@ -45,7 +45,7 @@
   font-size: 20px;
 }
 
-.playbar-pause,
-.playbar-play {
+.playbar-play,
+.playbar-pause {
   cursor: pointer;
 }

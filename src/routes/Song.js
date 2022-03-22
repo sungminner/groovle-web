@@ -68,21 +68,30 @@ const Song = () => {
         <div className="song-button">
           <FontAwesomeIcon icon="bars" />
           <div className="song-button-center">
-            <FontAwesomeIcon icon="step-backward" className="playbar-prev" />
-            {isPlaying ? (
-              <FontAwesomeIcon
-                icon="pause"
-                className="playbar-pause"
-                onClick={onPause}
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon="play"
-                className="playbar-play"
-                onClick={onPlay}
-              />
-            )}
-            <FontAwesomeIcon icon="step-forward" className="playbar-next" />
+            <FontAwesomeIcon
+              icon="step-backward"
+              className="song-button-prev"
+            />
+            {songObj &&
+              (songObj.status === 0 ? (
+                <FontAwesomeIcon
+                  icon="play"
+                  className="song-button-play-disabled"
+                />
+              ) : isPlaying ? (
+                <FontAwesomeIcon
+                  icon="pause"
+                  className="song-button-pause"
+                  onClick={onPause}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon="play"
+                  className="song-button-play"
+                  onClick={onPlay}
+                />
+              ))}
+            <FontAwesomeIcon icon="step-forward" className="song-button-next" />
           </div>
           <FontAwesomeIcon icon="redo-alt" />
         </div>
