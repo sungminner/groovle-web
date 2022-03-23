@@ -26,6 +26,7 @@ const Editor = ({ userObj }) => {
   const [sessions, setSessions] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const synthesized = useRef(null);
+  const sessionsRef = useRef([]);
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
       setSongID(response.data.songID);
@@ -45,23 +46,42 @@ const Editor = ({ userObj }) => {
       getSession();
     }
   }, [songID]);
-  const onPlay = () => {
-    setIsPlaying(true);
+  useEffect(() => {
+    // if (sessions) {
+    //   //파일이 있는 세션의 개수 세기
+    //   let count = 0;
+    //   sessions.forEach((session) => {
+    //     if (session.filename) {
+    //       count += 1;
+    //     }
+    //   });
+    //   sessionsRef.current = sessionsRef.current.slice(0, count);
+    // }
+    sessionsRef.current = sessionsRef.current.slice(0, sessionsRef.length);
+  }, [sessions]);
+  const onSynthesizedPlay = () => {
     synthesized.current.play();
+    setIsPlaying(true);
   };
-  const onPause = () => {
-    setIsPlaying(false);
+  const onSynthesizedPause = () => {
     synthesized.current.pause();
+    setIsPlaying(false);
+  };
+  const onSessionPlay = (index) => {
+    sessionsRef.current[index].play();
+  };
+  const onSessionPause = (index) => {
+    sessionsRef.current[index].pause();
   };
   const onRecordPlay = () => {
-    setIsPlaying(true);
     synthesized.current.currentTime = 0;
     synthesized.current.play();
+    setIsPlaying(true);
   };
   const onRecordStop = () => {
-    setIsPlaying(false);
     synthesized.current.pause();
     synthesized.current.currentTime = 0;
+    setIsPlaying(false);
   };
   return (
     <>
@@ -88,28 +108,39 @@ const Editor = ({ userObj }) => {
         <FontAwesomeIcon
           icon="pause"
           className="playbar-pause"
-          onClick={onPause}
+          onClick={onSynthesizedPause}
         />
       ) : (
         <FontAwesomeIcon
           icon="play"
           className="playbar-play"
-          onClick={onPlay}
+          onClick={onSynthesizedPlay}
         />
       )}
-      {/* {sessions &&
+      {sessions &&
         sessions.map(
-          (session) =>
+          (session, index) =>
             session.filename && (
               <div key={session.sessionID}>
                 <p>{session.username}</p>
                 <audio
+                  ref={(element) => (sessionsRef.current[index] = element)}
                   src={`${base_URL}/api/playsession/${session.filename}`}
                   controls
                 />
+                <FontAwesomeIcon
+                  icon="play"
+                  className="playbar-play"
+                  onClick={() => onSessionPlay(index)}
+                />
+                <FontAwesomeIcon
+                  icon="pause"
+                  className="playbar-pause"
+                  onClick={() => onSessionPause(index)}
+                />
               </div>
             )
-        )} */}
+        )}
     </>
   );
 };

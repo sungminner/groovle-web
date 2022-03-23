@@ -10,7 +10,7 @@ const songSearch = async (value) => {
       format: "json",
     },
   });
-  return response["data"]["results"]["trackmatches"]["track"].slice(0, 10);
+  return response.data.results.trackmatches.track.slice(0, 10);
 };
 
 export default songSearch;
