@@ -30,6 +30,7 @@ import {
   faStepForward,
   faUser,
   faUsers,
+  faVolumeXmark,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -56,6 +57,7 @@ library.add(
   faStepForward,
   faUser,
   faUsers,
+  faVolumeXmark,
   faXmark
 );
 
