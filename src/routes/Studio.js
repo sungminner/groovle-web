@@ -147,7 +147,7 @@ const Studio = ({ userObj }) => {
           <p>synthesized</p>
           <audio
             ref={synthesized}
-            src={`${base_URL}/api/playsong/${songID}`}
+            src={`${base_URL}/api/playsong/${songID}.mp3`}
             controls
           />
         </>
