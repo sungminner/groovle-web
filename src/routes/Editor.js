@@ -38,25 +38,31 @@ const Editor = ({ userObj }) => {
   const onSessionPlay = () => {
     sessionsRef.current.forEach((element) => {
       element.play();
+      setIsPlaying(true);
     });
   };
   const onSessionPause = () => {
     sessionsRef.current.forEach((element) => {
       element.pause();
+      setIsPlaying(false);
     });
   };
   const onSessionMute = (index) => {
     sessionsRef.current[index].muted = !sessionsRef.current[index].muted;
   };
   const onRecordPlay = () => {
-    // synthesized.current.currentTime = 0;
-    // synthesized.current.play();
-    // setIsPlaying(true);
+    sessionsRef.current.forEach((element) => {
+      element.currentTime = 0;
+      element.play();
+      setIsPlaying(true);
+    });
   };
   const onRecordStop = () => {
-    // synthesized.current.pause();
-    // synthesized.current.currentTime = 0;
-    // setIsPlaying(false);
+    sessionsRef.current.forEach((element) => {
+      element.pause();
+      element.currentTime = 0;
+      setIsPlaying(false);
+    });
   };
   return (
     <>
@@ -69,19 +75,18 @@ const Editor = ({ userObj }) => {
           />
         </div>
       )}
-      {sessions && (
-        <div>
-          <FontAwesomeIcon
-            icon="play"
-            className="playbar-play"
-            onClick={onSessionPlay}
-          />
-          <FontAwesomeIcon
-            icon="pause"
-            className="playbar-pause"
-            onClick={onSessionPause}
-          />
-        </div>
+      {sessions && isPlaying ? (
+        <FontAwesomeIcon
+          icon="pause"
+          className="studio-playbar-pause"
+          onClick={onSessionPause}
+        />
+      ) : (
+        <FontAwesomeIcon
+          icon="play"
+          className="studio-playbar-play"
+          onClick={onSessionPlay}
+        />
       )}
       {sessions &&
         sessions.map(
