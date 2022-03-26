@@ -35,16 +35,26 @@ const Editor = ({ userObj }) => {
   useEffect(() => {
     sessionsRef.current = sessionsRef.current.slice(0, sessionsRef.length);
   }, [sessions]);
-  const onSessionPlay = () => {
+  const onAllSessionPlay = () => {
     sessionsRef.current.forEach((element) => {
       element.play();
       setIsPlaying(true);
     });
   };
-  const onSessionPause = () => {
+  const onAllSessionPause = () => {
     sessionsRef.current.forEach((element) => {
       element.pause();
       setIsPlaying(false);
+    });
+  };
+  const onAllSessionRollBack = () => {
+    sessionsRef.current.forEach((element) => {
+      element.currentTime = 0;
+    });
+  };
+  const onAllSessionMute = () => {
+    sessionsRef.current.forEach((element) => {
+      element.muted = !element.muted;
     });
   };
   const onSessionMute = (index) => {
@@ -75,19 +85,31 @@ const Editor = ({ userObj }) => {
           />
         </div>
       )}
-      {sessions && isPlaying ? (
+      <div className="editor-playbar-controls">
         <FontAwesomeIcon
-          icon="pause"
-          className="studio-playbar-pause"
-          onClick={onSessionPause}
+          icon="step-backward"
+          className="editor-playbar-allRollBack"
+          onClick={onAllSessionRollBack}
         />
-      ) : (
+        {sessions && isPlaying ? (
+          <FontAwesomeIcon
+            icon="pause"
+            className="editor-playbar-allpause"
+            onClick={onAllSessionPause}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon="play"
+            className="editor-playbar-allplay"
+            onClick={onAllSessionPlay}
+          />
+        )}
         <FontAwesomeIcon
-          icon="play"
-          className="studio-playbar-play"
-          onClick={onSessionPlay}
+          icon="volume-xmark"
+          className="editor-playbar-allmute"
+          onClick={onAllSessionMute}
         />
-      )}
+      </div>
       {sessions &&
         sessions.map(
           (session, index) =>
@@ -101,7 +123,7 @@ const Editor = ({ userObj }) => {
                 />
                 <FontAwesomeIcon
                   icon="volume-xmark"
-                  className="playbar-mute"
+                  className="editor-playbar-eachmute"
                   onClick={() => onSessionMute(index)}
                 />
               </div>

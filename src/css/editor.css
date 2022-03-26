@@ -1,0 +1,11 @@
+.editor-playbar-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.editor-playbar-allplay,
+.editor-playbar-allpause,
+.editor-playbar-allRollBack,
+.editor-playbar-allmute {
+  cursor: pointer;
+}

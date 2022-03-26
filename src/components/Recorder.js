@@ -22,7 +22,6 @@ class Recorder extends React.Component {
   }
 
   onRecord = () => {
-    this.state.onRecordPlay();
     // Request permissions to record audio
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       this.setState({ isRecording: true });
@@ -37,13 +36,14 @@ class Recorder extends React.Component {
 
       // Start recording
       recorder.start();
+      this.state.onRecordPlay();
     });
   };
 
   onStop = () => {
-    this.state.onRecordStop();
     // Stop recording
     recorder.stop();
+    this.state.onRecordStop();
     // Remove “recording” icon from browser tab
     recorder.stream.getTracks().forEach((i) => i.stop());
   };
