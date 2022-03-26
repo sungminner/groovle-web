@@ -55,7 +55,7 @@ const Song = () => {
           songObj.status === 4) ? (
           <audio
             ref={audio}
-            src={`${base_URL}/api/playsong/${songObj.songID}`}
+            src={`${base_URL}/api/playsong/${songObj.songID}.mp3`}
           />
         ) : (
           <></>

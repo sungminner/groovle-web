@@ -60,6 +60,7 @@ song.get("/songbyid/:songID", (req, res) => {
       if (error) throw error;
       if (result.length === 1) {
         const data = {
+          songID: result[0].songID,
           title: result[0].title,
           artist: result[0].artist,
           randomKey: result[0].randomKey,
@@ -90,9 +91,9 @@ song.post("/verifykey", (req, res) => {
   );
 });
 
-song.get("/playsong/:songid", (req, res) => {
-  const songid = req.params.songid;
-  const file = `NAS/song/${songid}.mp3`;
+song.get("/playsong/:filename", (req, res) => {
+  const filename = req.params.filename;
+  const file = `NAS/song/${filename}`;
   fs.stat(file, (err, stats) => {
     if (err) {
       if (err.code === "ENOENT") {

@@ -49,7 +49,9 @@ const Editor = ({ userObj }) => {
   };
   const onAllSessionRollBack = () => {
     sessionsRef.current.forEach((element) => {
+      element.pause();
       element.currentTime = 0;
+      setIsPlaying(false);
     });
   };
   const onAllSessionMute = () => {

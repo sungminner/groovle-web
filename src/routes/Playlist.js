@@ -27,11 +27,11 @@ const Playlist = ({ playlist }) => {
         <p>playlist</p>
         <br />
         {list.map((item) => (
-          <>
+          <div key={item.songID}>
             <p>{item.title}</p>
             <p>{item.artist}</p>
             <br />
-          </>
+          </div>
         ))}
       </div>
     </>
