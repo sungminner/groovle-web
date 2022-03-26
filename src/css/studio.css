@@ -41,6 +41,11 @@
   color: white;
 }
 
+.studio-playbar-play,
+.studio-playbar-pause {
+  cursor: pointer;
+}
+
 .studio-team {
   padding: 20px;
 }

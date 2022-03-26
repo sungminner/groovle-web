@@ -12,7 +12,6 @@ const Editor = ({ userObj }) => {
   const [songObj, setSongObj] = useState();
   const [sessions, setSessions] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
-  const synthesized = useRef(null);
   const sessionsRef = useRef([]);
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
@@ -36,14 +35,6 @@ const Editor = ({ userObj }) => {
   useEffect(() => {
     sessionsRef.current = sessionsRef.current.slice(0, sessionsRef.length);
   }, [sessions]);
-  const onSynthesizedPlay = () => {
-    synthesized.current.play();
-    setIsPlaying(true);
-  };
-  const onSynthesizedPause = () => {
-    synthesized.current.pause();
-    setIsPlaying(false);
-  };
   const onSessionPlay = () => {
     sessionsRef.current.forEach((element) => {
       element.play();
@@ -58,14 +49,14 @@ const Editor = ({ userObj }) => {
     sessionsRef.current[index].muted = !sessionsRef.current[index].muted;
   };
   const onRecordPlay = () => {
-    synthesized.current.currentTime = 0;
-    synthesized.current.play();
-    setIsPlaying(true);
+    // synthesized.current.currentTime = 0;
+    // synthesized.current.play();
+    // setIsPlaying(true);
   };
   const onRecordStop = () => {
-    synthesized.current.pause();
-    synthesized.current.currentTime = 0;
-    setIsPlaying(false);
+    // synthesized.current.pause();
+    // synthesized.current.currentTime = 0;
+    // setIsPlaying(false);
   };
   return (
     <>
@@ -78,28 +69,19 @@ const Editor = ({ userObj }) => {
           />
         </div>
       )}
-      {songObj && (
-        <>
-          <p>synthesized</p>
-          <audio
-            ref={synthesized}
-            src={`${base_URL}/api/playsong/${songID}`}
-            controls
+      {sessions && (
+        <div>
+          <FontAwesomeIcon
+            icon="play"
+            className="playbar-play"
+            onClick={onSessionPlay}
           />
-        </>
-      )}
-      {isPlaying ? (
-        <FontAwesomeIcon
-          icon="pause"
-          className="playbar-pause"
-          onClick={onSynthesizedPause}
-        />
-      ) : (
-        <FontAwesomeIcon
-          icon="play"
-          className="playbar-play"
-          onClick={onSynthesizedPlay}
-        />
+          <FontAwesomeIcon
+            icon="pause"
+            className="playbar-pause"
+            onClick={onSessionPause}
+          />
+        </div>
       )}
       {sessions &&
         sessions.map(
@@ -111,16 +93,6 @@ const Editor = ({ userObj }) => {
                   ref={(element) => (sessionsRef.current[index] = element)}
                   src={`${base_URL}/api/playsession/${session.filename}`}
                   controls
-                />
-                <FontAwesomeIcon
-                  icon="play"
-                  className="playbar-play"
-                  onClick={onSessionPlay}
-                />
-                <FontAwesomeIcon
-                  icon="pause"
-                  className="playbar-pause"
-                  onClick={onSessionPause}
                 />
                 <FontAwesomeIcon
                   icon="volume-xmark"

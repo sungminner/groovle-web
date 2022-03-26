@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
@@ -11,7 +11,9 @@ const Studio = ({ userObj }) => {
   const [songID, setSongID] = useState(null);
   const [songObj, setSongObj] = useState();
   const [sessions, setSessions] = useState();
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isPending, setIsPending] = useState(false);
+  const synthesized = useRef(null);
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
       setSongID(response.data.songID);
@@ -102,6 +104,14 @@ const Studio = ({ userObj }) => {
         getSession();
       });
   };
+  const onSynthesizedPlay = () => {
+    synthesized.current.play();
+    setIsPlaying(true);
+  };
+  const onSynthesizedPause = () => {
+    synthesized.current.pause();
+    setIsPlaying(false);
+  };
   return (
     <>
       <div className="studio-playbar">
@@ -117,9 +127,31 @@ const Studio = ({ userObj }) => {
           <p className="studio-playbar-artist">{songObj?.artist}</p>
         </div>
         <div className="studio-playbar-control">
-          <FontAwesomeIcon icon="play" className="studio-play" />
+          {isPlaying ? (
+            <FontAwesomeIcon
+              icon="pause"
+              className="studio-playbar-pause"
+              onClick={onSynthesizedPause}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon="play"
+              className="studio-playbar-play"
+              onClick={onSynthesizedPlay}
+            />
+          )}
         </div>
       </div>
+      {songObj && (
+        <>
+          <p>synthesized</p>
+          <audio
+            ref={synthesized}
+            src={`${base_URL}/api/playsong/${songID}`}
+            controls
+          />
+        </>
+      )}
       <div className="studio-team">
         <div className="studio-team-menu">
           <p>My Team</p>
