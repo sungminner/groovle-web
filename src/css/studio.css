@@ -46,6 +46,10 @@
   cursor: pointer;
 }
 
+.studio-playbar-play-disabled {
+  color: gray;
+}
+
 .studio-team {
   padding: 20px;
 }

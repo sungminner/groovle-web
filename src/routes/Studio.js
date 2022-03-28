@@ -127,30 +127,35 @@ const Studio = ({ userObj }) => {
           <p className="studio-playbar-artist">{songObj?.artist}</p>
         </div>
         <div className="studio-playbar-control">
-          {isPlaying ? (
-            <FontAwesomeIcon
-              icon="pause"
-              className="studio-playbar-pause"
-              onClick={onSynthesizedPause}
-            />
-          ) : (
-            <FontAwesomeIcon
-              icon="play"
-              className="studio-playbar-play"
-              onClick={onSynthesizedPlay}
-            />
-          )}
+          {songObj &&
+            (songObj.status === 0 ? (
+              <FontAwesomeIcon
+                icon="play"
+                className="studio-playbar-play-disabled"
+              />
+            ) : isPlaying ? (
+              <FontAwesomeIcon
+                icon="pause"
+                className="studio-playbar-pause"
+                onClick={onSynthesizedPause}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon="play"
+                className="studio-playbar-play"
+                onClick={onSynthesizedPlay}
+              />
+            ))}
         </div>
       </div>
-      {songObj && (
-        <>
-          <p>synthesized</p>
-          <audio
-            ref={synthesized}
-            src={`${base_URL}/api/playsong/${songID}.mp3`}
-            controls
-          />
-        </>
+      {songObj &&
+      (songObj.status === 2 || songObj.status === 3 || songObj.status === 4) ? (
+        <audio
+          ref={synthesized}
+          src={`${base_URL}/api/playsong/${songID}.mp3`}
+        />
+      ) : (
+        <></>
       )}
       <div className="studio-team">
         <div className="studio-team-menu">
