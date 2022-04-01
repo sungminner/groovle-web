@@ -57,7 +57,7 @@ const StudioMember = ({
             ) : (
               <div className="studio-member-menu-item">
                 <Link
-                  to={`/studio/${songObj.randomKey}/editor/${sessionObj.sessionID}`}
+                  to={`/studio/${songObj.randomKey}/recorder/${sessionObj.sessionID}`}
                 >
                   녹음하기
                 </Link>

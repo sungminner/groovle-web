@@ -1,19 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import RecordButton from "components/RecordButton";
 import axios from "axios";
 import base_URL from "base_URL";
-import "css/editor.css";
+import "css/recorder.css";
 
-const Editor = ({ userObj }) => {
+const Recorder = ({ userObj }) => {
   const { randomKey, sessionid } = useParams();
   const [songID, setSongID] = useState(null);
+  const [songObj, setSongObj] = useState();
   const [sessions, setSessions] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const sessionsRef = useRef([]);
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
       setSongID(response.data.songID);
+      setSongObj(response.data);
     });
   };
   const getSession = async () => {
@@ -58,6 +61,20 @@ const Editor = ({ userObj }) => {
   };
   const onSessionMute = (index) => {
     sessionsRef.current[index].muted = !sessionsRef.current[index].muted;
+  };
+  const onRecordPlay = () => {
+    sessionsRef.current.forEach((element) => {
+      element.currentTime = 0;
+      element.play();
+      setIsPlaying(true);
+    });
+  };
+  const onRecordStop = () => {
+    sessionsRef.current.forEach((element) => {
+      element.pause();
+      element.currentTime = 0;
+      setIsPlaying(false);
+    });
   };
   return (
     <>
@@ -105,8 +122,17 @@ const Editor = ({ userObj }) => {
               </div>
             )
         )}
+      {songObj && (
+        <div>
+          <RecordButton
+            songObj={songObj}
+            onRecordPlay={onRecordPlay}
+            onRecordStop={onRecordStop}
+          />
+        </div>
+      )}
     </>
   );
 };
 
-export default Editor;
+export default Recorder;

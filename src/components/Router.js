@@ -15,6 +15,7 @@ import Explore from "routes/Explore";
 import Notifications from "routes/Notifications";
 import Friends from "routes/Friends";
 import Studio from "routes/Studio";
+import Recorder from "routes/Recorder";
 import Editor from "routes/Editor";
 import Storage from "routes/Storage";
 import Playlist from "routes/Playlist";
@@ -106,6 +107,14 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
           element={
             <PrivateRoute userObj={userObj}>
               <Studio userObj={userObj} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/studio/:randomKey/recorder/:sessionid"
+          element={
+            <PrivateRoute userObj={userObj}>
+              <Recorder userObj={userObj} />
             </PrivateRoute>
           }
         />

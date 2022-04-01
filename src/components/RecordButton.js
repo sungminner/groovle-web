@@ -10,7 +10,7 @@ AudioRecorder.prototype.mimeType = "audio/mpeg";
 window.MediaRecorder = AudioRecorder;
 let recorder;
 
-class Recorder extends React.Component {
+class RecordButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -103,4 +103,4 @@ class Recorder extends React.Component {
   }
 }
 
-export default withRouter(Recorder);
+export default withRouter(RecordButton);
