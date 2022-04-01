@@ -12,44 +12,6 @@ const StudioMember = ({
   getSong,
   getSession,
 }) => {
-  const onFileChange = async (event) => {
-    const {
-      target: { files },
-    } = event;
-    const file = files[0];
-    if (parseFloat(file.size) > 20 * 1024 * 1024) {
-      alert("20MB 이상의 파일은 업로드할 수 없습니다.");
-      // setTrack(null);
-      return;
-    }
-    const extension = file.name.split(".").pop().toLowerCase();
-    if (!["wav", "mp3"].includes(extension)) {
-      alert("wav 또는 mp3 확장자를 가진 파일만 업로드할 수 있습니다.");
-      return;
-    }
-    const reader = new FileReader();
-    reader.onloadend = async (finishedEvent) => {
-      const {
-        target: { result },
-      } = finishedEvent;
-      await axios
-        .post(`${base_URL}/api/uploadsessionfile`, {
-          songID: songObj.songID,
-          sessionID: sessionObj.sessionID,
-          curStatus: songObj.status,
-          data: result,
-          extension,
-          headers: {
-            "content-type": "application/json",
-          },
-        })
-        .then((response) => {
-          getSong();
-          getSession();
-        });
-    };
-    reader.readAsDataURL(file);
-  };
   const deleteSession = async () => {
     const ok = window.confirm("정말 삭제하시겠습니까?");
     if (ok) {
@@ -94,12 +56,6 @@ const StudioMember = ({
               </Link>
             ) : (
               <div className="studio-member-menu-item">
-                <input
-                  type="file"
-                  accept="audio/*"
-                  onChange={onFileChange}
-                  required
-                />
                 <Link
                   to={`/studio/${songObj.randomKey}/editor/${sessionObj.sessionID}`}
                 >
