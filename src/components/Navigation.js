@@ -12,6 +12,7 @@ const Navigation = () => {
       pathname === "Studio" ||
       pathname === "Recorder" ||
       pathname === "Editor" ||
+      pathname === "Synthesize" ||
       pathname === "Login" ||
       pathname === "Signup" ||
       pathname === "Welcome" ? (

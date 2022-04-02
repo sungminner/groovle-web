@@ -101,9 +101,10 @@ const Header = () => {
         pathname === "Settings" ||
         pathname === "Create" ||
         pathname === "Recorder" ||
+        pathname === "Editor" ||
+        pathname === "Synthesize" ||
         pathname === "Storage" ||
-        pathname === "Playlist" ||
-        pathname === "Editor") && (
+        pathname === "Playlist") && (
         <>
           <div className="header-padding" />
           <div className="header-wrapper">

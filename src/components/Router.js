@@ -17,6 +17,7 @@ import Friends from "routes/Friends";
 import Studio from "routes/Studio";
 import Recorder from "routes/Recorder";
 import Editor from "routes/Editor";
+import Synthesize from "routes/Synthesize";
 import Storage from "routes/Storage";
 import Playlist from "routes/Playlist";
 import Login from "routes/Login";
@@ -123,6 +124,14 @@ const AppRouter = ({ userObj, refreshUser, playlist, setPlaylist }) => {
           element={
             <PrivateRoute userObj={userObj}>
               <Editor userObj={userObj} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/studio/:randomKey/synthesize"
+          element={
+            <PrivateRoute userObj={userObj}>
+              <Synthesize userObj={userObj} />
             </PrivateRoute>
           }
         />

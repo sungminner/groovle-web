@@ -11,6 +11,8 @@ const usePathname = () => {
       return "Recorder";
     } else if (location.includes("editor")) {
       return "Editor";
+    } else if (location.includes("synthesize")) {
+      return "Synthesize";
     } else {
       return "Studio";
     }

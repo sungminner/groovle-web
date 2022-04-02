@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import StudioMember from "components/StudioMember";
@@ -8,11 +8,11 @@ import "css/studio.css";
 
 const Studio = ({ userObj }) => {
   const { randomKey } = useParams();
+  const navigate = useNavigate();
   const [songID, setSongID] = useState(null);
   const [songObj, setSongObj] = useState();
   const [sessions, setSessions] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isPending, setIsPending] = useState(false);
   const synthesized = useRef(null);
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
@@ -24,65 +24,6 @@ const Studio = ({ userObj }) => {
     await axios.get(`${base_URL}/api/session/${songID}`).then((response) => {
       setSessions(response.data);
     });
-  };
-  const synthesizeOneFile = async () => {
-    if (sessions.length === 1) {
-      if (songObj.status === 1 || songObj.status === 3) {
-        setIsPending(true);
-        const filename = sessions[0].filename;
-        console.log("synthesizeOneFile called");
-        await axios
-          .post(`${base_URL}/api/synthesizeonefile`, {
-            filename,
-            songID,
-            headers: {
-              "content-type": "application/json",
-            },
-          })
-          .then((response) => {
-            if (response.data) {
-              setIsPending(false);
-              getSong(); // 합성 버튼을 안 보이게 하기 위해
-            }
-          });
-      } else if (songObj.status === 2) {
-        alert("이미 최신 버전입니다.");
-      } else {
-        alert("합성이 불가능합니다.");
-      }
-    } else {
-      alert("세션이 1개일 때의 기능입니다.");
-    }
-  };
-  const synthesize = async () => {
-    if (sessions.length > 1) {
-      if (songObj.status === 1 || songObj.status === 3) {
-        setIsPending(true);
-        const filenames = sessions.map((session) => session.filename);
-        console.log("synthesize called");
-        await axios
-          .post(`${base_URL}/synthesize`, {
-            filenames,
-            volumes: [1, 10],
-            songID,
-            headers: {
-              "content-type": "application/json",
-            },
-          })
-          .then((response) => {
-            if (response.data) {
-              setIsPending(false);
-              getSong(); // 합성 버튼을 안 보이게 하기 위해
-            }
-          });
-      } else if (songObj.status === 2) {
-        alert("이미 최신 버전입니다.");
-      } else {
-        alert("합성이 불가능합니다.");
-      }
-    } else {
-      alert("세션이 2개 이상이어야 합성을 진행할 수 있습니다.");
-    }
   };
   useEffect(() => {
     getSong();
@@ -177,23 +118,16 @@ const Studio = ({ userObj }) => {
       </div>
       <div className="studio-synth-button-padding" />
       <div className="studio-synth-button-wrapper">
-        {isPending ? (
-          <div className="studio-synth-button ssb-disabled">
-            <p>합성중...</p>
-          </div>
-        ) : (
-          songObj &&
-          songObj.createdBy === userObj.userID && (
-            <div
-              className="studio-synth-button"
-              onClick={
-                sessions && sessions.length > 1 ? synthesize : synthesizeOneFile
-              }
-            >
-              <p>합성</p>
-            </div>
-          )
-        )}
+        <div
+          onClick={() =>
+            navigate(`/studio/${randomKey}/synthesize`, {
+              state: { songObj, sessions, randomKey },
+            })
+          }
+          className="studio-synth-button"
+        >
+          <p>합성</p>
+        </div>
       </div>
     </>
   );
