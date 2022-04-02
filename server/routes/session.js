@@ -45,7 +45,6 @@ session.get("/session/:songID", (req, res) => {
           picture: results[i].picture,
         });
       }
-      console.log(data);
       res.send(data);
     }
   );

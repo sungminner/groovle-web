@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RecordButton from "components/RecordButton";
 import axios from "axios";
@@ -85,7 +85,6 @@ const Recorder = ({ userObj }) => {
       {songObj && (
         <div>
           <RecordButton
-            songObj={songObj}
             onRecordPlay={onRecordPlay}
             onRecordStop={onRecordStop}
           />

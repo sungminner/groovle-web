@@ -1,9 +1,7 @@
 import React from "react";
 import AudioRecorder from "audio-recorder-polyfill";
 import mpegEncoder from "audio-recorder-polyfill/mpeg-encoder";
-import axios from "axios";
 import withRouter from "functions/withRouter";
-import base_URL from "base_URL";
 
 AudioRecorder.encoder = mpegEncoder;
 AudioRecorder.prototype.mimeType = "audio/mpeg";
@@ -53,7 +51,10 @@ class RecordButton extends React.Component {
     if (this.state.blob !== prevState.blob) {
       this.props.navigate(
         `/studio/${this.props.params.randomKey}/editor/${this.props.params.sessionid}`,
-        { replace: true, state: { blobUrl: this.state.blobUrl } }
+        {
+          replace: true,
+          state: { blob: this.state.blob, blobUrl: this.state.blobUrl },
+        }
       );
     }
   }

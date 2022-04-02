@@ -24,7 +24,6 @@ home.get("/home", (req, res) => {
         description: results[i].description,
       });
     }
-    console.log(data);
     res.send(data);
   });
 });

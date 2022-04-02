@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import base_URL from "base_URL";
@@ -7,8 +7,10 @@ import "css/editor.css";
 
 const Editor = ({ userObj }) => {
   const { randomKey, sessionid } = useParams();
+  const navigate = useNavigate();
   const location = useLocation();
   const [songID, setSongID] = useState(null);
+  const [songObj, setSongObj] = useState();
   const [sessions, setSessions] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const sessionsRef = useRef([]);
@@ -16,6 +18,7 @@ const Editor = ({ userObj }) => {
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
       setSongID(response.data.songID);
+      setSongObj(response.data);
     });
   };
   const getSession = async () => {
@@ -60,6 +63,36 @@ const Editor = ({ userObj }) => {
   };
   const onSessionMute = (index) => {
     sessionsRef.current[index].muted = !sessionsRef.current[index].muted;
+  };
+  const onSave = async () => {
+    const reader = new FileReader();
+    reader.onloadend = async (finishedEvent) => {
+      const {
+        target: { result },
+      } = finishedEvent;
+      await axios
+        .post(`${base_URL}/api/uploadsessionfile`, {
+          songID: songID,
+          sessionID: sessionid,
+          curStatus: songObj.status,
+          data: result,
+          extension: "mp3",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+        .then((response) => {
+          navigate(`/studio/${randomKey}`, {
+            replace: true,
+          });
+        });
+    };
+    reader.readAsDataURL(location.state.blob);
+  };
+  const onRerecord = () => {
+    navigate(`/studio/${randomKey}/recorder/${sessionid}`, {
+      replace: true,
+    });
   };
   return (
     <>
@@ -108,7 +141,11 @@ const Editor = ({ userObj }) => {
             )
         )}
       {location.state.blobUrl && (
-        <audio ref={mySession} src={location.state.blobUrl} controls />
+        <div>
+          <audio ref={mySession} src={location.state.blobUrl} controls />
+          <button onClick={onSave}>저장</button>
+          <button onClick={onRerecord}>재녹음</button>
+        </div>
       )}
     </>
   );

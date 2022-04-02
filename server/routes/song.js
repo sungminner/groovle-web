@@ -43,7 +43,6 @@ song.get("/song/:randomKey", (req, res) => {
           createdBy: result[0].createdBy,
           randomKey,
         };
-        console.log(data);
         res.send(data);
       } else {
         res.send(false);
@@ -65,7 +64,6 @@ song.get("/songbyid/:songID", (req, res) => {
           artist: result[0].artist,
           randomKey: result[0].randomKey,
         };
-        console.log(data);
         res.send(data);
       } else {
         res.send(false);

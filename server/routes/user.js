@@ -79,7 +79,6 @@ user.get("/userbyid/:id", (req, res) => {
           mainSession: result[0].mainSession,
           bio: result[0].bio,
         };
-        console.log(data);
         res.send(data);
       } else {
         res.send(false);
