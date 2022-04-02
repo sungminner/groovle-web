@@ -8,15 +8,20 @@ SAMPLE_RATE = 44100
 class GroovleSynthesizer:
     def __init__(self):
         self.files = []
+        self.volumes = []
         self.result = None
 
     def setFiles(self, list):
         self.files = list
 
+    def setVolumes(self, list):
+        self.volumes = list
+
     def synthesize(self):
         result = np.array([])
-        for file in self.files:
-            y, _ = audioReader(file)
+        for i in range(len(self.files)):
+            y, _ = audioReader(self.files[i])
+            y *= self.volumes[i]
             if len(result) < len(y):
                 temp = y
                 temp[: len(result)] += result
@@ -24,7 +29,7 @@ class GroovleSynthesizer:
                 temp = result
                 temp[: len(y)] += y
             result = temp
-        result /= len(self.files)
+        result /= sum(self.volumes)
         result = result.astype(np.float32)
         self.result = result
 
@@ -36,8 +41,10 @@ class GroovleSynthesizer:
             y = np.int16(x * 2 ** 15)
         else:
             y = np.int16(x)
-        song = pydub.AudioSegment(y.tobytes(), frame_rate=SAMPLE_RATE, sample_width=2, channels=channels)
-        song.export("NAS/song/"+songID+".mp3", format="mp3")
+        song = pydub.AudioSegment(
+            y.tobytes(), frame_rate=SAMPLE_RATE, sample_width=2, channels=channels
+        )
+        song.export("NAS/song/" + songID + ".mp3", format="mp3")
         print(True)
 
 

@@ -10,12 +10,12 @@ class Groovle:
     # 합성
     def synthesize(self):
         self.synthesizer.setFiles(json.loads(sys.argv[2]))
+        self.synthesizer.setVolumes(json.loads(sys.argv[3]))
         self.synthesizer.synthesize()
-        self.synthesizer.saveAsFile(sys.argv[3])
+        self.synthesizer.saveAsFile(sys.argv[4])
 
 
 groovle = Groovle()
 if sys.argv[1] == "synthesize":
-    files = json.loads(sys.argv[2])
     print("synthesize connected!!!")
     groovle.synthesize()

@@ -30,6 +30,7 @@ app.get("*", (req, res) => {
 app.post("/synthesize", (req, res) => {
   console.log("synthesize called");
   filenames = req.body.filenames;
+  volumes = req.body.volumes;
   songID = req.body.songID;
 
   const options = {
@@ -39,7 +40,12 @@ app.post("/synthesize", (req, res) => {
     // pythonPath: "C:/Users/sm185/anaconda3/python.exe",
     // scriptPath: "C:/Users/sm185/Desktop/code/react/groovle-web/server/python",
     pythonOptions: ["-u"], // get print results in real-time
-    args: ["synthesize", JSON.stringify(filenames), songID],
+    args: [
+      "synthesize",
+      JSON.stringify(filenames),
+      JSON.stringify(volumes),
+      songID,
+    ],
   };
 
   PythonShell.run("main.py", options, function (err, results) {

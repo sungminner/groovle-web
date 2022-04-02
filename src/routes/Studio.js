@@ -63,6 +63,7 @@ const Studio = ({ userObj }) => {
         await axios
           .post(`${base_URL}/synthesize`, {
             filenames,
+            volumes: [1, 10],
             songID,
             headers: {
               "content-type": "application/json",
