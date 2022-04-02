@@ -53,7 +53,7 @@ class RecordButton extends React.Component {
     if (this.state.blob !== prevState.blob) {
       this.props.navigate(
         `/studio/${this.props.params.randomKey}/editor/${this.props.params.sessionid}`,
-        { replace: true, state: { data: this.state.blob } }
+        { replace: true, state: { blobUrl: this.state.blobUrl } }
       );
     }
   }

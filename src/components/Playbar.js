@@ -38,6 +38,7 @@ const Playbar = ({ playlist }) => {
     <>
       {pathname === "Song" ||
       pathname === "Studio" ||
+      pathname === "Recorder" ||
       pathname === "Editor" ||
       pathname === "Login" ||
       pathname === "Signup" ||

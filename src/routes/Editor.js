@@ -8,11 +8,11 @@ import "css/editor.css";
 const Editor = ({ userObj }) => {
   const { randomKey, sessionid } = useParams();
   const location = useLocation();
-  console.log(location);
   const [songID, setSongID] = useState(null);
   const [sessions, setSessions] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const sessionsRef = useRef([]);
+  const mySession = useRef();
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
       setSongID(response.data.songID);
@@ -107,6 +107,9 @@ const Editor = ({ userObj }) => {
               </div>
             )
         )}
+      {location.state.blobUrl && (
+        <audio ref={mySession} src={location.state.blobUrl} controls />
+      )}
     </>
   );
 };
