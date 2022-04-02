@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RecordButton from "components/RecordButton";
 import axios from "axios";
@@ -11,7 +11,6 @@ const Recorder = ({ userObj }) => {
   const [songID, setSongID] = useState(null);
   const [songObj, setSongObj] = useState();
   const [sessions, setSessions] = useState();
-  const [isPlaying, setIsPlaying] = useState(false);
   const sessionsRef = useRef([]);
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
@@ -35,25 +34,6 @@ const Recorder = ({ userObj }) => {
   useEffect(() => {
     sessionsRef.current = sessionsRef.current.slice(0, sessionsRef.length);
   }, [sessions]);
-  const onAllSessionPlay = () => {
-    sessionsRef.current.forEach((element) => {
-      element.play();
-      setIsPlaying(true);
-    });
-  };
-  const onAllSessionPause = () => {
-    sessionsRef.current.forEach((element) => {
-      element.pause();
-      setIsPlaying(false);
-    });
-  };
-  const onAllSessionRollBack = () => {
-    sessionsRef.current.forEach((element) => {
-      element.pause();
-      element.currentTime = 0;
-      setIsPlaying(false);
-    });
-  };
   const onAllSessionMute = () => {
     sessionsRef.current.forEach((element) => {
       element.muted = !element.muted;
@@ -66,37 +46,17 @@ const Recorder = ({ userObj }) => {
     sessionsRef.current.forEach((element) => {
       element.currentTime = 0;
       element.play();
-      setIsPlaying(true);
     });
   };
   const onRecordStop = () => {
     sessionsRef.current.forEach((element) => {
       element.pause();
       element.currentTime = 0;
-      setIsPlaying(false);
     });
   };
   return (
     <>
       <div className="editor-playbar-controls">
-        <FontAwesomeIcon
-          icon="step-backward"
-          className="editor-playbar-allRollBack"
-          onClick={onAllSessionRollBack}
-        />
-        {sessions && isPlaying ? (
-          <FontAwesomeIcon
-            icon="pause"
-            className="editor-playbar-allpause"
-            onClick={onAllSessionPause}
-          />
-        ) : (
-          <FontAwesomeIcon
-            icon="play"
-            className="editor-playbar-allplay"
-            onClick={onAllSessionPlay}
-          />
-        )}
         <FontAwesomeIcon
           icon="volume-xmark"
           className="editor-playbar-allmute"

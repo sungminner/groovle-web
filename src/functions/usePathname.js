@@ -7,7 +7,9 @@ const usePathname = () => {
   } else if (location.startsWith("song")) {
     return "Song";
   } else if (location.startsWith("studio")) {
-    if (location.includes("editor")) {
+    if (location.includes("recorder")) {
+      return "Recorder";
+    } else if (location.includes("editor")) {
       return "Editor";
     } else {
       return "Studio";

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import base_URL from "base_URL";
@@ -7,6 +7,8 @@ import "css/editor.css";
 
 const Editor = ({ userObj }) => {
   const { randomKey, sessionid } = useParams();
+  const location = useLocation();
+  console.log(location);
   const [songID, setSongID] = useState(null);
   const [sessions, setSessions] = useState();
   const [isPlaying, setIsPlaying] = useState(false);

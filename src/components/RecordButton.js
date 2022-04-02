@@ -43,60 +43,30 @@ class RecordButton extends React.Component {
   onStop = () => {
     // Stop recording
     recorder.stop();
+    this.setState({ isRecording: false });
     this.state.onRecordStop();
     // Remove “recording” icon from browser tab
     recorder.stream.getTracks().forEach((i) => i.stop());
   };
 
-  onSave = async () => {
-    const reader = new FileReader();
-    reader.onloadend = async (finishedEvent) => {
-      const {
-        target: { result },
-      } = finishedEvent;
-      await axios
-        .post(`${base_URL}/api/uploadsessionfile`, {
-          songID: this.state.songObj.songID,
-          sessionID: this.props.params.sessionid,
-          curStatus: this.state.songObj.status,
-          data: result,
-          extension: "mp3",
-          headers: {
-            "content-type": "application/json",
-          },
-        })
-        .then((response) => {
-          this.props.navigate(-1);
-        });
-    };
-    reader.readAsDataURL(this.state.blob);
-  };
-
-  onRerecord = () => {
-    this.setState({ blob: null, blobUrl: null, isRecording: false });
-  };
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.blob !== prevState.blob) {
+      this.props.navigate(
+        `/studio/${this.props.params.randomKey}/editor/${this.props.params.sessionid}`,
+        { replace: true, state: { data: this.state.blob } }
+      );
+    }
+  }
 
   render() {
     return (
       <>
-        {this.state.blobUrl ? (
-          <>
-            <audio src={this.state.blobUrl} controls="controls" />
-            <div>
-              <button onClick={this.onSave}>저장</button>
-              <button onClick={this.onRerecord}>삭제</button>
-            </div>
-          </>
-        ) : (
-          <>
-            <button onClick={this.onRecord} disabled={this.state.isRecording}>
-              Record
-            </button>
-            <button onClick={this.onStop} disabled={!this.state.isRecording}>
-              Stop
-            </button>
-          </>
-        )}
+        <button onClick={this.onRecord} disabled={this.state.isRecording}>
+          Record
+        </button>
+        <button onClick={this.onStop} disabled={!this.state.isRecording}>
+          Stop
+        </button>
         {this.state.isRecording && <span>녹음중...</span>}
       </>
     );
