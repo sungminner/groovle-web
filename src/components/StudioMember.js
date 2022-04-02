@@ -52,16 +52,15 @@ const StudioMember = ({
                 to={`/studio/${songObj.randomKey}/editor/${sessionObj.sessionID}`}
                 className="studio-member-menu-item"
               >
-                편집실
+                편집
               </Link>
             ) : (
-              <div className="studio-member-menu-item">
-                <Link
-                  to={`/studio/${songObj.randomKey}/recorder/${sessionObj.sessionID}`}
-                >
-                  녹음하기
-                </Link>
-              </div>
+              <Link
+                to={`/studio/${songObj.randomKey}/recorder/${sessionObj.sessionID}`}
+                className="studio-member-menu-item"
+              >
+                녹음
+              </Link>
             ))}
           <div className="studio-member-menu-item">
             <button onClick={deleteSession}>삭제</button>

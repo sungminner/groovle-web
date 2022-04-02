@@ -40,26 +40,31 @@ const Editor = ({ userObj }) => {
   const onAllSessionPlay = () => {
     sessionsRef.current.forEach((element) => {
       element.play();
-      setIsPlaying(true);
     });
+    mySession.current.play();
+    setIsPlaying(true);
   };
   const onAllSessionPause = () => {
     sessionsRef.current.forEach((element) => {
       element.pause();
-      setIsPlaying(false);
     });
+    mySession.current.pause();
+    setIsPlaying(false);
   };
   const onAllSessionRollBack = () => {
     sessionsRef.current.forEach((element) => {
       element.pause();
       element.currentTime = 0;
-      setIsPlaying(false);
     });
+    mySession.current.pause();
+    mySession.current.currentTime = 0;
+    setIsPlaying(false);
   };
   const onAllSessionMute = () => {
     sessionsRef.current.forEach((element) => {
       element.muted = !element.muted;
     });
+    mySession.current.muted = !mySession.current.muted;
   };
   const onSessionMute = (index) => {
     sessionsRef.current[index].muted = !sessionsRef.current[index].muted;
@@ -96,6 +101,57 @@ const Editor = ({ userObj }) => {
   };
   return (
     <>
+      {sessions &&
+        sessions.map(
+          (session, index) =>
+            session.sessionID !== Number(sessionid) &&
+            session.filename && (
+              <div key={session.sessionID}>
+                <p>{session.username}</p>
+                <audio
+                  ref={(element) => (sessionsRef.current[index] = element)}
+                  src={`${base_URL}/api/playsession/${session.filename}`}
+                  controls
+                />
+                <FontAwesomeIcon
+                  icon="volume-xmark"
+                  className="editor-playbar-eachmute"
+                  onClick={() => onSessionMute(index)}
+                />
+              </div>
+            )
+        )}
+      <br />
+      <p>my audio</p>
+      {location.state && location.state.blobUrl && (
+        // Recorder에서 넘어온 blob
+        <div>
+          <audio ref={mySession} src={location.state.blobUrl} controls />
+          <button onClick={onSave}>저장</button>
+          <button onClick={onRerecord}>재녹음</button>
+        </div>
+      )}
+      {sessions &&
+        sessions.map(
+          (session, index) =>
+            session.sessionID === Number(sessionid) &&
+            session.filename && (
+              <div key={session.sessionID}>
+                <p>{session.username}</p>
+                <audio
+                  ref={mySession}
+                  src={`${base_URL}/api/playsession/${session.filename}`}
+                  controls
+                />
+                <FontAwesomeIcon
+                  icon="volume-xmark"
+                  className="editor-playbar-eachmute"
+                  onClick={() => onSessionMute(index)}
+                />
+              </div>
+            )
+        )}
+
       <div className="editor-playbar-controls">
         <FontAwesomeIcon
           icon="step-backward"
@@ -121,32 +177,6 @@ const Editor = ({ userObj }) => {
           onClick={onAllSessionMute}
         />
       </div>
-      {sessions &&
-        sessions.map(
-          (session, index) =>
-            session.filename && (
-              <div key={session.sessionID}>
-                <p>{session.username}</p>
-                <audio
-                  ref={(element) => (sessionsRef.current[index] = element)}
-                  src={`${base_URL}/api/playsession/${session.filename}`}
-                  controls
-                />
-                <FontAwesomeIcon
-                  icon="volume-xmark"
-                  className="editor-playbar-eachmute"
-                  onClick={() => onSessionMute(index)}
-                />
-              </div>
-            )
-        )}
-      {location.state.blobUrl && (
-        <div>
-          <audio ref={mySession} src={location.state.blobUrl} controls />
-          <button onClick={onSave}>저장</button>
-          <button onClick={onRerecord}>재녹음</button>
-        </div>
-      )}
     </>
   );
 };
