@@ -10,7 +10,7 @@ class Groovle:
     # 합성
     def synthesize(self):
         self.synthesizer.setFiles(json.loads(sys.argv[2]))
-        self.synthesizer.setVolumes(json.loads(sys.argv[3]))
+        self.synthesizer.setVolumes(list(map(float, json.loads(sys.argv[3]))))
         self.synthesizer.synthesize()
         self.synthesizer.saveAsFile(sys.argv[4])
 
