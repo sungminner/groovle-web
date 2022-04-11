@@ -164,7 +164,6 @@ const Synthesize = ({ userObj }) => {
         />
       </div>
       <div>
-        <p>synthesize</p>
         <div className="synthesize-synth-button-padding" />
         <div className="synthesize-synth-button-wrapper">
           {isPending ? (

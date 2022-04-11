@@ -13,6 +13,7 @@ const Editor = ({ userObj }) => {
   const [songObj, setSongObj] = useState();
   const [sessions, setSessions] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
+  const [offset, setOffset] = useState(0);
   const sessionsRef = useRef([]);
   const mySession = useRef();
   const getSong = async () => {
@@ -40,6 +41,9 @@ const Editor = ({ userObj }) => {
       sessionsRef.current.length
     );
   }, [sessions]);
+  useEffect(() => {
+    console.log(offset);
+  }, [offset]);
   const onAllSessionPlay = () => {
     sessionsRef.current.forEach((element) => {
       element.play();
@@ -57,10 +61,10 @@ const Editor = ({ userObj }) => {
   const onAllSessionRollBack = () => {
     sessionsRef.current.forEach((element) => {
       element.pause();
-      element.currentTime = 0;
+      element.currentTime = offset >= 0 ? 0 : offset;
     });
     mySession.current.pause();
-    mySession.current.currentTime = 0;
+    mySession.current.currentTime = offset >= 0 ? offset : 0;
     setIsPlaying(false);
   };
   const onAllSessionMute = () => {
@@ -71,6 +75,26 @@ const Editor = ({ userObj }) => {
   };
   const onSessionMute = (index) => {
     sessionsRef.current[index].muted = !sessionsRef.current[index].muted;
+  };
+  const onSyncForward = () => {
+    setOffset((prev) => prev + 0.05);
+    sessionsRef.current.forEach((element) => {
+      element.currentTime -= 0.05;
+    });
+  };
+  const onSyncBackward = () => {
+    setOffset((prev) => prev - 0.05);
+    mySession.current.currentTime -= 0.05;
+  };
+  const onSyncRefresh = () => {
+    if (offset >= 0) {
+      mySession.current.currentTime -= offset;
+    } else {
+      sessionsRef.current.forEach((element) => {
+        element.currentTime -= offset;
+      });
+    }
+    setOffset(0);
   };
   const onSave = async () => {
     const reader = new FileReader();
@@ -154,7 +178,6 @@ const Editor = ({ userObj }) => {
               </div>
             )
         )}
-
       <div className="editor-playbar-controls">
         <FontAwesomeIcon
           icon="step-backward"
@@ -179,6 +202,21 @@ const Editor = ({ userObj }) => {
           className="editor-playbar-allmute"
           onClick={onAllSessionMute}
         />
+      </div>
+      <div className="editor-sync">
+        <p>싱크 조절</p>
+        <FontAwesomeIcon
+          icon="minus"
+          className="editor-sync-forward"
+          onClick={onSyncForward}
+        />
+        <p>{-1 * offset.toFixed(2)}ms</p>
+        <FontAwesomeIcon
+          icon="plus"
+          className="editor-sync-backward"
+          onClick={onSyncBackward}
+        />
+        <p onClick={onSyncRefresh}>초기화</p>
       </div>
     </>
   );
