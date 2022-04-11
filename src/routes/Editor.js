@@ -35,7 +35,10 @@ const Editor = ({ userObj }) => {
     }
   }, [songID]);
   useEffect(() => {
-    sessionsRef.current = sessionsRef.current.slice(0, sessionsRef.length);
+    sessionsRef.current = sessionsRef.current.slice(
+      0,
+      sessionsRef.current.length
+    );
   }, [sessions]);
   const onAllSessionPlay = () => {
     sessionsRef.current.forEach((element) => {

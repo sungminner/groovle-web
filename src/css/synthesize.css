@@ -1,0 +1,40 @@
+.synthesize-playbar-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.synthesize-playbar-allplay,
+.synthesize-playbar-allpause,
+.synthesize-playbar-allRollBack,
+.synthesize-playbar-allmute {
+  cursor: pointer;
+}
+
+.synthesize-synth-button-padding {
+  height: 50px;
+}
+
+.synthesize-synth-button-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.synthesize-synth-button {
+  max-width: 600px;
+  height: 50px;
+  margin: 0 auto;
+  background-color: #711e9a;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.ssb-disabled {
+  background-color: #c294da;
+  cursor: default;
+}
