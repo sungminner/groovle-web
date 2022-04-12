@@ -108,10 +108,10 @@ const Editor = ({ userObj }) => {
     sessionsRef.current[index].muted = !sessionsRef.current[index].muted;
   };
   const onSyncForward = () => {
-    setOffset((prev) => Number((prev + 0.05).toFixed(2)));
+    setOffset((prev) => Number((prev + 0.01).toFixed(2)));
   };
   const onSyncBackward = () => {
-    setOffset((prev) => Number((prev - 0.05).toFixed(2)));
+    setOffset((prev) => Number((prev - 0.01).toFixed(2)));
   };
   const onSyncRefresh = () => {
     setOffset(0);
