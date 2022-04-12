@@ -44,8 +44,15 @@ const Editor = ({ userObj }) => {
     );
   }, [sessions]);
   useEffect(() => {
-    console.log("current", offset);
-    console.log("prev", prevOffset);
+    if (mySession.current) {
+      if (offset > prevOffset) {
+        sessionsRef.current.forEach((element) => {
+          element.currentTime -= offset - prevOffset;
+        });
+      } else {
+        mySession.current.currentTime -= prevOffset - offset;
+      }
+    }
   }, [offset]);
   const onAllSessionPlay = () => {
     sessionsRef.current.forEach((element) => {
@@ -202,7 +209,7 @@ const Editor = ({ userObj }) => {
           className="editor-sync-forward"
           onClick={onSyncForward}
         />
-        <p>{-1 * offset}ms</p>
+        <p>{-1 * offset * 1000}ms</p>
         <FontAwesomeIcon
           icon="plus"
           className="editor-sync-backward"
