@@ -26,6 +26,24 @@ session.post("/createsession", (req, res) => {
   );
 });
 
+session.get("/getoffset/:sessionid", (req, res) => {
+  const sessionid = req.params.sessionid;
+  db.query(
+    `select syncOffset from session where sessionID='${sessionid}'`,
+    function (error, result) {
+      if (error) throw error;
+      if (result.length === 1) {
+        const data = {
+          syncOffset: result[0].syncOffset,
+        };
+        res.send(data);
+      } else {
+        res.send(false);
+      }
+    }
+  );
+});
+
 session.get("/session/:songID", (req, res) => {
   const songID = req.params.songID;
   db.query(

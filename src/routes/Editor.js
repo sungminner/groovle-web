@@ -10,6 +10,7 @@ const Editor = ({ userObj }) => {
   const { randomKey, sessionid } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const [init, setInit] = useState(false);
   const [songID, setSongID] = useState(null);
   const [songObj, setSongObj] = useState();
   const [sessions, setSessions] = useState();
@@ -29,6 +30,16 @@ const Editor = ({ userObj }) => {
       setSessions(response.data);
     });
   };
+  const getOffset = async () => {
+    await axios
+      .get(`${base_URL}/api/getoffset/${sessionid}`)
+      .then((response) => {
+        setOffset(response.data.syncOffset);
+      });
+  };
+  useEffect(() => {
+    getOffset();
+  }, []);
   useEffect(() => {
     getSong();
   }, []);
@@ -55,6 +66,16 @@ const Editor = ({ userObj }) => {
     }
   }, [offset]);
   const onAllSessionPlay = () => {
+    if (!init) {
+      if (offset > 0) {
+        mySession.current.currentTime += offset;
+      } else {
+        sessionsRef.current.forEach((element) => {
+          element.currentTime -= offset; // offset < 0이므로 빼줌
+        });
+      }
+      setInit(true);
+    }
     sessionsRef.current.forEach((element) => {
       element.play();
     });
