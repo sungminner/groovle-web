@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import usePrevious from "functions/usePrevious";
 import axios from "axios";
 import base_URL from "base_URL";
 import "css/editor.css";
@@ -16,6 +17,7 @@ const Editor = ({ userObj }) => {
   const [offset, setOffset] = useState(0);
   const sessionsRef = useRef([]);
   const mySession = useRef();
+  const prevOffset = usePrevious(offset);
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
       setSongID(response.data.songID);
@@ -42,7 +44,8 @@ const Editor = ({ userObj }) => {
     );
   }, [sessions]);
   useEffect(() => {
-    console.log(offset);
+    console.log("current", offset);
+    console.log("prev", prevOffset);
   }, [offset]);
   const onAllSessionPlay = () => {
     sessionsRef.current.forEach((element) => {
@@ -77,23 +80,12 @@ const Editor = ({ userObj }) => {
     sessionsRef.current[index].muted = !sessionsRef.current[index].muted;
   };
   const onSyncForward = () => {
-    setOffset((prev) => prev + 0.05);
-    sessionsRef.current.forEach((element) => {
-      element.currentTime -= 0.05;
-    });
+    setOffset((prev) => Number((prev + 0.05).toFixed(2)));
   };
   const onSyncBackward = () => {
-    setOffset((prev) => prev - 0.05);
-    mySession.current.currentTime -= 0.05;
+    setOffset((prev) => Number((prev - 0.05).toFixed(2)));
   };
   const onSyncRefresh = () => {
-    if (offset >= 0) {
-      mySession.current.currentTime -= offset;
-    } else {
-      sessionsRef.current.forEach((element) => {
-        element.currentTime -= offset;
-      });
-    }
     setOffset(0);
   };
   const onSave = async () => {
@@ -210,7 +202,7 @@ const Editor = ({ userObj }) => {
           className="editor-sync-forward"
           onClick={onSyncForward}
         />
-        <p>{-1 * offset.toFixed(2)}ms</p>
+        <p>{-1 * offset}ms</p>
         <FontAwesomeIcon
           icon="plus"
           className="editor-sync-backward"
