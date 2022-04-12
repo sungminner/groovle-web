@@ -100,9 +100,6 @@ const Header = () => {
         pathname === "Search" ||
         pathname === "Settings" ||
         pathname === "Create" ||
-        pathname === "Recorder" ||
-        pathname === "Editor" ||
-        pathname === "Synthesize" ||
         pathname === "Storage" ||
         pathname === "Playlist") && (
         <>
@@ -122,7 +119,11 @@ const Header = () => {
           </div>
         </>
       )}
-      {(pathname === "Login" || pathname === "Signup") && (
+      {(pathname === "Login" ||
+        pathname === "Recorder" ||
+        pathname === "Editor" ||
+        pathname === "Synthesize" ||
+        pathname === "Signup") && (
         <>
           <div className="header-padding" />
           <div className="header-wrapper">

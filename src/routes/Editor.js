@@ -44,7 +44,7 @@ const Editor = ({ userObj }) => {
     );
   }, [sessions]);
   useEffect(() => {
-    if (mySession.current) {
+    if (mySession.current && prevOffset) {
       if (offset > prevOffset) {
         sessionsRef.current.forEach((element) => {
           element.currentTime -= offset - prevOffset;
@@ -95,7 +95,7 @@ const Editor = ({ userObj }) => {
   const onSyncRefresh = () => {
     setOffset(0);
   };
-  const onSave = async () => {
+  const onRecordSave = async () => {
     const reader = new FileReader();
     reader.onloadend = async (finishedEvent) => {
       const {
@@ -103,11 +103,12 @@ const Editor = ({ userObj }) => {
       } = finishedEvent;
       await axios
         .post(`${base_URL}/api/uploadsessionfile`, {
-          songID: songID,
+          songID,
           sessionID: sessionid,
           curStatus: songObj.status,
           data: result,
           extension: "mp3",
+          offset,
           headers: {
             "content-type": "application/json",
           },
@@ -124,6 +125,23 @@ const Editor = ({ userObj }) => {
     navigate(`/studio/${randomKey}/recorder/${sessionid}`, {
       replace: true,
     });
+  };
+  const onEditSave = async () => {
+    await axios
+      .post(`${base_URL}/api/editsession`, {
+        songID,
+        sessionID: sessionid,
+        curStatus: songObj.status,
+        offset,
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+      .then((response) => {
+        navigate(`/studio/${randomKey}`, {
+          replace: true,
+        });
+      });
   };
   return (
     <>
@@ -153,7 +171,6 @@ const Editor = ({ userObj }) => {
         // Recorder에서 넘어온 blob
         <div>
           <audio ref={mySession} src={location.state.blobUrl} controls />
-          <button onClick={onSave}>저장</button>
           <button onClick={onRerecord}>재녹음</button>
         </div>
       )}
@@ -216,6 +233,17 @@ const Editor = ({ userObj }) => {
           onClick={onSyncBackward}
         />
         <p onClick={onSyncRefresh}>초기화</p>
+        <br />
+        {location.state && location.state.blobUrl ? (
+          // Recorder에서 넘어온 blob
+          <div>
+            <button onClick={onRecordSave}>저장</button>
+          </div>
+        ) : (
+          <>
+            <button onClick={onEditSave}>저장</button>
+          </>
+        )}
       </div>
     </>
   );

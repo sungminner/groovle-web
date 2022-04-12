@@ -56,6 +56,7 @@ session.post("/uploadsessionfile", (req, res) => {
   const curStatus = req.body.curStatus;
   const data = req.body.data;
   const extension = req.body.extension;
+  const offset = req.body.offset;
   const filename = v4();
   let newStatus;
   if (curStatus === 0 || curStatus === 1) {
@@ -67,7 +68,7 @@ session.post("/uploadsessionfile", (req, res) => {
   fs.writeFile(`NAS/session/${filename}.${extension}`, file, (err) => {
     if (err) throw err;
     db.query(
-      `UPDATE session SET filename = '${filename}.${extension}' WHERE (sessionID = '${sessionID}');
+      `UPDATE session SET syncOffset = ${offset}, filename = '${filename}.${extension}' WHERE (sessionID = '${sessionID}');
       UPDATE song SET status = ${newStatus} WHERE (songID = '${songID}');`,
       function (error, results) {
         if (error) throw error;
@@ -76,6 +77,28 @@ session.post("/uploadsessionfile", (req, res) => {
       }
     );
   });
+});
+
+session.post("/editsession", (req, res) => {
+  const songID = req.body.songID;
+  const sessionID = req.body.sessionID;
+  const curStatus = req.body.curStatus;
+  const offset = req.body.offset;
+  let newStatus;
+  if (curStatus === 0 || curStatus === 1) {
+    newStatus = 1;
+  } else if (curStatus === 2 || curStatus === 3) {
+    newStatus = 3;
+  }
+  db.query(
+    `UPDATE session SET syncOffset = ${offset} WHERE (sessionID = '${sessionID}');
+    UPDATE song SET status = ${newStatus} WHERE (songID = '${songID}');`,
+    function (error, results) {
+      if (error) throw error;
+      console.log("session edited!");
+      res.send(true);
+    }
+  );
 });
 
 session.post("/deletesession", (req, res) => {
