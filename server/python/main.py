@@ -11,8 +11,9 @@ class Groovle:
     def synthesize(self):
         self.synthesizer.setFiles(json.loads(sys.argv[2]))
         self.synthesizer.setVolumes(list(map(float, json.loads(sys.argv[3]))))
+        self.synthesizer.setOffsets(list(map(float, json.loads(sys.argv[4]))))
         self.synthesizer.synthesize()
-        self.synthesizer.saveAsFile(sys.argv[4])
+        self.synthesizer.saveAsFile(sys.argv[5])
 
 
 groovle = Groovle()

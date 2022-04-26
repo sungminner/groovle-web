@@ -31,6 +31,7 @@ app.post("/synthesize", (req, res) => {
   console.log("synthesize called");
   filenames = req.body.filenames;
   volumes = req.body.volumes;
+  offsets = req.body.offsets;
   songID = req.body.songID;
 
   const options = {
@@ -44,6 +45,7 @@ app.post("/synthesize", (req, res) => {
       "synthesize",
       JSON.stringify(filenames),
       JSON.stringify(volumes),
+      JSON.stringify(offsets),
       songID,
     ],
   };

@@ -14,6 +14,7 @@ const Synthesize = ({ userObj }) => {
   const sessionsRef = useRef([]);
   const songObj = location.state.songObj;
   const sessions = location.state.sessions;
+  const offsets = location.state.offsets;
   const randomKey = location.state.randomKey;
   useEffect(() => {
     sessionsRef.current = sessionsRef.current.slice(
@@ -24,6 +25,7 @@ const Synthesize = ({ userObj }) => {
   }, [sessions]);
   useEffect(() => {
     console.log(volumes);
+    console.log(offsets);
   }, [volumes]);
   const onAllSessionPlay = () => {
     sessionsRef.current.forEach((element) => {
@@ -94,6 +96,7 @@ const Synthesize = ({ userObj }) => {
           .post(`${base_URL}/synthesize`, {
             filenames,
             volumes,
+            offsets,
             songID: songObj.songID,
             headers: {
               "content-type": "application/json",

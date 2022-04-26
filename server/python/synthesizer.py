@@ -9,6 +9,7 @@ class GroovleSynthesizer:
     def __init__(self):
         self.files = []
         self.volumes = []
+        self.offsets = []
         self.result = None
 
     def setFiles(self, list):
@@ -17,10 +18,19 @@ class GroovleSynthesizer:
     def setVolumes(self, list):
         self.volumes = list
 
+    def setOffsets(self, list):
+        self.offsets = list
+
     def synthesize(self):
         result = np.array([])
         for i in range(len(self.files)):
             y, _ = audioReader(self.files[i])
+            if self.offsets[i] > 0:
+                y = y[round(self.offsets[i] * 44100) :]
+            else:
+                y = np.hstack(
+                    (np.zeros(round(self.offsets[i] * 44100), dtype=np.float32), y)
+                )
             y *= self.volumes[i]
             if len(result) < len(y):
                 temp = y

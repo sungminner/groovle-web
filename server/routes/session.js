@@ -57,6 +57,7 @@ session.get("/session/:songID", (req, res) => {
           sessionID: results[i].sessionID,
           createdBy: results[i].createdBy,
           createdAt: results[i].createdAt,
+          syncOffset: results[i].syncOffset,
           filename: results[i].filename,
           instrument: results[i].instrument,
           userID: results[i].userID,
@@ -211,5 +212,13 @@ session.get("/loadsession/:filename", (req, res) => {
   const file = `../../NAS/session/${filename}`;
   res.sendFile(path.join(__dirname, file));
 });
+
+// session.get("/loadsession/:filename", (req, res) => {
+//   const filename = req.params.filename;
+//   const file = `NAS/session/${filename}`;
+//   fs.readFile(file, function (err, result) {
+//     res.send(result.toString("base64"));
+//   });
+// });
 
 module.exports = session;

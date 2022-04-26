@@ -121,7 +121,12 @@ const Studio = ({ userObj }) => {
         <div
           onClick={() =>
             navigate(`/studio/${randomKey}/synthesize`, {
-              state: { songObj, sessions, randomKey },
+              state: {
+                songObj,
+                sessions,
+                randomKey,
+                offsets: sessions.map((session) => session.syncOffset),
+              },
             })
           }
           className="studio-synth-button"
