@@ -7,6 +7,9 @@ import base_URL from "base_URL";
 import "css/editor.css";
 
 const Editor = ({ userObj }) => {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  const audioContext = new AudioContext();
+
   const { randomKey, sessionid } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,8 +19,6 @@ const Editor = ({ userObj }) => {
   const [sessions, setSessions] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [offset, setOffset] = useState(0);
-  const [sessionCurrentTime, setSessionCurrentTime] = useState();
-  const [myCurrentTime, setMyCurrentTime] = useState();
   const sessionsRef = useRef([]);
   const mySession = useRef();
   const prevOffset = usePrevious(offset);
@@ -178,17 +179,9 @@ const Editor = ({ userObj }) => {
                 <p>{session.username}</p>
                 <audio
                   ref={(element) => (sessionsRef.current[index] = element)}
-                  src={`${base_URL}/api/playsession/${session.filename}`}
-                  onTimeUpdate={(e) => {
-                    if (index === 0) {
-                      setSessionCurrentTime(
-                        Number(e.target.currentTime.toFixed(2))
-                      );
-                    }
-                  }}
+                  src={`${base_URL}/api/loadsession/${session.filename}`}
                   controls
                 />
-                {sessionCurrentTime}
                 <FontAwesomeIcon
                   icon="volume-xmark"
                   className="editor-playbar-eachmute"
@@ -218,12 +211,8 @@ const Editor = ({ userObj }) => {
                 <p>{session.username}</p>
                 <audio
                   ref={mySession}
-                  src={`${base_URL}/api/playsession/${session.filename}`}
-                  onTimeUpdate={(e) => {
-                    setMyCurrentTime(Number(e.target.currentTime.toFixed(2)));
-                  }}
+                  src={`${base_URL}/api/loadsession/${session.filename}`}
                 />
-                {myCurrentTime}
                 <FontAwesomeIcon
                   icon="volume-xmark"
                   className="editor-playbar-eachmute"

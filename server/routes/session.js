@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
+const path = require("path");
 const { v4 } = require("uuid");
 const db = require("./db_info");
 
@@ -203,6 +204,12 @@ session.get("/playsession/:filename", (req, res) => {
         res.end(err);
       });
   });
+});
+
+session.get("/loadsession/:filename", (req, res) => {
+  const filename = req.params.filename;
+  const file = `../../NAS/session/${filename}`;
+  res.sendFile(path.join(__dirname, file));
 });
 
 module.exports = session;
