@@ -9,6 +9,7 @@ const Song = () => {
   const { randomKey } = useParams();
   const [songObj, setSongObj] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
   const audio = useRef(null);
   const getSong = async () => {
     await axios.get(`${base_URL}/api/song/${randomKey}`).then((response) => {
@@ -56,13 +57,18 @@ const Song = () => {
           <audio
             ref={audio}
             src={`${base_URL}/api/playsong/${songObj.songID}.mp3`}
+            onTimeUpdate={(e) => {
+              setCurrentTime(e.target.currentTime);
+            }}
           />
         ) : (
           <></>
         )}
         <div className="song-progressbar"></div>
         <div className="song-time">
-          <p className="song-currenttime">00:00</p>
+          <p className="song-currenttime">
+            {new Date(currentTime * 1000).toISOString().slice(14, 19)}
+          </p>
           <p className="song-totaltime">3:16</p>
         </div>
         <div className="song-button">
