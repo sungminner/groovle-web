@@ -16,6 +16,8 @@ const Editor = ({ userObj }) => {
   const [sessions, setSessions] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [offset, setOffset] = useState(0);
+  const [sessionCurrentTime, setSessionCurrentTime] = useState();
+  const [myCurrentTime, setMyCurrentTime] = useState();
   const sessionsRef = useRef([]);
   const mySession = useRef();
   const prevOffset = usePrevious(offset);
@@ -39,8 +41,6 @@ const Editor = ({ userObj }) => {
   };
   useEffect(() => {
     getOffset();
-  }, []);
-  useEffect(() => {
     getSong();
   }, []);
   useEffect(() => {
@@ -106,6 +106,9 @@ const Editor = ({ userObj }) => {
   };
   const onSessionMute = (index) => {
     sessionsRef.current[index].muted = !sessionsRef.current[index].muted;
+  };
+  const onMySessionMute = () => {
+    mySession.current.muted = !mySession.current.muted;
   };
   const onSyncForward = () => {
     setOffset((prev) => Number((prev + 0.01).toFixed(2)));
@@ -176,8 +179,16 @@ const Editor = ({ userObj }) => {
                 <audio
                   ref={(element) => (sessionsRef.current[index] = element)}
                   src={`${base_URL}/api/playsession/${session.filename}`}
+                  onTimeUpdate={(e) => {
+                    if (index === 0) {
+                      setSessionCurrentTime(
+                        Number(e.target.currentTime.toFixed(2))
+                      );
+                    }
+                  }}
                   controls
                 />
+                {sessionCurrentTime}
                 <FontAwesomeIcon
                   icon="volume-xmark"
                   className="editor-playbar-eachmute"
@@ -186,6 +197,9 @@ const Editor = ({ userObj }) => {
               </div>
             )
         )}
+      <br />
+      <br />
+      <br />
       <br />
       <p>my audio</p>
       {location.state && location.state.blobUrl && (
@@ -205,16 +219,20 @@ const Editor = ({ userObj }) => {
                 <audio
                   ref={mySession}
                   src={`${base_URL}/api/playsession/${session.filename}`}
-                  controls
+                  onTimeUpdate={(e) => {
+                    setMyCurrentTime(Number(e.target.currentTime.toFixed(2)));
+                  }}
                 />
+                {myCurrentTime}
                 <FontAwesomeIcon
                   icon="volume-xmark"
                   className="editor-playbar-eachmute"
-                  onClick={() => onSessionMute(index)}
+                  onClick={() => onMySessionMute(index)}
                 />
               </div>
             )
         )}
+      <br />
       <div className="editor-playbar-controls">
         <FontAwesomeIcon
           icon="step-backward"
